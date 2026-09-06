@@ -128,13 +128,22 @@ function JobDetail() {
                 </div>
               )}
             </dl>
-            <Link
-              to={user ? "/dashboard" : "/auth"}
-              search={user ? undefined : ({ mode: "signup" } as never)}
-              className="mt-6 block rounded-lg bg-primary px-4 py-3 text-center font-semibold text-primary-foreground transition-all hover:-translate-y-0.5"
-            >
-              {user ? "Apply from dashboard" : "Sign up to apply"}
-            </Link>
+            {user ? (
+              <Link
+                to="/dashboard"
+                className="mt-6 block rounded-lg bg-primary px-4 py-3 text-center font-semibold text-primary-foreground transition-all hover:-translate-y-0.5"
+              >
+                Apply from dashboard
+              </Link>
+            ) : (
+              <Link
+                to="/auth"
+                search={{ mode: "signup" }}
+                className="mt-6 block rounded-lg bg-primary px-4 py-3 text-center font-semibold text-primary-foreground transition-all hover:-translate-y-0.5"
+              >
+                Sign up to apply
+              </Link>
+            )}
             <p className="mt-3 text-center font-mono text-[11px] text-muted-foreground">
               Proposals are drafted from your real profile only
             </p>

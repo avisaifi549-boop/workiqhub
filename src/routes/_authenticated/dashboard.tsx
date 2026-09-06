@@ -103,7 +103,7 @@ function Dashboard() {
                   {strength.recommendations.length === 0 && <li>Your profile is complete.</li>}
                 </ul>
                 <Link
-                  to="/_authenticated/profile"
+                  to="/profile"
                   className="mt-5 block rounded-lg bg-primary px-4 py-2.5 text-center text-sm font-semibold text-primary-foreground"
                 >
                   Edit profile
@@ -132,7 +132,7 @@ function Dashboard() {
                 <div className="flex items-center justify-between">
                   <h2 className="font-display text-2xl uppercase tracking-tight">Your projects</h2>
                   <Link
-                    to="/_authenticated/post-a-job"
+                    to="/post-a-job"
                     className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
                   >
                     Post a project
@@ -203,7 +203,7 @@ function Dashboard() {
                 description="Add your headline, skills, pricing and portfolio. Once it's strong enough it gets a public, search-indexable page."
                 action={
                   <Link
-                    to="/_authenticated/profile"
+                    to="/profile"
                     className="rounded-lg bg-primary px-5 py-3 font-semibold text-primary-foreground"
                   >
                     Build my profile
