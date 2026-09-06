@@ -46,7 +46,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const { data } = useSuspenseQuery(homeQuery);
+  const { data: raw } = useSuspenseQuery(homeQuery);
+  const data = { talent: raw?.talent ?? [], jobs: raw?.jobs ?? [] };
 
   return (
     <PageShell>
