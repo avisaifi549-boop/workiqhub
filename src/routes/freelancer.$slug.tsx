@@ -39,7 +39,26 @@ export const Route = createFileRoute("/freelancer/$slug")({
         { property: "og:type", content: "profile" },
         { name: "twitter:card", content: "summary_large_image" },
         ...(isIndexable(input) ? [] : [{ name: "robots", content: "noindex,follow" }]),
-...
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name,
+            jobTitle: p.headline,
+            description,
+            knowsAbout: p.skills,
+            address: p.profiles?.location ?? undefined,
+          }),
+        },
+      ],
+    };
+  },
+  component: FreelancerProfile,
+});
+
 function FreelancerProfile() {
   const { slug } = Route.useParams();
   const { data } = useSuspenseQuery(profileQuery(slug));
