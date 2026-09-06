@@ -60,7 +60,7 @@ function ApplicationsPage() {
       .from("applications")
       .update({ status: "withdrawn" })
       .eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Application withdrawn");
     await qc.invalidateQueries({ queryKey: ["my-applications", user?.id] });
   }

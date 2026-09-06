@@ -93,7 +93,7 @@ export function ServiceEditor({ userId }: { userId: string }) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          if (!form.title.trim()) return toast.error("Give your service a title");
+          if (!form.title.trim()) { toast.error("Give your service a title"); return; }
           save.mutate(form);
         }}
         className="glass rounded-2xl border border-border p-6"

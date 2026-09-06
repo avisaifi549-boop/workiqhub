@@ -72,7 +72,7 @@ function MyJobsPage() {
       .from("applications")
       .update({ status: status as never })
       .eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Applicant updated");
     await qc.invalidateQueries({ queryKey: ["my-jobs", user?.id] });
   }
