@@ -93,7 +93,7 @@ function JobsPage() {
                 description="Nothing has been posted in this category. Post the first project, or browse all categories."
                 action={
                   <Link
-                    to="/_authenticated/post-a-job"
+                    to="/post-a-job"
                     className="rounded-lg bg-primary px-5 py-3 font-semibold text-primary-foreground"
                   >
                     Post a project
