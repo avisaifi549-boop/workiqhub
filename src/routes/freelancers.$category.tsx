@@ -90,7 +90,7 @@ function CategoryPage() {
               description="We don't fill categories with placeholder profiles. Post your project and matching freelancers will be invited to apply."
               action={
                 <Link
-                  to="/post-a-job"
+                  to="/_authenticated/post-a-job"
                   className="rounded-lg bg-primary px-5 py-3 font-semibold text-primary-foreground"
                 >
                   Post a project

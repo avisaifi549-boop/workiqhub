@@ -14,6 +14,8 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedPostAJobRouteImport } from './routes/_authenticated/post-a-job'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as FreelancerSlugRouteImport } from './routes/freelancer.$slug'
 import { Route as FreelancersIndexRouteImport } from './routes/freelancers.index'
 import { Route as FreelancersCategoryRouteImport } from './routes/freelancers.$category'
@@ -42,6 +44,16 @@ const PricingRoute = PricingRouteImport.update({
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedPostAJobRoute = AuthenticatedPostAJobRouteImport.update({
+  id: '/post-a-job',
+  path: '/post-a-job',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const FreelancerSlugRoute = FreelancerSlugRouteImport.update({
@@ -75,6 +87,8 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/pricing': typeof PricingRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/post-a-job': typeof AuthenticatedPostAJobRoute
+  '/profile': typeof AuthenticatedProfileRoute
   '/freelancer/$slug': typeof FreelancerSlugRoute
   '/freelancers/$category': typeof FreelancersCategoryRoute
   '/jobs/$slug': typeof JobsSlugRoute
@@ -86,6 +100,8 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/pricing': typeof PricingRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/post-a-job': typeof AuthenticatedPostAJobRoute
+  '/profile': typeof AuthenticatedProfileRoute
   '/freelancer/$slug': typeof FreelancerSlugRoute
   '/freelancers/$category': typeof FreelancersCategoryRoute
   '/jobs/$slug': typeof JobsSlugRoute
@@ -99,6 +115,8 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/pricing': typeof PricingRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/post-a-job': typeof AuthenticatedPostAJobRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/freelancer/$slug': typeof FreelancerSlugRoute
   '/freelancers/$category': typeof FreelancersCategoryRoute
   '/jobs/$slug': typeof JobsSlugRoute
@@ -112,6 +130,8 @@ export interface FileRouteTypes {
     | '/auth'
     | '/pricing'
     | '/dashboard'
+    | '/post-a-job'
+    | '/profile'
     | '/freelancer/$slug'
     | '/freelancers/$category'
     | '/jobs/$slug'
@@ -123,6 +143,8 @@ export interface FileRouteTypes {
     | '/auth'
     | '/pricing'
     | '/dashboard'
+    | '/post-a-job'
+    | '/profile'
     | '/freelancer/$slug'
     | '/freelancers/$category'
     | '/jobs/$slug'
@@ -135,6 +157,8 @@ export interface FileRouteTypes {
     | '/auth'
     | '/pricing'
     | '/_authenticated/dashboard'
+    | '/_authenticated/post-a-job'
+    | '/_authenticated/profile'
     | '/freelancer/$slug'
     | '/freelancers/$category'
     | '/jobs/$slug'
@@ -191,6 +215,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/post-a-job': {
+      id: '/_authenticated/post-a-job'
+      path: '/post-a-job'
+      fullPath: '/post-a-job'
+      preLoaderRoute: typeof AuthenticatedPostAJobRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/freelancer/$slug': {
       id: '/freelancer/$slug'
       path: '/freelancer/$slug'
@@ -231,10 +269,14 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedPostAJobRoute: typeof AuthenticatedPostAJobRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedPostAJobRoute: AuthenticatedPostAJobRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
