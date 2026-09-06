@@ -10,33 +10,185 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedPostAJobRouteImport } from './routes/_authenticated/post-a-job'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
+import { Route as FreelancerSlugRouteImport } from './routes/freelancer.$slug'
+import { Route as FreelancersIndexRouteImport } from './routes/freelancers.index'
+import { Route as FreelancersCategoryRouteImport } from './routes/freelancers.$category'
+import { Route as JobsIndexRouteImport } from './routes/jobs.index'
+import { Route as JobsSlugRouteImport } from './routes/jobs.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedPostAJobRoute = AuthenticatedPostAJobRouteImport.update({
+  id: '/post-a-job',
+  path: '/post-a-job',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const FreelancerSlugRoute = FreelancerSlugRouteImport.update({
+  id: '/freelancer/$slug',
+  path: '/freelancer/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FreelancersIndexRoute = FreelancersIndexRouteImport.update({
+  id: '/freelancers/',
+  path: '/freelancers/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FreelancersCategoryRoute = FreelancersCategoryRouteImport.update({
+  id: '/freelancers/$category',
+  path: '/freelancers/$category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JobsIndexRoute = JobsIndexRouteImport.update({
+  id: '/jobs/',
+  path: '/jobs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JobsSlugRoute = JobsSlugRouteImport.update({
+  id: '/jobs/$slug',
+  path: '/jobs/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/pricing': typeof PricingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/post-a-job': typeof AuthenticatedPostAJobRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/freelancer/$slug': typeof FreelancerSlugRoute
+  '/freelancers/$category': typeof FreelancersCategoryRoute
+  '/jobs/$slug': typeof JobsSlugRoute
+  '/freelancers/': typeof FreelancersIndexRoute
+  '/jobs/': typeof JobsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/pricing': typeof PricingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/post-a-job': typeof AuthenticatedPostAJobRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/freelancer/$slug': typeof FreelancerSlugRoute
+  '/freelancers/$category': typeof FreelancersCategoryRoute
+  '/jobs/$slug': typeof JobsSlugRoute
+  '/freelancers': typeof FreelancersIndexRoute
+  '/jobs': typeof JobsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/pricing': typeof PricingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/post-a-job': typeof AuthenticatedPostAJobRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
+  '/freelancer/$slug': typeof FreelancerSlugRoute
+  '/freelancers/$category': typeof FreelancersCategoryRoute
+  '/jobs/$slug': typeof JobsSlugRoute
+  '/freelancers/': typeof FreelancersIndexRoute
+  '/jobs/': typeof JobsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/pricing'
+    | '/sitemap.xml'
+    | '/dashboard'
+    | '/post-a-job'
+    | '/profile'
+    | '/freelancer/$slug'
+    | '/freelancers/$category'
+    | '/jobs/$slug'
+    | '/freelancers/'
+    | '/jobs/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/pricing'
+    | '/sitemap.xml'
+    | '/dashboard'
+    | '/post-a-job'
+    | '/profile'
+    | '/freelancer/$slug'
+    | '/freelancers/$category'
+    | '/jobs/$slug'
+    | '/freelancers'
+    | '/jobs'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/pricing'
+    | '/sitemap.xml'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/post-a-job'
+    | '/_authenticated/profile'
+    | '/freelancer/$slug'
+    | '/freelancers/$category'
+    | '/jobs/$slug'
+    | '/freelancers/'
+    | '/jobs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
+  PricingRoute: typeof PricingRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  FreelancerSlugRoute: typeof FreelancerSlugRoute
+  FreelancersCategoryRoute: typeof FreelancersCategoryRoute
+  JobsSlugRoute: typeof JobsSlugRoute
+  FreelancersIndexRoute: typeof FreelancersIndexRoute
+  JobsIndexRoute: typeof JobsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +200,119 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/post-a-job': {
+      id: '/_authenticated/post-a-job'
+      path: '/post-a-job'
+      fullPath: '/post-a-job'
+      preLoaderRoute: typeof AuthenticatedPostAJobRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/freelancer/$slug': {
+      id: '/freelancer/$slug'
+      path: '/freelancer/$slug'
+      fullPath: '/freelancer/$slug'
+      preLoaderRoute: typeof FreelancerSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/freelancers/': {
+      id: '/freelancers/'
+      path: '/freelancers'
+      fullPath: '/freelancers/'
+      preLoaderRoute: typeof FreelancersIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/freelancers/$category': {
+      id: '/freelancers/$category'
+      path: '/freelancers/$category'
+      fullPath: '/freelancers/$category'
+      preLoaderRoute: typeof FreelancersCategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jobs/': {
+      id: '/jobs/'
+      path: '/jobs'
+      fullPath: '/jobs/'
+      preLoaderRoute: typeof JobsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jobs/$slug': {
+      id: '/jobs/$slug'
+      path: '/jobs/$slug'
+      fullPath: '/jobs/$slug'
+      preLoaderRoute: typeof JobsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedPostAJobRoute: typeof AuthenticatedPostAJobRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedPostAJobRoute: AuthenticatedPostAJobRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
+  PricingRoute: PricingRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  FreelancerSlugRoute: FreelancerSlugRoute,
+  FreelancersCategoryRoute: FreelancersCategoryRoute,
+  JobsSlugRoute: JobsSlugRoute,
+  FreelancersIndexRoute: FreelancersIndexRoute,
+  JobsIndexRoute: JobsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

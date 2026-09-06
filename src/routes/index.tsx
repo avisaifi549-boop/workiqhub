@@ -1,24 +1,246 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
+import { PageShell, SectionLabel } from "@/components/site/PageShell";
+import { TalentCard, type TalentRow } from "@/components/site/TalentCard";
+import { JobCard, type JobRow } from "@/components/site/JobCard";
+import { EmptyState } from "@/components/site/EmptyState";
+import { listFreelancers, listJobs } from "@/lib/public.functions";
+import { PLANS, formatInr } from "@/lib/plans";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
+const homeQuery = queryOptions({
+  queryKey: ["home"],
+  queryFn: async () => {
+    const [talent, jobs] = await Promise.all([
+      listFreelancers({ data: { limit: 3 } }),
+      listJobs({ data: { limit: 2 } }),
+    ]);
+    return { talent, jobs };
+  },
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+export const Route = createFileRoute("/")({
+  loader: ({ context }) => context.queryClient.ensureQueryData(homeQuery),
+  head: () => ({
+    meta: [
+      { title: "Loom — Get discovered. Win more freelance work." },
+      {
+        name: "description",
+        content:
+          "An AI-powered freelance marketplace: verified talent, AI proposals, transparent pricing and secure milestone payments. Start free.",
+      },
+      { property: "og:title", content: "Loom — Get discovered. Win more freelance work." },
+      {
+        property: "og:description",
+        content: "Verified freelancers, AI proposals and secure milestone payments in one platform.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: Home,
+});
+
+function Home() {
+  const { data } = useSuspenseQuery(homeQuery);
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <PageShell>
+      <section className="relative grid gap-10 py-16 lg:grid-cols-12 lg:py-24">
+        <div className="relative lg:col-span-7">
+          <div className="pointer-events-none absolute -inset-6 -rotate-3 rounded-3xl glass-strong border border-border" />
+          <div className="relative animate-rise">
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">
+              AI-native freelance marketplace
+            </p>
+            <h1 className="mt-6 font-display text-6xl leading-[0.92] uppercase tracking-tight sm:text-7xl lg:text-8xl">
+              Get discovered.
+              <br />
+              Win more work.
+            </h1>
+            <p className="mt-6 max-w-[42ch] text-lg text-pretty text-muted-foreground">
+              Verified talent, AI proposals, and secure milestone payments in one engineered
+              platform — built for freelancers and clients.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                to="/auth"
+                search={{ mode: "signup" }}
+                className="rounded-lg bg-primary px-6 py-3.5 text-center font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-primary/90"
+              >
+                Start Freelancing Free
+              </Link>
+              <Link
+                to="/freelancers"
+                className="rounded-lg glass px-6 py-3.5 text-center font-semibold ring-1 ring-border transition-all hover:-translate-y-0.5"
+              >
+                Hire a Freelancer
+              </Link>
+            </div>
+            <p className="mt-5 font-mono text-xs text-muted-foreground">
+              No fake reviews · No invented stats · Secure escrow
+            </p>
+          </div>
+        </div>
+
+        <div className="lg:col-span-5">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="col-span-2 animate-rise-sm glass rounded-2xl border border-border p-5">
+              <div className="flex items-center justify-between">
+                <span className="label-mono">Profile Strength</span>
+                <span className="font-mono text-sm">
+                  Live<span className="text-muted-foreground"> scoring</span>
+                </span>
+              </div>
+              <div className="mt-3 h-2 overflow-hidden rounded-full bg-accent/60">
+                <div className="h-full w-[62%] rounded-full bg-primary" />
+              </div>
+              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-center gap-2">
+                  <span className="size-1.5 rounded-full bg-primary" />
+                  Every profile is scored on real completeness
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="size-1.5 rounded-full bg-primary" />
+                  Only strong profiles get public, indexable pages
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="size-1.5 rounded-full bg-primary" />
+                  Actionable fixes, not vanity metrics
+                </li>
+              </ul>
+            </div>
+            <div className="animate-rise-sm glass rounded-2xl border border-border p-4">
+              <p className="label-mono">Open jobs</p>
+              <p className="mt-2 font-display text-4xl text-primary">{data.jobs.length}</p>
+              <p className="mt-1 text-xs text-muted-foreground">Live on the marketplace</p>
+            </div>
+            <div className="animate-rise-sm glass rounded-2xl border border-border p-4">
+              <p className="label-mono">Talent</p>
+              <p className="mt-2 font-display text-4xl">{data.talent.length}</p>
+              <p className="mt-1 text-xs text-muted-foreground">Published profiles</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-14">
+        <div className="flex items-end justify-between">
+          <div>
+            <SectionLabel index="a">Talent</SectionLabel>
+            <h2 className="mt-3 font-display text-4xl uppercase tracking-tight">
+              Verified freelancers
+            </h2>
+          </div>
+          <Link
+            to="/freelancers"
+            className="hidden rounded-md glass px-3 py-1.5 text-sm ring-1 ring-border md:block"
+          >
+            Browse all
+          </Link>
+        </div>
+
+        <div className="mt-8">
+          {data.talent.length === 0 ? (
+            <EmptyState
+              title="No published profiles yet"
+              description="The marketplace shows only real, published freelancer profiles. Be the first — create yours and it appears here once it's strong enough."
+              action={
+                <Link
+                  to="/auth"
+                  search={{ mode: "signup" }}
+                  className="rounded-lg bg-primary px-5 py-3 font-semibold text-primary-foreground"
+                >
+                  Create your free profile
+                </Link>
+              }
+            />
+          ) : (
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {data.talent.map((t) => (
+                <TalentCard key={t.user_id} talent={t as unknown as TalentRow} />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section className="grid gap-6 py-14 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <SectionLabel index="b">Live jobs</SectionLabel>
+          <h2 className="mt-3 font-display text-4xl uppercase tracking-tight">Matched to you</h2>
+          <p className="mt-4 max-w-[40ch] text-sm text-muted-foreground">
+            Every job shows an explainable match score against your real skills, portfolio and
+            pricing — and you can draft a proposal from your actual profile.
+          </p>
+        </div>
+        <div className="space-y-5 lg:col-span-7">
+          {data.jobs.length === 0 ? (
+            <EmptyState
+              title="No open jobs yet"
+              description="Clients post projects here. When one goes live it appears in this feed with a match score."
+              action={
+                <Link
+                  to="/jobs"
+                  className="rounded-lg glass px-5 py-3 font-semibold ring-1 ring-border"
+                >
+                  Go to job board
+                </Link>
+              }
+            />
+          ) : (
+            data.jobs.map((j) => <JobCard key={j.id} job={j as unknown as JobRow} />)
+          )}
+        </div>
+      </section>
+
+      <section className="py-14">
+        <SectionLabel index="c">Plans</SectionLabel>
+        <h2 className="mt-3 font-display text-4xl uppercase tracking-tight">Freelancer pricing</h2>
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {PLANS.map((plan) => (
+            <div
+              key={plan.tier}
+              className={
+                plan.mostPopular
+                  ? "relative rounded-2xl border border-primary/40 bg-primary/10 p-6 ring-1 ring-primary/30"
+                  : "glass rounded-2xl border border-border p-6"
+              }
+            >
+              {plan.mostPopular && (
+                <span className="absolute -top-3 left-6 rounded-full bg-primary px-3 py-1 font-mono text-[11px] font-medium text-primary-foreground">
+                  MOST POPULAR
+                </span>
+              )}
+              <p
+                className={
+                  plan.mostPopular
+                    ? "font-mono text-xs uppercase tracking-[0.2em] text-primary"
+                    : "label-mono"
+                }
+              >
+                {plan.name}
+              </p>
+              <p className="mt-3 font-display text-4xl">{formatInr(plan.priceInr)}</p>
+              <p className="font-mono text-xs text-muted-foreground">/month</p>
+              <ul className="mt-5 space-y-2.5 text-sm text-muted-foreground">
+                {plan.highlights.map((h) => (
+                  <li key={h}>{h}</li>
+                ))}
+              </ul>
+              <Link
+                to="/pricing"
+                className={
+                  plan.mostPopular
+                    ? "mt-6 block rounded-lg bg-primary px-4 py-2.5 text-center text-sm font-semibold text-primary-foreground transition-all hover:-translate-y-0.5"
+                    : "mt-6 block rounded-lg glass px-4 py-2.5 text-center text-sm font-semibold ring-1 ring-border"
+                }
+              >
+                {plan.tier === "free" ? "Start free" : "See plan"}
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
+    </PageShell>
   );
 }
