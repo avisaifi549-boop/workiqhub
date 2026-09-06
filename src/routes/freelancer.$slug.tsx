@@ -38,41 +38,20 @@ export const Route = createFileRoute("/freelancer/$slug")({
         { property: "og:description", content: description },
         { property: "og:type", content: "profile" },
         { name: "twitter:card", content: "summary_large_image" },
-        ...(isIndexable(p) ? [] : [{ name: "robots", content: "noindex,follow" }]),
-      ],
-      scripts: [
-        {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name,
-            jobTitle: p.headline,
-            description,
-            knowsAbout: p.skills,
-            address: p.profiles?.location ?? undefined,
-          }),
-        },
-      ],
-    };
-  },
-  component: FreelancerProfile,
-});
-
+        ...(isIndexable(input) ? [] : [{ name: "robots", content: "noindex,follow" }]),
+...
 function FreelancerProfile() {
   const { slug } = Route.useParams();
   const { data } = useSuspenseQuery(profileQuery(slug));
-  const p = data as any;
+  if (!data) throw notFound();
+  const p = data.profile;
   const name = p.profiles?.full_name ?? "Freelancer";
-  const strength = profileStrength(p);
-  const portfolio = (p.portfolio_items ?? []) as Array<{
-    id: string;
-    title: string;
-    description: string | null;
-    image_url: string | null;
-    project_url: string | null;
-    outcome: string | null;
-  }>;
+  const strength = profileStrength({
+    ...p,
+    avatar_url: p.profiles?.avatar_url ?? null,
+    portfolioCount: data.portfolio.length,
+  });
+  const portfolio = data.portfolio;
 
   return (
     <PageShell>
