@@ -21,11 +21,15 @@ export const Route = createFileRoute("/freelancer/$slug")({
     if (!loaderData) {
       return { meta: [{ title: "Profile unavailable" }, { name: "robots", content: "noindex" }] };
     }
-    const p = loaderData as any;
+    const p = loaderData.profile;
     const name = p.profiles?.full_name ?? "Freelancer";
-    const strength = profileStrength(p);
+    const input = {
+      ...p,
+      avatar_url: p.profiles?.avatar_url ?? null,
+      portfolioCount: loaderData.portfolio.length,
+    };
     const title = `${name} — ${p.headline} | Loom`;
-    const description = (p.bio ?? p.headline).slice(0, 155);
+    const description = (p.bio ?? p.headline ?? "Freelancer profile").slice(0, 155);
     return {
       meta: [
         { title },
