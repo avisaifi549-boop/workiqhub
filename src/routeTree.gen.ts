@@ -22,6 +22,7 @@ import { Route as AuthenticatedPortfolioRouteImport } from './routes/_authentica
 import { Route as AuthenticatedPostAJobRouteImport } from './routes/_authenticated/post-a-job'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as AuthenticatedProjectsRouteImport } from './routes/_authenticated/projects'
+import { Route as AuthenticatedReviewsRouteImport } from './routes/_authenticated/reviews'
 import { Route as AuthenticatedServicesRouteImport } from './routes/_authenticated/services'
 import { Route as FreelancerSlugRouteImport } from './routes/freelancer.$slug'
 import { Route as FreelancersIndexRouteImport } from './routes/freelancers.index'
@@ -94,6 +95,11 @@ const AuthenticatedProjectsRoute = AuthenticatedProjectsRouteImport.update({
   path: '/projects',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedReviewsRoute = AuthenticatedReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedServicesRoute = AuthenticatedServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -138,6 +144,7 @@ export interface FileRoutesByFullPath {
   '/post-a-job': typeof AuthenticatedPostAJobRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/projects': typeof AuthenticatedProjectsRoute
+  '/reviews': typeof AuthenticatedReviewsRoute
   '/services': typeof AuthenticatedServicesRoute
   '/freelancer/$slug': typeof FreelancerSlugRoute
   '/freelancers/$category': typeof FreelancersCategoryRoute
@@ -158,6 +165,7 @@ export interface FileRoutesByTo {
   '/post-a-job': typeof AuthenticatedPostAJobRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/projects': typeof AuthenticatedProjectsRoute
+  '/reviews': typeof AuthenticatedReviewsRoute
   '/services': typeof AuthenticatedServicesRoute
   '/freelancer/$slug': typeof FreelancerSlugRoute
   '/freelancers/$category': typeof FreelancersCategoryRoute
@@ -180,6 +188,7 @@ export interface FileRoutesById {
   '/_authenticated/post-a-job': typeof AuthenticatedPostAJobRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_authenticated/projects': typeof AuthenticatedProjectsRoute
+  '/_authenticated/reviews': typeof AuthenticatedReviewsRoute
   '/_authenticated/services': typeof AuthenticatedServicesRoute
   '/freelancer/$slug': typeof FreelancerSlugRoute
   '/freelancers/$category': typeof FreelancersCategoryRoute
@@ -202,6 +211,7 @@ export interface FileRouteTypes {
     | '/post-a-job'
     | '/profile'
     | '/projects'
+    | '/reviews'
     | '/services'
     | '/freelancer/$slug'
     | '/freelancers/$category'
@@ -222,6 +232,7 @@ export interface FileRouteTypes {
     | '/post-a-job'
     | '/profile'
     | '/projects'
+    | '/reviews'
     | '/services'
     | '/freelancer/$slug'
     | '/freelancers/$category'
@@ -243,6 +254,7 @@ export interface FileRouteTypes {
     | '/_authenticated/post-a-job'
     | '/_authenticated/profile'
     | '/_authenticated/projects'
+    | '/_authenticated/reviews'
     | '/_authenticated/services'
     | '/freelancer/$slug'
     | '/freelancers/$category'
@@ -358,6 +370,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedProjectsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/reviews': {
+      id: '/_authenticated/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof AuthenticatedReviewsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/services': {
       id: '/_authenticated/services'
       path: '/services'
@@ -411,6 +430,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedPostAJobRoute: typeof AuthenticatedPostAJobRoute
   AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
   AuthenticatedProjectsRoute: typeof AuthenticatedProjectsRoute
+  AuthenticatedReviewsRoute: typeof AuthenticatedReviewsRoute
   AuthenticatedServicesRoute: typeof AuthenticatedServicesRoute
 }
 
@@ -422,6 +442,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedPostAJobRoute: AuthenticatedPostAJobRoute,
   AuthenticatedProfileRoute: AuthenticatedProfileRoute,
   AuthenticatedProjectsRoute: AuthenticatedProjectsRoute,
+  AuthenticatedReviewsRoute: AuthenticatedReviewsRoute,
   AuthenticatedServicesRoute: AuthenticatedServicesRoute,
 }
 
