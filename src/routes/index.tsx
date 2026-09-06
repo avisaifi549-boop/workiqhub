@@ -7,14 +7,19 @@ import { EmptyState } from "@/components/site/EmptyState";
 import { listFreelancers, listJobs } from "@/lib/public.functions";
 import { PLANS, formatInr } from "@/lib/plans";
 
-const homeQuery = queryOptions({
+type HomeData = {
+  talent: Awaited<ReturnType<typeof listFreelancers>>;
+  jobs: Awaited<ReturnType<typeof listJobs>>;
+};
+
+const homeQuery = queryOptions<HomeData>({
   queryKey: ["home"],
   queryFn: async () => {
     const [talent, jobs] = await Promise.all([
-      listFreelancers({ data: { limit: 3 } }),
-      listJobs({ data: { limit: 2 } }),
+      listFreelancers({ data: { limit: 3 } }).catch(() => []),
+      listJobs({ data: { limit: 2 } }).catch(() => []),
     ]);
-    return { talent, jobs };
+    return { talent: talent ?? [], jobs: jobs ?? [] };
   },
 });
 
@@ -41,7 +46,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const { data } = useSuspenseQuery(homeQuery);
+  const { data: raw } = useSuspenseQuery(homeQuery);
+  const data = { talent: raw?.talent ?? [], jobs: raw?.jobs ?? [] };
 
   return (
     <PageShell>
