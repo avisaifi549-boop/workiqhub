@@ -11,7 +11,10 @@ export const Route = createFileRoute("/_authenticated/onboarding")({
   head: () => ({
     meta: [
       { title: "Set up your Loom profile" },
-      { name: "description", content: "Complete your Loom profile to start hiring or freelancing." },
+      {
+        name: "description",
+        content: "Complete your Loom profile to start hiring or freelancing.",
+      },
       { name: "robots", content: "noindex" },
     ],
   }),

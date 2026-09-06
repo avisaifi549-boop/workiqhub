@@ -130,7 +130,10 @@ export const getFreelancer = createServerFn({ method: "GET" })
 export const marketplaceCounts = createServerFn({ method: "GET" }).handler(async () => {
   const sb = publicClient();
   const [freelancers, jobs] = await Promise.all([
-    sb.from("freelancer_profiles").select("user_id", { count: "exact", head: true }).eq("is_published", true),
+    sb
+      .from("freelancer_profiles")
+      .select("user_id", { count: "exact", head: true })
+      .eq("is_published", true),
     sb.from("jobs").select("id", { count: "exact", head: true }).eq("status", "published"),
   ]);
   return { freelancers: freelancers.count ?? 0, jobs: jobs.count ?? 0 };

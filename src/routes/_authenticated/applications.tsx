@@ -60,7 +60,10 @@ function ApplicationsPage() {
       .from("applications")
       .update({ status: "withdrawn" })
       .eq("id", id);
-    if (error) { toast.error(error.message); return; }
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success("Application withdrawn");
     await qc.invalidateQueries({ queryKey: ["my-applications", user?.id] });
   }
@@ -130,7 +133,9 @@ function ApplicationsPage() {
                   </div>
                 </div>
                 {a.cover_letter && (
-                  <p className="mt-4 line-clamp-3 text-sm text-muted-foreground">{a.cover_letter}</p>
+                  <p className="mt-4 line-clamp-3 text-sm text-muted-foreground">
+                    {a.cover_letter}
+                  </p>
                 )}
                 {["submitted", "shortlisted"].includes(a.status) && (
                   <div className="mt-4">

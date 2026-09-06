@@ -21,11 +21,15 @@ export const Route = createFileRoute("/freelancer/$slug")({
     if (!loaderData) {
       return { meta: [{ title: "Profile unavailable" }, { name: "robots", content: "noindex" }] };
     }
-    const p = loaderData as any;
+    const p = loaderData.profile;
     const name = p.profiles?.full_name ?? "Freelancer";
-    const strength = profileStrength(p);
+    const input = {
+      ...p,
+      avatar_url: p.profiles?.avatar_url ?? null,
+      portfolioCount: loaderData.portfolio.length,
+    };
     const title = `${name} — ${p.headline} | Loom`;
-    const description = (p.bio ?? p.headline).slice(0, 155);
+    const description = (p.bio ?? p.headline ?? "Freelancer profile").slice(0, 155);
     return {
       meta: [
         { title },
@@ -34,7 +38,7 @@ export const Route = createFileRoute("/freelancer/$slug")({
         { property: "og:description", content: description },
         { property: "og:type", content: "profile" },
         { name: "twitter:card", content: "summary_large_image" },
-        ...(isIndexable(p) ? [] : [{ name: "robots", content: "noindex,follow" }]),
+        ...(isIndexable(input) ? [] : [{ name: "robots", content: "noindex,follow" }]),
       ],
       scripts: [
         {
@@ -58,17 +62,15 @@ export const Route = createFileRoute("/freelancer/$slug")({
 function FreelancerProfile() {
   const { slug } = Route.useParams();
   const { data } = useSuspenseQuery(profileQuery(slug));
-  const p = data as any;
+  if (!data) throw notFound();
+  const p = data.profile;
   const name = p.profiles?.full_name ?? "Freelancer";
-  const strength = profileStrength(p);
-  const portfolio = (p.portfolio_items ?? []) as Array<{
-    id: string;
-    title: string;
-    description: string | null;
-    image_url: string | null;
-    project_url: string | null;
-    outcome: string | null;
-  }>;
+  const strength = profileStrength({
+    ...p,
+    avatar_url: p.profiles?.avatar_url ?? null,
+    portfolioCount: data.portfolio.length,
+  });
+  const portfolio = data.portfolio;
 
   return (
     <PageShell>
@@ -146,7 +148,10 @@ function FreelancerProfile() {
             ) : (
               <div className="mt-5 grid gap-5 sm:grid-cols-2">
                 {portfolio.map((item) => (
-                  <article key={item.id} className="rounded-xl border border-border bg-accent/30 p-4">
+                  <article
+                    key={item.id}
+                    className="rounded-xl border border-border bg-accent/30 p-4"
+                  >
                     {item.image_url && (
                       <img
                         src={item.image_url}

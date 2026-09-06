@@ -40,7 +40,11 @@ export function TalentCard({ talent }: { talent: TalentRow }) {
         <div className="min-w-0">
           <div className="flex items-center gap-1.5">
             <p className="truncate font-semibold">
-              <Link to="/freelancer/$slug" params={{ slug: talent.slug }} className="hover:text-primary">
+              <Link
+                to="/freelancer/$slug"
+                params={{ slug: talent.slug }}
+                className="hover:text-primary"
+              >
                 {name}
               </Link>
             </p>
@@ -56,7 +60,10 @@ export function TalentCard({ talent }: { talent: TalentRow }) {
       {talent.skills.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-1.5">
           {talent.skills.slice(0, 4).map((s) => (
-            <span key={s} className="rounded-md bg-accent/50 px-2 py-1 text-xs text-muted-foreground">
+            <span
+              key={s}
+              className="rounded-md bg-accent/50 px-2 py-1 text-xs text-muted-foreground"
+            >
               {s}
             </span>
           ))}

@@ -85,8 +85,14 @@ function ProfileEditor() {
     });
   }, [data]);
 
-  const skillsArr = form.skills.split(",").map((s) => s.trim()).filter(Boolean);
-  const languagesArr = form.languages.split(",").map((s) => s.trim()).filter(Boolean);
+  const skillsArr = form.skills
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const languagesArr = form.languages
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
   const strength = profileStrength({
     avatar_url: data?.profile?.avatar_url ?? null,
     headline: form.headline,
@@ -112,7 +118,8 @@ function ProfileEditor() {
       if (pErr) throw pErr;
 
       const slug =
-        data.freelancer?.slug ?? `${slugify(form.full_name || "freelancer")}-${user.id.slice(0, 6)}`;
+        data.freelancer?.slug ??
+        `${slugify(form.full_name || "freelancer")}-${user.id.slice(0, 6)}`;
 
       const payload = {
         user_id: user.id,

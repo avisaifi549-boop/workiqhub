@@ -10,7 +10,10 @@ export const Route = createFileRoute("/_authenticated/post-a-job")({
   head: () => ({
     meta: [
       { title: "Post a freelance project — Loom" },
-      { name: "description", content: "Describe your project and get proposals from verified freelancers." },
+      {
+        name: "description",
+        content: "Describe your project and get proposals from verified freelancers.",
+      },
       { property: "og:title", content: "Post a freelance project — Loom" },
       {
         property: "og:description",
@@ -59,7 +62,10 @@ function PostJob() {
         slug,
         description: form.description,
         category_id: form.category_id || null,
-        skills: form.skills.split(",").map((s) => s.trim()).filter(Boolean),
+        skills: form.skills
+          .split(",")
+          .map((s) => s.trim())
+          .filter(Boolean),
         budget_min_inr: form.budget_min_inr ? Number(form.budget_min_inr) : null,
         budget_max_inr: form.budget_max_inr ? Number(form.budget_max_inr) : null,
         timeline_weeks: form.timeline_weeks ? Number(form.timeline_weeks) : null,

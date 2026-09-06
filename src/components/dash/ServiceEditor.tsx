@@ -93,7 +93,10 @@ export function ServiceEditor({ userId }: { userId: string }) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          if (!form.title.trim()) { toast.error("Give your service a title"); return; }
+          if (!form.title.trim()) {
+            toast.error("Give your service a title");
+            return;
+          }
           save.mutate(form);
         }}
         className="glass rounded-2xl border border-border p-6"
@@ -191,7 +194,9 @@ export function ServiceEditor({ userId }: { userId: string }) {
         <EmptyState
           title="No services yet"
           description="Publish what you offer so clients can hire you directly, without waiting for a job post."
-          action={<PrimaryButton onClick={() => setForm(blank)}>Add your first service</PrimaryButton>}
+          action={
+            <PrimaryButton onClick={() => setForm(blank)}>Add your first service</PrimaryButton>
+          }
         />
       ) : (
         <div className="grid gap-4 sm:grid-cols-2">
@@ -202,7 +207,9 @@ export function ServiceEditor({ userId }: { userId: string }) {
               <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{s.description}</p>
               <div className="mt-4 flex flex-wrap gap-3 text-sm">
                 <span className="rounded-md bg-accent/50 px-2 py-1">
-                  {s.starting_price_inr ? `From ${formatInr(s.starting_price_inr)}` : "Custom quote"}
+                  {s.starting_price_inr
+                    ? `From ${formatInr(s.starting_price_inr)}`
+                    : "Custom quote"}
                 </span>
                 {s.delivery_days && (
                   <span className="rounded-md bg-accent/50 px-2 py-1">{s.delivery_days} days</span>

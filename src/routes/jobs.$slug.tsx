@@ -18,7 +18,7 @@ export const Route = createFileRoute("/jobs/$slug")({
     if (!loaderData) {
       return { meta: [{ title: "Job unavailable" }, { name: "robots", content: "noindex" }] };
     }
-    const j = loaderData as any;
+    const j = loaderData;
     const title = `${j.title} — freelance project | Loom`;
     const description = String(j.description).slice(0, 155);
     return {
@@ -53,7 +53,8 @@ function JobDetail() {
   const { slug } = Route.useParams();
   const { data } = useSuspenseQuery(jobQuery(slug));
   const { user } = useAuth();
-  const j = data as any;
+  if (!data) throw notFound();
+  const j = data;
 
   return (
     <PageShell>

@@ -8,7 +8,10 @@ import { listFreelancers, listCategories } from "@/lib/public.functions";
 const talentQuery = queryOptions({
   queryKey: ["freelancers", "all"],
   queryFn: async () => {
-    const [talent, categories] = await Promise.all([listFreelancers({ data: {} }), listCategories()]);
+    const [talent, categories] = await Promise.all([
+      listFreelancers({ data: {} }),
+      listCategories(),
+    ]);
     return { talent, categories };
   },
 });

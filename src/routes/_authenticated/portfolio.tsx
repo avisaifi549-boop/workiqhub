@@ -9,7 +9,10 @@ export const Route = createFileRoute("/_authenticated/portfolio")({
   head: () => ({
     meta: [
       { title: "Portfolio — Loom" },
-      { name: "description", content: "Add and manage the real work shown on your public profile." },
+      {
+        name: "description",
+        content: "Add and manage the real work shown on your public profile.",
+      },
       { name: "robots", content: "noindex" },
     ],
   }),
