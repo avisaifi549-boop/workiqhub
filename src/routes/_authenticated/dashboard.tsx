@@ -85,19 +85,15 @@ function DashboardPage() {
         .filter((j) => !applications.some((a) => a.job_id === j.id))
         .map((j) => ({
           job: j,
-          ...matchScore(
-            {
-              skills,
-              years_experience: account?.freelancer?.years_experience ?? 0,
-              hourly_rate_inr: account?.freelancer?.hourly_rate_inr ?? null,
-              portfolioCount: account?.portfolioCount ?? 0,
-            },
-            {
-              skills: j.skills ?? [],
-              budget_min_inr: j.budget_min_inr,
-              budget_max_inr: j.budget_max_inr,
-            },
-          ),
+          ...matchScore({
+            jobSkills: j.skills ?? [],
+            jobBudgetMin: j.budget_min_inr,
+            jobBudgetMax: j.budget_max_inr,
+            freelancerSkills: skills,
+            freelancerStartingPrice: account?.freelancer?.starting_price_inr ?? null,
+            portfolioCount: account?.portfolioCount ?? 0,
+            yearsExperience: account?.freelancer?.years_experience ?? 0,
+          }),
         }))
         .sort((a, b) => b.score - a.score)
         .slice(0, 4);
