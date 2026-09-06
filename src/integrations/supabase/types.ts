@@ -82,17 +82,155 @@ export type Database = {
         }
         Relationships: []
       }
+      client_profiles: {
+        Row: {
+          client_type: string
+          company_description: string | null
+          company_logo_url: string | null
+          company_name: string | null
+          company_size: string | null
+          company_website: string | null
+          created_at: string
+          hire_frequency: string
+          industry: string | null
+          is_public: boolean
+          need_categories: string[]
+          payment_verified: boolean
+          preferred_experience: string
+          typical_budget: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          client_type?: string
+          company_description?: string | null
+          company_logo_url?: string | null
+          company_name?: string | null
+          company_size?: string | null
+          company_website?: string | null
+          created_at?: string
+          hire_frequency?: string
+          industry?: string | null
+          is_public?: boolean
+          need_categories?: string[]
+          payment_verified?: boolean
+          preferred_experience?: string
+          typical_budget?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          client_type?: string
+          company_description?: string | null
+          company_logo_url?: string | null
+          company_name?: string | null
+          company_size?: string | null
+          company_website?: string | null
+          created_at?: string
+          hire_frequency?: string
+          industry?: string | null
+          is_public?: boolean
+          need_categories?: string[]
+          payment_verified?: boolean
+          preferred_experience?: string
+          typical_budget?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_profiles_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      contracts: {
+        Row: {
+          amount_inr: number
+          application_id: string | null
+          client_id: string
+          completed_at: string | null
+          created_at: string
+          deadline: string | null
+          description: string
+          freelancer_id: string
+          id: string
+          job_id: string | null
+          status: Database["public"]["Enums"]["contract_status"]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          amount_inr?: number
+          application_id?: string | null
+          client_id: string
+          completed_at?: string | null
+          created_at?: string
+          deadline?: string | null
+          description?: string
+          freelancer_id: string
+          id?: string
+          job_id?: string | null
+          status?: Database["public"]["Enums"]["contract_status"]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          amount_inr?: number
+          application_id?: string | null
+          client_id?: string
+          completed_at?: string | null
+          created_at?: string
+          deadline?: string | null
+          description?: string
+          freelancer_id?: string
+          id?: string
+          job_id?: string | null
+          status?: Database["public"]["Enums"]["contract_status"]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "contracts_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "applications"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "contracts_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: false
+            referencedRelation: "jobs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       freelancer_profiles: {
         Row: {
+          achievements: string
           availability: string
           bio: string
           category_id: string | null
+          certifications: Json
+          companies: Json
           created_at: string
+          education: Json
+          email_verified: boolean
+          employment_status: string
+          experience_level: string
           headline: string
           hourly_rate_inr: number | null
+          is_public: boolean
           is_published: boolean
           languages: string[]
+          min_project_budget_inr: number | null
           plan: Database["public"]["Enums"]["plan_tier"]
+          preferred_project_size: string
           response_time_hours: number | null
           skills: string[]
           slug: string
@@ -100,18 +238,29 @@ export type Database = {
           updated_at: string
           user_id: string
           verification: Database["public"]["Enums"]["verification_level"]
+          working_hours: string | null
           years_experience: number | null
         }
         Insert: {
+          achievements?: string
           availability?: string
           bio?: string
           category_id?: string | null
+          certifications?: Json
+          companies?: Json
           created_at?: string
+          education?: Json
+          email_verified?: boolean
+          employment_status?: string
+          experience_level?: string
           headline?: string
           hourly_rate_inr?: number | null
+          is_public?: boolean
           is_published?: boolean
           languages?: string[]
+          min_project_budget_inr?: number | null
           plan?: Database["public"]["Enums"]["plan_tier"]
+          preferred_project_size?: string
           response_time_hours?: number | null
           skills?: string[]
           slug: string
@@ -119,18 +268,29 @@ export type Database = {
           updated_at?: string
           user_id: string
           verification?: Database["public"]["Enums"]["verification_level"]
+          working_hours?: string | null
           years_experience?: number | null
         }
         Update: {
+          achievements?: string
           availability?: string
           bio?: string
           category_id?: string | null
+          certifications?: Json
+          companies?: Json
           created_at?: string
+          education?: Json
+          email_verified?: boolean
+          employment_status?: string
+          experience_level?: string
           headline?: string
           hourly_rate_inr?: number | null
+          is_public?: boolean
           is_published?: boolean
           languages?: string[]
+          min_project_budget_inr?: number | null
           plan?: Database["public"]["Enums"]["plan_tier"]
+          preferred_project_size?: string
           response_time_hours?: number | null
           skills?: string[]
           slug?: string
@@ -138,6 +298,7 @@ export type Database = {
           updated_at?: string
           user_id?: string
           verification?: Database["public"]["Enums"]["verification_level"]
+          working_hours?: string | null
           years_experience?: number | null
         }
         Relationships: [
@@ -222,41 +383,171 @@ export type Database = {
           },
         ]
       }
-      portfolio_items: {
+      milestones: {
         Row: {
+          amount_inr: number
+          contract_id: string
           created_at: string
-          description: string
+          due_date: string | null
           id: string
-          image_url: string | null
-          outcome: string | null
-          project_url: string | null
           sort_order: number
+          status: Database["public"]["Enums"]["milestone_status"]
+          submitted_note: string | null
           title: string
+          updated_at: string
+        }
+        Insert: {
+          amount_inr?: number
+          contract_id: string
+          created_at?: string
+          due_date?: string | null
+          id?: string
+          sort_order?: number
+          status?: Database["public"]["Enums"]["milestone_status"]
+          submitted_note?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          amount_inr?: number
+          contract_id?: string
+          created_at?: string
+          due_date?: string | null
+          id?: string
+          sort_order?: number
+          status?: Database["public"]["Enums"]["milestone_status"]
+          submitted_note?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "milestones_contract_id_fkey"
+            columns: ["contract_id"]
+            isOneToOne: false
+            referencedRelation: "contracts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      notifications: {
+        Row: {
+          body: string
+          created_at: string
+          id: string
+          link: string | null
+          read_at: string | null
+          title: string
+          type: string
           user_id: string
         }
         Insert: {
+          body?: string
           created_at?: string
-          description?: string
           id?: string
-          image_url?: string | null
-          outcome?: string | null
-          project_url?: string | null
-          sort_order?: number
+          link?: string | null
+          read_at?: string | null
           title: string
+          type: string
           user_id: string
         }
         Update: {
+          body?: string
+          created_at?: string
+          id?: string
+          link?: string | null
+          read_at?: string | null
+          title?: string
+          type?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      portfolio_items: {
+        Row: {
+          budget_inr: number | null
+          category_id: string | null
+          client_type: string | null
+          contract_id: string | null
+          created_at: string
+          description: string
+          duration_weeks: number | null
+          id: string
+          image_url: string | null
+          images: string[]
+          is_verified: boolean
+          my_role: string | null
+          outcome: string | null
+          project_type: string | null
+          project_url: string | null
+          skills: string[]
+          sort_order: number
+          technologies: string[]
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          budget_inr?: number | null
+          category_id?: string | null
+          client_type?: string | null
+          contract_id?: string | null
           created_at?: string
           description?: string
+          duration_weeks?: number | null
           id?: string
           image_url?: string | null
+          images?: string[]
+          is_verified?: boolean
+          my_role?: string | null
           outcome?: string | null
+          project_type?: string | null
           project_url?: string | null
+          skills?: string[]
           sort_order?: number
+          technologies?: string[]
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          budget_inr?: number | null
+          category_id?: string | null
+          client_type?: string | null
+          contract_id?: string | null
+          created_at?: string
+          description?: string
+          duration_weeks?: number | null
+          id?: string
+          image_url?: string | null
+          images?: string[]
+          is_verified?: boolean
+          my_role?: string | null
+          outcome?: string | null
+          project_type?: string | null
+          project_url?: string | null
+          skills?: string[]
+          sort_order?: number
+          technologies?: string[]
           title?: string
+          updated_at?: string
           user_id?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "portfolio_items_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "portfolio_items_contract_id_fkey"
+            columns: ["contract_id"]
+            isOneToOne: false
+            referencedRelation: "contracts"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "portfolio_items_user_id_freelancer_profiles_fkey"
             columns: ["user_id"]
@@ -270,31 +561,179 @@ export type Database = {
         Row: {
           account_type: Database["public"]["Enums"]["account_type"]
           avatar_url: string | null
+          city: string | null
+          country: string | null
           created_at: string
           full_name: string
           id: string
+          languages: string[]
           location: string | null
+          onboarding_complete: boolean
+          onboarding_step: number
+          phone: string | null
+          phone_verified: boolean
+          timezone: string | null
           updated_at: string
         }
         Insert: {
           account_type?: Database["public"]["Enums"]["account_type"]
           avatar_url?: string | null
+          city?: string | null
+          country?: string | null
           created_at?: string
           full_name?: string
           id: string
+          languages?: string[]
           location?: string | null
+          onboarding_complete?: boolean
+          onboarding_step?: number
+          phone?: string | null
+          phone_verified?: boolean
+          timezone?: string | null
           updated_at?: string
         }
         Update: {
           account_type?: Database["public"]["Enums"]["account_type"]
           avatar_url?: string | null
+          city?: string | null
+          country?: string | null
           created_at?: string
           full_name?: string
           id?: string
+          languages?: string[]
           location?: string | null
+          onboarding_complete?: boolean
+          onboarding_step?: number
+          phone?: string | null
+          phone_verified?: boolean
+          timezone?: string | null
           updated_at?: string
         }
         Relationships: []
+      }
+      reports: {
+        Row: {
+          created_at: string
+          details: string
+          id: string
+          reason: string
+          reporter_id: string
+          status: string
+          target_id: string
+          target_type: string
+        }
+        Insert: {
+          created_at?: string
+          details?: string
+          id?: string
+          reason: string
+          reporter_id: string
+          status?: string
+          target_id: string
+          target_type: string
+        }
+        Update: {
+          created_at?: string
+          details?: string
+          id?: string
+          reason?: string
+          reporter_id?: string
+          status?: string
+          target_id?: string
+          target_type?: string
+        }
+        Relationships: []
+      }
+      reviews: {
+        Row: {
+          body: string
+          communication: number | null
+          contract_id: string
+          created_at: string
+          direction: Database["public"]["Enums"]["review_direction"]
+          id: string
+          is_hidden: boolean
+          professionalism: number | null
+          quality: number | null
+          rating: number
+          reviewee_id: string
+          reviewer_id: string
+          timeliness: number | null
+          title: string
+          updated_at: string
+          value_for_money: number | null
+        }
+        Insert: {
+          body?: string
+          communication?: number | null
+          contract_id: string
+          created_at?: string
+          direction: Database["public"]["Enums"]["review_direction"]
+          id?: string
+          is_hidden?: boolean
+          professionalism?: number | null
+          quality?: number | null
+          rating: number
+          reviewee_id: string
+          reviewer_id: string
+          timeliness?: number | null
+          title?: string
+          updated_at?: string
+          value_for_money?: number | null
+        }
+        Update: {
+          body?: string
+          communication?: number | null
+          contract_id?: string
+          created_at?: string
+          direction?: Database["public"]["Enums"]["review_direction"]
+          id?: string
+          is_hidden?: boolean
+          professionalism?: number | null
+          quality?: number | null
+          rating?: number
+          reviewee_id?: string
+          reviewer_id?: string
+          timeliness?: number | null
+          title?: string
+          updated_at?: string
+          value_for_money?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reviews_contract_id_fkey"
+            columns: ["contract_id"]
+            isOneToOne: false
+            referencedRelation: "contracts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      saved_freelancers: {
+        Row: {
+          created_at: string
+          freelancer_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          freelancer_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          freelancer_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "saved_freelancers_freelancer_id_fkey"
+            columns: ["freelancer_id"]
+            isOneToOne: false
+            referencedRelation: "freelancer_profiles"
+            referencedColumns: ["user_id"]
+          },
+        ]
       }
       saved_jobs: {
         Row: {
@@ -319,6 +758,72 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "jobs"
             referencedColumns: ["id"]
+          },
+        ]
+      }
+      services: {
+        Row: {
+          category_id: string | null
+          created_at: string
+          delivery_days: number | null
+          description: string
+          freelancer_id: string
+          id: string
+          is_published: boolean
+          pricing_type: string
+          skills: string[]
+          slug: string
+          sort_order: number
+          starting_price_inr: number | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category_id?: string | null
+          created_at?: string
+          delivery_days?: number | null
+          description?: string
+          freelancer_id: string
+          id?: string
+          is_published?: boolean
+          pricing_type?: string
+          skills?: string[]
+          slug: string
+          sort_order?: number
+          starting_price_inr?: number | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category_id?: string | null
+          created_at?: string
+          delivery_days?: number | null
+          description?: string
+          freelancer_id?: string
+          id?: string
+          is_published?: boolean
+          pricing_type?: string
+          skills?: string[]
+          slug?: string
+          sort_order?: number
+          starting_price_inr?: number | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "services_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "services_freelancer_id_fkey"
+            columns: ["freelancer_id"]
+            isOneToOne: false
+            referencedRelation: "freelancer_profiles"
+            referencedColumns: ["user_id"]
           },
         ]
       }
@@ -366,6 +871,16 @@ export type Database = {
         | "hired"
         | "rejected"
         | "withdrawn"
+      contract_status:
+        | "hired"
+        | "contracted"
+        | "milestone_funded"
+        | "in_progress"
+        | "submitted"
+        | "revision_requested"
+        | "completed"
+        | "cancelled"
+        | "disputed"
       job_status:
         | "draft"
         | "published"
@@ -376,7 +891,15 @@ export type Database = {
         | "completed"
         | "cancelled"
         | "disputed"
+      milestone_status:
+        | "pending"
+        | "funded"
+        | "submitted"
+        | "approved"
+        | "released"
+        | "cancelled"
       plan_tier: "free" | "starter" | "pro" | "elite"
+      review_direction: "client_to_freelancer" | "freelancer_to_client"
       verification_level:
         | "none"
         | "identity_verified"
@@ -519,6 +1042,17 @@ export const Constants = {
         "rejected",
         "withdrawn",
       ],
+      contract_status: [
+        "hired",
+        "contracted",
+        "milestone_funded",
+        "in_progress",
+        "submitted",
+        "revision_requested",
+        "completed",
+        "cancelled",
+        "disputed",
+      ],
       job_status: [
         "draft",
         "published",
@@ -530,7 +1064,16 @@ export const Constants = {
         "cancelled",
         "disputed",
       ],
+      milestone_status: [
+        "pending",
+        "funded",
+        "submitted",
+        "approved",
+        "released",
+        "cancelled",
+      ],
       plan_tier: ["free", "starter", "pro", "elite"],
+      review_direction: ["client_to_freelancer", "freelancer_to_client"],
       verification_level: [
         "none",
         "identity_verified",
