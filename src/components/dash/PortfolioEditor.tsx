@@ -124,7 +124,10 @@ export function PortfolioEditor({ userId }: { userId: string }) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          if (!form.title.trim()) { toast.error("Give your project a title"); return; }
+          if (!form.title.trim()) {
+            toast.error("Give your project a title");
+            return;
+          }
           save.mutate(form);
         }}
         className="glass rounded-2xl border border-border p-6"
@@ -274,7 +277,9 @@ export function PortfolioEditor({ userId }: { userId: string }) {
         <EmptyState
           title="You haven't added any portfolio projects yet"
           description="Showcase work you've already delivered. Projects completed through Loom get a verified badge automatically."
-          action={<PrimaryButton onClick={() => setForm(blank)}>Add your first project</PrimaryButton>}
+          action={
+            <PrimaryButton onClick={() => setForm(blank)}>Add your first project</PrimaryButton>
+          }
         />
       ) : (
         <div className="grid gap-4 sm:grid-cols-2">
@@ -294,9 +299,7 @@ export function PortfolioEditor({ userId }: { userId: string }) {
               </div>
               <h3 className="mt-2 text-lg font-semibold tracking-tight">{p.title}</h3>
               <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{p.description}</p>
-              {p.budget_inr ? (
-                <p className="mt-3 text-sm">{formatInr(p.budget_inr)}</p>
-              ) : null}
+              {p.budget_inr ? <p className="mt-3 text-sm">{formatInr(p.budget_inr)}</p> : null}
               <div className="mt-5 flex gap-2">
                 <GhostButton
                   onClick={() =>

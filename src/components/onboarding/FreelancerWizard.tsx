@@ -4,7 +4,15 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { WizardShell } from "./Wizard";
-import { Field, MultiChoice, Select, TagInput, TextArea, TextInput, ChoiceGrid } from "@/components/dash/fields";
+import {
+  Field,
+  MultiChoice,
+  Select,
+  TagInput,
+  TextArea,
+  TextInput,
+  ChoiceGrid,
+} from "@/components/dash/fields";
 import { ServiceEditor } from "@/components/dash/ServiceEditor";
 import { PortfolioEditor } from "@/components/dash/PortfolioEditor";
 import {
@@ -68,7 +76,8 @@ export function FreelancerWizard({ userId, account }: { userId: string; account:
       (await supabase.from("categories").select("id, name").order("sort_order")).data ?? [],
   });
 
-  const slug = f?.slug ?? `${slugify(fullName || "freelancer")}-${Math.random().toString(36).slice(2, 6)}`;
+  const slug =
+    f?.slug ?? `${slugify(fullName || "freelancer")}-${Math.random().toString(36).slice(2, 6)}`;
 
   const strength = profileStrength({
     headline,
@@ -142,7 +151,10 @@ export function FreelancerWizard({ userId, account }: { userId: string; account:
         title="Your basic profile"
         description="This is what clients see first."
         onNext={() => {
-          if (!fullName.trim()) { toast.error("Add your full name"); return; }
+          if (!fullName.trim()) {
+            toast.error("Add your full name");
+            return;
+          }
           void persist(2);
         }}
         busy={busy}
@@ -204,7 +216,10 @@ export function FreelancerWizard({ userId, account }: { userId: string; account:
         title="Professional information"
         onBack={back}
         onNext={() => {
-          if (!categoryId) { toast.error("Pick your primary category"); return; }
+          if (!categoryId) {
+            toast.error("Pick your primary category");
+            return;
+          }
           void persist(3);
         }}
         busy={busy}
