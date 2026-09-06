@@ -12,7 +12,10 @@ export const Route = createFileRoute("/_authenticated/projects")({
   head: () => ({
     meta: [
       { title: "My projects — Loom" },
-      { name: "description", content: "Track contracts, milestones and payment status end to end." },
+      {
+        name: "description",
+        content: "Track contracts, milestones and payment status end to end.",
+      },
       { name: "robots", content: "noindex" },
     ],
   }),

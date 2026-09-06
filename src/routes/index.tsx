@@ -36,7 +36,8 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Loom — Get discovered. Win more freelance work." },
       {
         property: "og:description",
-        content: "Verified freelancers, AI proposals and secure milestone payments in one platform.",
+        content:
+          "Verified freelancers, AI proposals and secure milestone payments in one platform.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

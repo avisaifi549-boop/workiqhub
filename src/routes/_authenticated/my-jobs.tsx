@@ -13,7 +13,10 @@ export const Route = createFileRoute("/_authenticated/my-jobs")({
   head: () => ({
     meta: [
       { title: "My jobs & applicants — Loom" },
-      { name: "description", content: "Review applicants, shortlist and hire for your posted jobs." },
+      {
+        name: "description",
+        content: "Review applicants, shortlist and hire for your posted jobs.",
+      },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -72,7 +75,10 @@ function MyJobsPage() {
       .from("applications")
       .update({ status: status as never })
       .eq("id", id);
-    if (error) { toast.error(error.message); return; }
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success("Applicant updated");
     await qc.invalidateQueries({ queryKey: ["my-jobs", user?.id] });
   }
@@ -114,7 +120,11 @@ function MyJobsPage() {
               <section key={job.id} className="glass rounded-2xl border border-border p-6">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <h2 className="text-lg font-semibold tracking-tight">
-                    <Link to="/jobs/$slug" params={{ slug: job.slug }} className="hover:text-primary">
+                    <Link
+                      to="/jobs/$slug"
+                      params={{ slug: job.slug }}
+                      className="hover:text-primary"
+                    >
                       {job.title}
                     </Link>
                   </h2>
@@ -126,16 +136,21 @@ function MyJobsPage() {
 
                 {apps.length === 0 ? (
                   <p className="mt-4 text-sm text-muted-foreground">
-                    No applications yet. Freelancers matched to these skills will see it in their feed.
+                    No applications yet. Freelancers matched to these skills will see it in their
+                    feed.
                   </p>
                 ) : (
                   <div className="mt-4 space-y-3">
                     {apps.map((a) => {
                       const person = data.people.find((p) => p.user_id === a.freelancer_id);
                       const name =
-                        (person?.profiles as { full_name: string } | null)?.full_name ?? "Freelancer";
+                        (person?.profiles as { full_name: string } | null)?.full_name ??
+                        "Freelancer";
                       return (
-                        <div key={a.id} className="rounded-xl border border-border bg-accent/30 p-4">
+                        <div
+                          key={a.id}
+                          className="rounded-xl border border-border bg-accent/30 p-4"
+                        >
                           <div className="flex flex-wrap items-start justify-between gap-3">
                             <div>
                               <p className="font-semibold">

@@ -39,9 +39,7 @@ export const Route = createFileRoute("/freelancers/$category")({
         { property: "og:description", content: description },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
-        ...(loaderData.talent.length === 0
-          ? [{ name: "robots", content: "noindex,follow" }]
-          : []),
+        ...(loaderData.talent.length === 0 ? [{ name: "robots", content: "noindex,follow" }] : []),
       ],
     };
   },

@@ -62,7 +62,9 @@ export function DashShell({
         <main className="min-w-0 flex-1 pb-20">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <h1 className="font-display text-3xl uppercase tracking-tight sm:text-4xl">{title}</h1>
+              <h1 className="font-display text-3xl uppercase tracking-tight sm:text-4xl">
+                {title}
+              </h1>
               {subtitle && <p className="mt-2 text-sm text-muted-foreground">{subtitle}</p>}
             </div>
             {actions}

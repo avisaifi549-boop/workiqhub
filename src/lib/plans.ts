@@ -37,12 +37,7 @@ export const PLANS: Plan[] = [
     name: "Free",
     priceInr: 0,
     tagline: "Get discovered",
-    highlights: [
-      "Public profile",
-      "Portfolio",
-      "Basic visibility",
-      "Limited applications",
-    ],
+    highlights: ["Public profile", "Portfolio", "Basic visibility", "Limited applications"],
     entitlements: {
       monthlyApplications: 10,
       monthlyAiProposals: 0,

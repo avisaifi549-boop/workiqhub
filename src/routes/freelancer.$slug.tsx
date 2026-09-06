@@ -146,7 +146,10 @@ function FreelancerProfile() {
             ) : (
               <div className="mt-5 grid gap-5 sm:grid-cols-2">
                 {portfolio.map((item) => (
-                  <article key={item.id} className="rounded-xl border border-border bg-accent/30 p-4">
+                  <article
+                    key={item.id}
+                    className="rounded-xl border border-border bg-accent/30 p-4"
+                  >
                     {item.image_url && (
                       <img
                         src={item.image_url}

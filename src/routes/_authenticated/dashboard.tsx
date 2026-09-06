@@ -45,16 +45,22 @@ function DashboardPage() {
     queryFn: async () => {
       const contracts = await fetchContracts(user!.id);
       const reviews =
-        (await supabase.from("reviews").select("rating").eq("reviewee_id", user!.id).eq("is_hidden", false))
-          .data ?? [];
+        (
+          await supabase
+            .from("reviews")
+            .select("rating")
+            .eq("reviewee_id", user!.id)
+            .eq("is_hidden", false)
+        ).data ?? [];
 
       if (role === "client") {
         const jobs =
-          (await supabase.from("jobs").select("id, title, slug, status").eq("client_id", user!.id)).data ??
-          [];
+          (await supabase.from("jobs").select("id, title, slug, status").eq("client_id", user!.id))
+            .data ?? [];
         const ids = jobs.map((j) => j.id);
         const applications = ids.length
-          ? ((await supabase.from("applications").select("id, status, job_id").in("job_id", ids)).data ?? [])
+          ? ((await supabase.from("applications").select("id, status, job_id").in("job_id", ids))
+              .data ?? [])
           : [];
         const talent =
           (
@@ -68,13 +74,19 @@ function DashboardPage() {
       }
 
       const applications =
-        (await supabase.from("applications").select("id, status, job_id").eq("freelancer_id", user!.id))
-          .data ?? [];
+        (
+          await supabase
+            .from("applications")
+            .select("id, status, job_id")
+            .eq("freelancer_id", user!.id)
+        ).data ?? [];
       const jobs =
         (
           await supabase
             .from("jobs")
-            .select("id, title, slug, description, skills, budget_min_inr, budget_max_inr, timeline_weeks, status")
+            .select(
+              "id, title, slug, description, skills, budget_min_inr, budget_max_inr, timeline_weeks, status",
+            )
             .eq("status", "published")
             .order("created_at", { ascending: false })
             .limit(20)
@@ -155,7 +167,11 @@ function DashboardPage() {
             data.talent.map((t) => (
               <article key={t.user_id} className="glass rounded-2xl border border-border p-5">
                 <p className="font-semibold">
-                  <Link to="/freelancer/$slug" params={{ slug: t.slug }} className="hover:text-primary">
+                  <Link
+                    to="/freelancer/$slug"
+                    params={{ slug: t.slug }}
+                    className="hover:text-primary"
+                  >
                     {(t.profiles as { full_name: string } | null)?.full_name ?? "Freelancer"}
                   </Link>
                 </p>
@@ -194,7 +210,11 @@ function DashboardPage() {
       }
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard label="Profile strength" value={`${strength.score}%`} hint={strength.recommendations[0]} />
+        <StatCard
+          label="Profile strength"
+          value={`${strength.score}%`}
+          hint={strength.recommendations[0]}
+        />
         <StatCard label="Applications" value={data.applications.length} />
         <StatCard label="Active projects" value={activeContracts.length} />
         <StatCard

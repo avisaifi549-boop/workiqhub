@@ -19,7 +19,10 @@ export const Route = createFileRoute("/auth")({
         content: "Create a free freelancer or client account on Loom and start working today.",
       },
       { property: "og:title", content: "Sign in or create your Loom account" },
-      { property: "og:description", content: "Create a free freelancer or client account on Loom." },
+      {
+        property: "og:description",
+        content: "Create a free freelancer or client account on Loom.",
+      },
       { name: "robots", content: "noindex" },
     ],
   }),
