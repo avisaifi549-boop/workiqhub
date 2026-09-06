@@ -17,6 +17,7 @@ import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as AuthenticatedApplicationsRouteImport } from './routes/_authenticated/applications'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedMyJobsRouteImport } from './routes/_authenticated/my-jobs'
 import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated/onboarding'
 import { Route as AuthenticatedPortfolioRouteImport } from './routes/_authenticated/portfolio'
 import { Route as AuthenticatedPostAJobRouteImport } from './routes/_authenticated/post-a-job'
@@ -68,6 +69,11 @@ const AuthenticatedApplicationsRoute =
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedMyJobsRoute = AuthenticatedMyJobsRouteImport.update({
+  id: '/my-jobs',
+  path: '/my-jobs',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedOnboardingRoute = AuthenticatedOnboardingRouteImport.update({
@@ -139,6 +145,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/applications': typeof AuthenticatedApplicationsRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/my-jobs': typeof AuthenticatedMyJobsRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
   '/portfolio': typeof AuthenticatedPortfolioRoute
   '/post-a-job': typeof AuthenticatedPostAJobRoute
@@ -160,6 +167,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/applications': typeof AuthenticatedApplicationsRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/my-jobs': typeof AuthenticatedMyJobsRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
   '/portfolio': typeof AuthenticatedPortfolioRoute
   '/post-a-job': typeof AuthenticatedPostAJobRoute
@@ -183,6 +191,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/_authenticated/applications': typeof AuthenticatedApplicationsRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/my-jobs': typeof AuthenticatedMyJobsRoute
   '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
   '/_authenticated/portfolio': typeof AuthenticatedPortfolioRoute
   '/_authenticated/post-a-job': typeof AuthenticatedPostAJobRoute
@@ -206,6 +215,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/applications'
     | '/dashboard'
+    | '/my-jobs'
     | '/onboarding'
     | '/portfolio'
     | '/post-a-job'
@@ -227,6 +237,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/applications'
     | '/dashboard'
+    | '/my-jobs'
     | '/onboarding'
     | '/portfolio'
     | '/post-a-job'
@@ -249,6 +260,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/_authenticated/applications'
     | '/_authenticated/dashboard'
+    | '/_authenticated/my-jobs'
     | '/_authenticated/onboarding'
     | '/_authenticated/portfolio'
     | '/_authenticated/post-a-job'
@@ -333,6 +345,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/my-jobs': {
+      id: '/_authenticated/my-jobs'
+      path: '/my-jobs'
+      fullPath: '/my-jobs'
+      preLoaderRoute: typeof AuthenticatedMyJobsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/onboarding': {
@@ -425,6 +444,7 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedApplicationsRoute: typeof AuthenticatedApplicationsRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedMyJobsRoute: typeof AuthenticatedMyJobsRoute
   AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
   AuthenticatedPortfolioRoute: typeof AuthenticatedPortfolioRoute
   AuthenticatedPostAJobRoute: typeof AuthenticatedPostAJobRoute
@@ -437,6 +457,7 @@ interface AuthenticatedRouteRouteChildren {
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedApplicationsRoute: AuthenticatedApplicationsRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedMyJobsRoute: AuthenticatedMyJobsRoute,
   AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
   AuthenticatedPortfolioRoute: AuthenticatedPortfolioRoute,
   AuthenticatedPostAJobRoute: AuthenticatedPostAJobRoute,
