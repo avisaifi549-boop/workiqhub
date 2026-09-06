@@ -34,7 +34,7 @@ export const Route = createFileRoute("/freelancer/$slug")({
         { property: "og:description", content: description },
         { property: "og:type", content: "profile" },
         { name: "twitter:card", content: "summary_large_image" },
-        ...(isIndexable(strength.score) ? [] : [{ name: "robots", content: "noindex,follow" }]),
+        ...(isIndexable(p) ? [] : [{ name: "robots", content: "noindex,follow" }]),
       ],
       scripts: [
         {
