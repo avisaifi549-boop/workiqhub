@@ -12,7 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as FreelancerSlugRouteImport } from './routes/freelancer.$slug'
+import { Route as FreelancersIndexRouteImport } from './routes/freelancers.index'
+import { Route as FreelancersCategoryRouteImport } from './routes/freelancers.$category'
 import { Route as JobsIndexRouteImport } from './routes/jobs.index'
+import { Route as JobsSlugRouteImport } from './routes/jobs.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -29,9 +33,29 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FreelancerSlugRoute = FreelancerSlugRouteImport.update({
+  id: '/freelancer/$slug',
+  path: '/freelancer/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FreelancersIndexRoute = FreelancersIndexRouteImport.update({
+  id: '/freelancers/',
+  path: '/freelancers/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FreelancersCategoryRoute = FreelancersCategoryRouteImport.update({
+  id: '/freelancers/$category',
+  path: '/freelancers/$category',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const JobsIndexRoute = JobsIndexRouteImport.update({
   id: '/jobs/',
   path: '/jobs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JobsSlugRoute = JobsSlugRouteImport.update({
+  id: '/jobs/$slug',
+  path: '/jobs/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -39,12 +63,20 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/pricing': typeof PricingRoute
+  '/freelancer/$slug': typeof FreelancerSlugRoute
+  '/freelancers/$category': typeof FreelancersCategoryRoute
+  '/jobs/$slug': typeof JobsSlugRoute
+  '/freelancers/': typeof FreelancersIndexRoute
   '/jobs/': typeof JobsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/pricing': typeof PricingRoute
+  '/freelancer/$slug': typeof FreelancerSlugRoute
+  '/freelancers/$category': typeof FreelancersCategoryRoute
+  '/jobs/$slug': typeof JobsSlugRoute
+  '/freelancers': typeof FreelancersIndexRoute
   '/jobs': typeof JobsIndexRoute
 }
 export interface FileRoutesById {
@@ -52,20 +84,53 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/pricing': typeof PricingRoute
+  '/freelancer/$slug': typeof FreelancerSlugRoute
+  '/freelancers/$category': typeof FreelancersCategoryRoute
+  '/jobs/$slug': typeof JobsSlugRoute
+  '/freelancers/': typeof FreelancersIndexRoute
   '/jobs/': typeof JobsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/pricing' | '/jobs/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/pricing'
+    | '/freelancer/$slug'
+    | '/freelancers/$category'
+    | '/jobs/$slug'
+    | '/freelancers/'
+    | '/jobs/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/pricing' | '/jobs'
-  id: '__root__' | '/' | '/auth' | '/pricing' | '/jobs/'
+  to:
+    | '/'
+    | '/auth'
+    | '/pricing'
+    | '/freelancer/$slug'
+    | '/freelancers/$category'
+    | '/jobs/$slug'
+    | '/freelancers'
+    | '/jobs'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/pricing'
+    | '/freelancer/$slug'
+    | '/freelancers/$category'
+    | '/jobs/$slug'
+    | '/freelancers/'
+    | '/jobs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
   PricingRoute: typeof PricingRoute
+  FreelancerSlugRoute: typeof FreelancerSlugRoute
+  FreelancersCategoryRoute: typeof FreelancersCategoryRoute
+  JobsSlugRoute: typeof JobsSlugRoute
+  FreelancersIndexRoute: typeof FreelancersIndexRoute
   JobsIndexRoute: typeof JobsIndexRoute
 }
 
@@ -92,11 +157,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/freelancer/$slug': {
+      id: '/freelancer/$slug'
+      path: '/freelancer/$slug'
+      fullPath: '/freelancer/$slug'
+      preLoaderRoute: typeof FreelancerSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/freelancers/': {
+      id: '/freelancers/'
+      path: '/freelancers'
+      fullPath: '/freelancers/'
+      preLoaderRoute: typeof FreelancersIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/freelancers/$category': {
+      id: '/freelancers/$category'
+      path: '/freelancers/$category'
+      fullPath: '/freelancers/$category'
+      preLoaderRoute: typeof FreelancersCategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/jobs/': {
       id: '/jobs/'
       path: '/jobs'
       fullPath: '/jobs/'
       preLoaderRoute: typeof JobsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jobs/$slug': {
+      id: '/jobs/$slug'
+      path: '/jobs/$slug'
+      fullPath: '/jobs/$slug'
+      preLoaderRoute: typeof JobsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -106,6 +199,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
   PricingRoute: PricingRoute,
+  FreelancerSlugRoute: FreelancerSlugRoute,
+  FreelancersCategoryRoute: FreelancersCategoryRoute,
+  JobsSlugRoute: JobsSlugRoute,
+  FreelancersIndexRoute: FreelancersIndexRoute,
   JobsIndexRoute: JobsIndexRoute,
 }
 export const routeTree = rootRouteImport
