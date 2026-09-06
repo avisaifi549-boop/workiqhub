@@ -74,7 +74,15 @@ export function DashShell({
   );
 }
 
-export function StatCard({ label, value, hint }: { label: string; value: ReactNode; hint?: string }) {
+export function StatCard({
+  label,
+  value,
+  hint,
+}: {
+  label: string;
+  value: ReactNode;
+  hint?: string | undefined;
+}) {
   return (
     <div className="glass rounded-xl border border-border p-4">
       <p className="label-mono">{label}</p>

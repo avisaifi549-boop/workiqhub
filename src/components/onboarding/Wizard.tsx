@@ -16,13 +16,13 @@ export function WizardShell({
   step: number;
   total: number;
   title: string;
-  description?: string;
+  description?: string | undefined;
   children: ReactNode;
-  onBack?: () => void;
+  onBack?: (() => void) | undefined;
   onNext: () => void;
-  nextLabel?: string;
-  busy?: boolean;
-  onSkip?: () => void;
+  nextLabel?: string | undefined;
+  busy?: boolean | undefined;
+  onSkip?: (() => void) | undefined;
 }) {
   const pct = Math.round((step / total) * 100);
   return (

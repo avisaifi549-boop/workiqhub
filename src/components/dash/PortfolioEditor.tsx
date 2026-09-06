@@ -124,7 +124,7 @@ export function PortfolioEditor({ userId }: { userId: string }) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          if (!form.title.trim()) return toast.error("Give your project a title");
+          if (!form.title.trim()) { toast.error("Give your project a title"); return; }
           save.mutate(form);
         }}
         className="glass rounded-2xl border border-border p-6"

@@ -101,7 +101,7 @@ export function ClientWizard({ userId, account }: { userId: string; account: Acc
         total={TOTAL}
         title="Basic information"
         onNext={() => {
-          if (!fullName.trim()) return toast.error("Add your full name");
+          if (!fullName.trim()) { toast.error("Add your full name"); return; }
           void persist(2);
         }}
         busy={busy}

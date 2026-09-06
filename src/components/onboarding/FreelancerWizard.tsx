@@ -142,7 +142,7 @@ export function FreelancerWizard({ userId, account }: { userId: string; account:
         title="Your basic profile"
         description="This is what clients see first."
         onNext={() => {
-          if (!fullName.trim()) return toast.error("Add your full name");
+          if (!fullName.trim()) { toast.error("Add your full name"); return; }
           void persist(2);
         }}
         busy={busy}
@@ -204,7 +204,7 @@ export function FreelancerWizard({ userId, account }: { userId: string; account:
         title="Professional information"
         onBack={back}
         onNext={() => {
-          if (!categoryId) return toast.error("Pick your primary category");
+          if (!categoryId) { toast.error("Pick your primary category"); return; }
           void persist(3);
         }}
         busy={busy}

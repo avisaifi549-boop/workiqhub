@@ -175,7 +175,7 @@ function DashboardPage() {
 
   const strength = profileStrength({
     ...account.freelancer,
-    avatar_url: account.profile?.avatar_url,
+    avatar_url: account.profile?.avatar_url ?? null,
     portfolioCount: account.portfolioCount,
   });
 
