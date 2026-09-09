@@ -170,6 +170,170 @@
   color: var(--muted-foreground);
 }
 
+/* ---------- Premium hero motion (transform/opacity only) ---------- */
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes ambient-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate3d(3%, 4%, 0) scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.85;
+  }
+}
+
+@keyframes soft-float {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -4px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes bar-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes headline-sweep {
+  from {
+    transform: translate3d(-120%, 0, 0);
+  }
+  to {
+    transform: translate3d(160%, 0, 0);
+  }
+}
+
+@utility hero-enter {
+  animation: hero-enter 0.68s cubic-bezier(0.22, 0.8, 0.28, 1) both;
+}
+
+@utility ambient-slow {
+  animation: ambient-drift 26s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform, opacity;
+}
+
+@utility ambient-slower {
+  animation: ambient-drift 34s cubic-bezier(0.45, 0, 0.55, 1) infinite reverse;
+  will-change: transform, opacity;
+}
+
+@utility float-a {
+  animation: soft-float 9s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@utility float-b {
+  animation: soft-float 11.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  animation-delay: -2.5s;
+}
+
+@utility float-c {
+  animation: soft-float 13s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  animation-delay: -5s;
+}
+
+@utility bar-fill {
+  transform-origin: left center;
+  animation: bar-fill 0.9s cubic-bezier(0.22, 0.8, 0.28, 1) 0.35s both;
+}
+
+/* One-time teal light sweep behind the headline. */
+@utility headline-sweep {
+  position: relative;
+  isolation: isolate;
+}
+.headline-sweep::after {
+  content: "";
+  position: absolute;
+  inset: -10% -5%;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent 35%,
+    color-mix(in oklab, var(--primary) 22%, transparent) 50%,
+    transparent 65%
+  );
+  filter: blur(26px);
+  animation: headline-sweep 1.8s cubic-bezier(0.32, 0.72, 0, 1) 0.35s 1 both;
+}
+
+/* Brand logo micro-interaction — brightness/contrast only. */
+.brand-lockup .brand-mark {
+  transition:
+    filter 200ms var(--ease-kinetic),
+    opacity 200ms var(--ease-kinetic);
+}
+.brand-lockup .brand-wordmark {
+  transition:
+    opacity 200ms var(--ease-kinetic),
+    letter-spacing 200ms var(--ease-kinetic);
+  opacity: 0.92;
+}
+.brand-link:hover .brand-mark {
+  filter: brightness(1.18) drop-shadow(0 0 8px color-mix(in oklab, var(--primary) 45%, transparent));
+}
+.brand-link:hover .brand-wordmark {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter,
+  .ambient-slow,
+  .ambient-slower,
+  .float-a,
+  .float-b,
+  .float-c,
+  .bar-fill,
+  .animate-rise,
+  .animate-rise-sm {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .headline-sweep::after {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+}
+
+/* Tablet and below: calmer motion. */
+@media (max-width: 1023px) {
+  .ambient-slow,
+  .ambient-slower {
+    animation-duration: 40s;
+  }
+  .float-a,
+  .float-b,
+  .float-c {
+    animation: none;
+  }
+}
+
 @layer base {
   * {
     border-color: var(--border);
