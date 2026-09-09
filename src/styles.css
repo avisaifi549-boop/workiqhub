@@ -142,6 +142,22 @@
   backdrop-filter: blur(20px);
 }
 
+/* Opaque premium surface for the header bar. */
+@utility header-surface {
+  background-color: color-mix(in oklab, var(--background) 92%, transparent);
+  backdrop-filter: blur(20px) saturate(140%);
+}
+
+/* Opaque premium surface for mega menus — nothing behind may show through. */
+@utility nav-surface {
+  background-color: color-mix(in oklab, var(--card) 97%, transparent);
+  backdrop-filter: blur(24px) saturate(140%);
+  box-shadow:
+    0 1px 0 0 oklch(1 0 0 / 6%) inset,
+    0 28px 64px -24px oklch(0 0 0 / 75%);
+}
+
+
 @utility label-mono {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
