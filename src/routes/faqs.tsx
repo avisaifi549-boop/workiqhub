@@ -32,7 +32,7 @@ export const Route = createFileRoute("/faqs")({
       },
     ],
   }),
-  component: Faqs;
+  component: Faqs,
 });
 
 function Faqs() {

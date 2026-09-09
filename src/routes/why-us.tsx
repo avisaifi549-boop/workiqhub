@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
 import {
   Breadcrumbs,
@@ -82,18 +82,18 @@ function WhyUs() {
         lead="Loom is a marketplace for independent professionals and the businesses that hire them. Everything here is built around one idea: reputation should come from real, completed work — and nothing on the platform should let anyone fake it."
         actions={
           <>
-            <a
-              href="/freelancers"
+            <Link
+              to="/freelancers"
               className="rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground"
             >
               Hire talent
-            </a>
-            <a
-              href="/get-started"
+            </Link>
+            <Link
+              to="/get-started"
               className="rounded-lg glass px-6 py-3 font-semibold ring-1 ring-border"
             >
               Start freelancing
-            </a>
+            </Link>
           </>
         }
       />
