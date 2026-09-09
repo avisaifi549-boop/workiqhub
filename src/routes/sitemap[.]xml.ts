@@ -1,7 +1,43 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createClient } from "@supabase/supabase-js";
+import { CATEGORY_GROUPS } from "@/lib/site/categories";
+import { HIRE_PAGES } from "@/lib/site/hire";
+import { GUIDES } from "@/lib/site/guides";
 
-const STATIC_PATHS = ["/", "/freelancers", "/jobs", "/pricing"];
+const STATIC_PATHS = [
+  "/",
+  "/freelancers",
+  "/jobs",
+  "/categories",
+  "/why-us",
+  "/about-us",
+  "/faqs",
+  "/contact",
+  "/trust-and-safety",
+  "/privacy",
+  "/terms",
+  "/help",
+  "/help/disputes",
+  "/careers",
+  "/press",
+  "/resources",
+  "/resources/freelancers",
+  "/resources/clients",
+  "/guides",
+  "/tools",
+  "/tools/rate-calculator",
+  "/tools/project-cost-calculator",
+  "/tools/invoice-generator",
+  "/tools/proposal-generator",
+  "/tools/job-description-generator",
+  "/tools/profile-score",
+  "/get-started",
+  ...CATEGORY_GROUPS.map((c) => `/categories/${c.slug}`),
+  ...CATEGORY_GROUPS.map((c) => `/jobs/c/${c.slug}`),
+  ...HIRE_PAGES.map((h) => `/hire/${h.slug}`),
+  ...GUIDES.map((g) => `/guides/${g.slug}`),
+];
+
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {

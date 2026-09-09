@@ -5,7 +5,7 @@ import { TalentCard, type TalentRow } from "@/components/site/TalentCard";
 import { JobCard, type JobRow } from "@/components/site/JobCard";
 import { EmptyState } from "@/components/site/EmptyState";
 import { listFreelancers, listJobs } from "@/lib/public.functions";
-import { PLANS, formatInr } from "@/lib/plans";
+
 
 type HomeData = {
   talent: Awaited<ReturnType<typeof listFreelancers>>;
@@ -201,53 +201,54 @@ function Home() {
       </section>
 
       <section className="py-14">
-        <SectionLabel index="c">Plans</SectionLabel>
-        <h2 className="mt-3 font-display text-4xl uppercase tracking-tight">Freelancer pricing</h2>
+        <SectionLabel index="c">How it works</SectionLabel>
+        <h2 className="mt-3 font-display text-4xl uppercase tracking-tight">
+          Work that gets paid for
+        </h2>
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {PLANS.map((plan) => (
-            <div
-              key={plan.tier}
-              className={
-                plan.mostPopular
-                  ? "relative rounded-2xl border border-primary/40 bg-primary/10 p-6 ring-1 ring-primary/30"
-                  : "glass rounded-2xl border border-border p-6"
-              }
-            >
-              {plan.mostPopular && (
-                <span className="absolute -top-3 left-6 rounded-full bg-primary px-3 py-1 font-mono text-[11px] font-medium text-primary-foreground">
-                  MOST POPULAR
-                </span>
-              )}
-              <p
-                className={
-                  plan.mostPopular
-                    ? "font-mono text-xs uppercase tracking-[0.2em] text-primary"
-                    : "label-mono"
-                }
-              >
-                {plan.name}
-              </p>
-              <p className="mt-3 font-display text-4xl">{formatInr(plan.priceInr)}</p>
-              <p className="font-mono text-xs text-muted-foreground">/month</p>
-              <ul className="mt-5 space-y-2.5 text-sm text-muted-foreground">
-                {plan.highlights.map((h) => (
-                  <li key={h}>{h}</li>
-                ))}
-              </ul>
-              <Link
-                to="/pricing"
-                className={
-                  plan.mostPopular
-                    ? "mt-6 block rounded-lg bg-primary px-4 py-2.5 text-center text-sm font-semibold text-primary-foreground transition-all hover:-translate-y-0.5"
-                    : "mt-6 block rounded-lg glass px-4 py-2.5 text-center text-sm font-semibold ring-1 ring-border"
-                }
-              >
-                {plan.tier === "free" ? "Start free" : "See plan"}
-              </Link>
+          {[
+            [
+              "Build a real profile",
+              "Skills, portfolio and pricing. Profile strength is scored on evidence, never on what you pay.",
+            ],
+            [
+              "Get matched",
+              "Open projects are scored against your actual skills and past work, with the reasoning shown.",
+            ],
+            [
+              "Agree milestones",
+              "Scope is split into milestones. Each one is funded by the client before work begins.",
+            ],
+            [
+              "Get paid on approval",
+              "The client reviews the delivery and releases payment. Reviews only follow completed projects.",
+            ],
+          ].map(([title, body], i) => (
+            <div key={title} className="glass rounded-2xl border border-border p-6">
+              <span className="font-mono text-xs text-primary">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="mt-3 text-lg font-semibold tracking-tight">{title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{body}</p>
             </div>
           ))}
         </div>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link
+            to="/get-started"
+            className="rounded-lg bg-primary px-5 py-3 font-semibold text-primary-foreground"
+          >
+            Create a free account
+          </Link>
+          <Link
+            to="/categories"
+            className="rounded-lg glass px-5 py-3 font-semibold ring-1 ring-border"
+          >
+            Browse categories
+          </Link>
+        </div>
       </section>
+
     </PageShell>
   );
 }
