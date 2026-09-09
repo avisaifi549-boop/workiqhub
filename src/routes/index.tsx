@@ -27,13 +27,13 @@ export const Route = createFileRoute("/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(homeQuery),
   head: () => ({
     meta: [
-      { title: "Loom — Get discovered. Win more freelance work." },
+      { title: "WorkIQHub — Get discovered. Win more freelance work." },
       {
         name: "description",
         content:
           "An AI-powered freelance marketplace: verified talent, AI proposals, transparent pricing and secure milestone payments. Start free.",
       },
-      { property: "og:title", content: "Loom — Get discovered. Win more freelance work." },
+      { property: "og:title", content: "WorkIQHub — Get discovered. Win more freelance work." },
       {
         property: "og:description",
         content:

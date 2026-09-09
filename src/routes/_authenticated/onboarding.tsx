@@ -10,10 +10,10 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 export const Route = createFileRoute("/_authenticated/onboarding")({
   head: () => ({
     meta: [
-      { title: "Set up your Loom profile" },
+      { title: "Set up your WorkIQHub profile" },
       {
         name: "description",
-        content: "Complete your Loom profile to start hiring or freelancing.",
+        content: "Complete your WorkIQHub profile to start hiring or freelancing.",
       },
       { name: "robots", content: "noindex" },
     ],

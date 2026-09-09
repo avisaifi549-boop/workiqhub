@@ -13,15 +13,15 @@ export const Route = createFileRoute("/auth")({
   }),
   head: () => ({
     meta: [
-      { title: "Sign in or create your Loom account" },
+      { title: "Sign in or create your WorkIQHub account" },
       {
         name: "description",
-        content: "Create a free freelancer or client account on Loom and start working today.",
+        content: "Create a free freelancer or client account on WorkIQHub and start working today.",
       },
-      { property: "og:title", content: "Sign in or create your Loom account" },
+      { property: "og:title", content: "Sign in or create your WorkIQHub account" },
       {
         property: "og:description",
-        content: "Create a free freelancer or client account on Loom.",
+        content: "Create a free freelancer or client account on WorkIQHub.",
       },
       { name: "robots", content: "noindex" },
     ],
@@ -53,7 +53,7 @@ function AuthPage() {
           },
         });
         if (error) throw error;
-        toast.success("Account created. Welcome to Loom.");
+        toast.success("Account created. Welcome to WorkIQHub.");
         navigate({ to: "/onboarding" });
         return;
       }
@@ -187,7 +187,7 @@ function AuthPage() {
           </button>
 
           <p className="mt-6 text-center text-sm text-muted-foreground">
-            {isSignup ? "Already have an account?" : "New to Loom?"}{" "}
+            {isSignup ? "Already have an account?" : "New to WorkIQHub?"}{" "}
             <Link
               to="/auth"
               search={{ mode: isSignup ? "signin" : "signup" }}

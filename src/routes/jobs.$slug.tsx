@@ -19,7 +19,7 @@ export const Route = createFileRoute("/jobs/$slug")({
       return { meta: [{ title: "Job unavailable" }, { name: "robots", content: "noindex" }] };
     }
     const j = loaderData;
-    const title = `${j.title} — freelance project | Loom`;
+    const title = `${j.title} — freelance project | WorkIQHub`;
     const description = String(j.description).slice(0, 155);
     return {
       meta: [

@@ -5,13 +5,13 @@ import { ToolShell, Field, inputClass, OutputCard, CopyButton } from "@/componen
 export const Route = createFileRoute("/tools/proposal-generator")({
   head: () => ({
     meta: [
-      { title: "Freelance proposal generator — structure a winning pitch | Loom" },
+      { title: "Freelance proposal generator — structure a winning pitch | WorkIQHub" },
       {
         name: "description",
         content:
           "Free proposal generator for freelancers. Turn the client's brief, your approach and one piece of real evidence into a short, structured proposal.",
       },
-      { property: "og:title", content: "Freelance proposal generator — Loom" },
+      { property: "og:title", content: "Freelance proposal generator — WorkIQHub" },
       {
         property: "og:description",
         content: "A structured proposal built from your own real experience.",
@@ -141,7 +141,7 @@ function ProposalGenerator() {
       faqs={[
         {
           q: "Will this write my experience for me?",
-          a: "No, deliberately. Fabricated experience is the fastest way to lose a client's trust, and on Loom it is grounds for removal.",
+          a: "No, deliberately. Fabricated experience is the fastest way to lose a client's trust, and on WorkIQHub it is grounds for removal.",
         },
         {
           q: "How long should a proposal be?",

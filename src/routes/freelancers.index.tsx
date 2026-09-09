@@ -20,13 +20,13 @@ export const Route = createFileRoute("/freelancers/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(talentQuery),
   head: () => ({
     meta: [
-      { title: "Hire verified freelancers in India — Loom" },
+      { title: "Hire verified freelancers in India — WorkIQHub" },
       {
         name: "description",
         content:
           "Browse verified freelance developers, designers, writers and marketers with real portfolios, transparent pricing and secure milestone payments.",
       },
-      { property: "og:title", content: "Hire verified freelancers in India — Loom" },
+      { property: "og:title", content: "Hire verified freelancers in India — WorkIQHub" },
       {
         property: "og:description",
         content: "Verified freelancers with real portfolios and transparent pricing.",

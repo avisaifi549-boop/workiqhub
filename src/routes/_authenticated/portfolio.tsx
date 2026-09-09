@@ -8,7 +8,7 @@ import { PortfolioEditor } from "@/components/dash/PortfolioEditor";
 export const Route = createFileRoute("/_authenticated/portfolio")({
   head: () => ({
     meta: [
-      { title: "Portfolio — Loom" },
+      { title: "Portfolio — WorkIQHub" },
       {
         name: "description",
         content: "Add and manage the real work shown on your public profile.",
@@ -31,7 +31,7 @@ function PortfolioPage() {
     <DashShell
       role={data?.role ?? "freelancer"}
       title="Portfolio"
-      subtitle="Work completed through Loom carries a verified badge automatically."
+      subtitle="Work completed through WorkIQHub carries a verified badge automatically."
     >
       {user ? <PortfolioEditor userId={user.id} /> : null}
     </DashShell>

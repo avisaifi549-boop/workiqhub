@@ -6,13 +6,13 @@ import { formatInr } from "@/lib/plans";
 export const Route = createFileRoute("/tools/rate-calculator")({
   head: () => ({
     meta: [
-      { title: "Freelance rate calculator — work out your hourly rate | Loom" },
+      { title: "Freelance rate calculator — work out your hourly rate | WorkIQHub" },
       {
         name: "description",
         content:
           "Free hourly rate calculator for freelancers. Enter your target income, costs, working weeks and billable hours to get a defensible hourly and day rate.",
       },
-      { property: "og:title", content: "Freelance rate calculator — Loom" },
+      { property: "og:title", content: "Freelance rate calculator — WorkIQHub" },
       {
         property: "og:description",
         content: "Turn target income, costs and billable hours into an hourly rate.",

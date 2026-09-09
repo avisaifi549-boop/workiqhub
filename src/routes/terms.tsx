@@ -5,13 +5,13 @@ import { Breadcrumbs, PageHero, Prose } from "@/components/site/Sections";
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "Terms of Service — Loom marketplace" },
+      { title: "Terms of Service — WorkIQHub marketplace" },
       {
         name: "description",
         content:
           "Marketplace terms covering client and freelancer responsibilities, payments, reviews, prohibited activity, disputes, termination, intellectual property and refunds.",
       },
-      { property: "og:title", content: "Terms of Service — Loom marketplace" },
+      { property: "og:title", content: "Terms of Service — WorkIQHub marketplace" },
       {
         property: "og:description",
         content: "Responsibilities, payments, reviews, disputes, IP and refunds.",
@@ -27,8 +27,8 @@ const SECTIONS: { heading: string; body: string[] }[] = [
   {
     heading: "1. About these terms",
     body: [
-      "These terms govern use of the Loom marketplace operated by [COMPANY LEGAL NAME], [REGISTERED ADDRESS]. By creating an account you agree to them.",
-      "Loom provides the platform. Contracts for work are between the client and the freelancer.",
+      "These terms govern use of the WorkIQHub marketplace operated by [COMPANY LEGAL NAME], [REGISTERED ADDRESS]. By creating an account you agree to them.",
+      "WorkIQHub provides the platform. Contracts for work are between the client and the freelancer.",
     ],
   },
   {

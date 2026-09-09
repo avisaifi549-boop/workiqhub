@@ -5,13 +5,13 @@ import { Breadcrumbs, PageHero, Section, Prose, CardGrid, InfoCard } from "@/com
 export const Route = createFileRoute("/success-stories")({
   head: () => ({
     meta: [
-      { title: "Success stories — Loom" },
+      { title: "Success stories — WorkIQHub" },
       {
         name: "description",
         content:
-          "Loom only publishes success stories from real, completed marketplace projects with the consent of both parties. Here is how they get published.",
+          "WorkIQHub only publishes success stories from real, completed marketplace projects with the consent of both parties. Here is how they get published.",
       },
-      { property: "og:title", content: "Success stories — Loom" },
+      { property: "og:title", content: "Success stories — WorkIQHub" },
       {
         property: "og:description",
         content: "Real completed projects only — no invented testimonials.",

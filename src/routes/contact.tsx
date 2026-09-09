@@ -8,13 +8,13 @@ import { track } from "@/lib/site/track";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Loom — support, disputes, partnerships and press" },
+      { title: "Contact WorkIQHub — support, disputes, partnerships and press" },
       {
         name: "description",
         content:
-          "Reach the Loom team about client or freelancer support, payment issues, technical problems, abuse reports, partnerships or press.",
+          "Reach the WorkIQHub team about client or freelancer support, payment issues, technical problems, abuse reports, partnerships or press.",
       },
-      { property: "og:title", content: "Contact Loom" },
+      { property: "og:title", content: "Contact WorkIQHub" },
       {
         property: "og:description",
         content: "Support, payment issues, abuse reports, partnerships and press.",

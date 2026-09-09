@@ -56,7 +56,7 @@ export function SiteFooter() {
 
         <div className="mt-10 flex flex-col gap-4 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-mono text-xs text-muted-foreground">
-            © {year} Loom. Built for independent professionals.
+            © {year} WorkIQHub. Built for independent professionals.
           </p>
           <nav aria-label="Legal" className="flex flex-wrap gap-5">
             <Link to="/privacy" className="text-xs text-muted-foreground hover:text-foreground">

@@ -5,13 +5,13 @@ import { ToolShell, Field, inputClass, OutputCard } from "@/components/site/Tool
 export const Route = createFileRoute("/tools/profile-score")({
   head: () => ({
     meta: [
-      { title: "Freelancer profile score — check your profile strength | Loom" },
+      { title: "Freelancer profile score — check your profile strength | WorkIQHub" },
       {
         name: "description",
         content:
           "Score a freelancer profile draft against the completeness checks that matter: headline, bio, skills, portfolio, pricing, availability and credentials.",
       },
-      { property: "og:title", content: "Freelancer profile score — Loom" },
+      { property: "og:title", content: "Freelancer profile score — WorkIQHub" },
       {
         property: "og:description",
         content: "Check profile completeness and see exactly what to fix next.",

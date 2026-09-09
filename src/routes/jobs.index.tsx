@@ -26,13 +26,13 @@ export const Route = createFileRoute("/jobs/")({
   loader: ({ context, deps }) => context.queryClient.ensureQueryData(jobsQuery(deps.category)),
   head: () => ({
     meta: [
-      { title: "Freelance jobs and projects — Loom job board" },
+      { title: "Freelance jobs and projects — WorkIQHub job board" },
       {
         name: "description",
         content:
           "Browse open freelance projects with real budgets, timelines and required skills. Apply free and draft proposals from your own profile.",
       },
-      { property: "og:title", content: "Freelance jobs and projects — Loom job board" },
+      { property: "og:title", content: "Freelance jobs and projects — WorkIQHub job board" },
       {
         property: "og:description",
         content: "Open freelance projects with real budgets, timelines and required skills.",

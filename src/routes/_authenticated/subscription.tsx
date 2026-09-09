@@ -7,7 +7,7 @@ import { PLANS, formatInr } from "@/lib/plans";
 
 export const Route = createFileRoute("/_authenticated/subscription")({
   head: () => ({
-    meta: [{ title: "Your plan — Loom" }, { name: "robots", content: "noindex,nofollow" }],
+    meta: [{ title: "Your plan — WorkIQHub" }, { name: "robots", content: "noindex,nofollow" }],
   }),
   component: SubscriptionPage,
 });
@@ -31,7 +31,7 @@ function SubscriptionPage() {
       >
         <div className="glass rounded-2xl border border-border p-8">
           <p className="max-w-[56ch] text-muted-foreground">
-            Hiring on Loom does not require a subscription. You post projects, fund milestones and
+            Hiring on WorkIQHub does not require a subscription. You post projects, fund milestones and
             release payment as work is approved — there is no plan to choose on a client account.
           </p>
           <Link

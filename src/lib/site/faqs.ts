@@ -12,8 +12,8 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
     name: "General",
     items: [
       {
-        q: "What is Loom?",
-        a: "Loom is a freelance marketplace where businesses hire independent professionals and freelancers find work. Profiles, jobs, proposals, contracts, milestone payments and reviews all live in one place.",
+        q: "What is WorkIQHub?",
+        a: "WorkIQHub is a freelance marketplace where businesses hire independent professionals and freelancers find work. Profiles, jobs, proposals, contracts, milestone payments and reviews all live in one place.",
       },
       {
         q: "How does the marketplace work?",
@@ -76,7 +76,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
     name: "For freelancers",
     items: [
       {
-        q: "How do I start freelancing on Loom?",
+        q: "How do I start freelancing on WorkIQHub?",
         a: "Create a free account, complete the freelancer onboarding, and publish your profile. Your public profile becomes visible once it clears the profile strength quality bar.",
       },
       {
@@ -166,11 +166,11 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
     name: "Subscriptions",
     items: [
       {
-        q: "Does Loom have paid plans?",
+        q: "Does WorkIQHub have paid plans?",
         a: "There are optional freelancer subscription plans. They are shown inside your dashboard after you sign in, alongside your current plan.",
       },
       {
-        q: "Do I need a paid plan to work on Loom?",
+        q: "Do I need a paid plan to work on WorkIQHub?",
         a: "No. Building a profile, applying to jobs, winning work and getting paid all work on the free plan.",
       },
       {

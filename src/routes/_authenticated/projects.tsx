@@ -11,7 +11,7 @@ import { formatInr } from "@/lib/plans";
 export const Route = createFileRoute("/_authenticated/projects")({
   head: () => ({
     meta: [
-      { title: "My projects — Loom" },
+      { title: "My projects — WorkIQHub" },
       {
         name: "description",
         content: "Track contracts, milestones and payment status end to end.",

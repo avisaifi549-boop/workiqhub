@@ -12,13 +12,13 @@ import {
 export const Route = createFileRoute("/help/")({
   head: () => ({
     meta: [
-      { title: "Help Center — Loom" },
+      { title: "Help Center — WorkIQHub" },
       {
         name: "description",
         content:
-          "Get help with your Loom account, projects, milestones, payments, reviews, verification and moderation, or contact support directly.",
+          "Get help with your WorkIQHub account, projects, milestones, payments, reviews, verification and moderation, or contact support directly.",
       },
-      { property: "og:title", content: "Help Center — Loom" },
+      { property: "og:title", content: "Help Center — WorkIQHub" },
       {
         property: "og:description",
         content: "Account, projects, payments, reviews, verification and moderation help.",

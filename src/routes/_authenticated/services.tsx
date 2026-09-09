@@ -8,7 +8,7 @@ import { ServiceEditor } from "@/components/dash/ServiceEditor";
 export const Route = createFileRoute("/_authenticated/services")({
   head: () => ({
     meta: [
-      { title: "My services — Loom" },
+      { title: "My services — WorkIQHub" },
       { name: "description", content: "Create and manage the services clients can hire you for." },
       { name: "robots", content: "noindex" },
     ],

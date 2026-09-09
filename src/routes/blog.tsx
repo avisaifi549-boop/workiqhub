@@ -6,13 +6,13 @@ import { GUIDES } from "@/lib/site/guides";
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "Blog — Loom" },
+      { title: "Blog — WorkIQHub" },
       {
         name: "description",
         content:
           "Notes on how the marketplace works and how freelance projects run. Until posts are published, our long-form guides cover the same ground.",
       },
-      { property: "og:title", content: "Blog — Loom" },
+      { property: "og:title", content: "Blog — WorkIQHub" },
       { property: "og:description", content: "Notes on freelancing, hiring and the marketplace." },
       { property: "og:type", content: "website" },
       { name: "robots", content: "noindex,follow" },

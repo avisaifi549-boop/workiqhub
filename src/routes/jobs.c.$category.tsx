@@ -31,8 +31,8 @@ export const Route = createFileRoute("/jobs/c/$category")({
     if (!group) {
       return { meta: [{ title: "Category unavailable" }, { name: "robots", content: "noindex" }] };
     }
-    const title = `${group.short} jobs — freelance projects hiring now | Loom`;
-    const description = `Browse open freelance ${group.short.toLowerCase()} projects on Loom. Real client briefs with stated budgets, timelines and milestone-based payment.`;
+    const title = `${group.short} jobs — freelance projects hiring now | WorkIQHub`;
+    const description = `Browse open freelance ${group.short.toLowerCase()} projects on WorkIQHub. Real client briefs with stated budgets, timelines and milestone-based payment.`;
     const empty = (loaderData?.jobs.length ?? 0) === 0;
     return {
       meta: [

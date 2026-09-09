@@ -6,13 +6,13 @@ import { formatInr } from "@/lib/plans";
 export const Route = createFileRoute("/tools/invoice-generator")({
   head: () => ({
     meta: [
-      { title: "Free invoice generator for freelancers | Loom" },
+      { title: "Free invoice generator for freelancers | WorkIQHub" },
       {
         name: "description",
         content:
           "Create a clean freelance invoice in your browser. Add line items, tax and payment terms, then print or save it as a PDF. Nothing is stored.",
       },
-      { property: "og:title", content: "Free invoice generator for freelancers — Loom" },
+      { property: "og:title", content: "Free invoice generator for freelancers — WorkIQHub" },
       {
         property: "og:description",
         content: "Line items, tax and totals calculated, printable straight from the page.",

@@ -9,12 +9,12 @@ import { slugify } from "@/lib/profile-strength";
 export const Route = createFileRoute("/_authenticated/post-a-job")({
   head: () => ({
     meta: [
-      { title: "Post a freelance project — Loom" },
+      { title: "Post a freelance project — WorkIQHub" },
       {
         name: "description",
         content: "Describe your project and get proposals from verified freelancers.",
       },
-      { property: "og:title", content: "Post a freelance project — Loom" },
+      { property: "og:title", content: "Post a freelance project — WorkIQHub" },
       {
         property: "og:description",
         content: "Describe your project and get proposals from verified freelancers.",

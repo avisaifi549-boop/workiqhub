@@ -4,13 +4,13 @@ import { PageShell, SectionLabel } from "@/components/site/PageShell";
 export const Route = createFileRoute("/get-started")({
   head: () => ({
     meta: [
-      { title: "Get started on Loom — hire or start freelancing" },
+      { title: "Get started on WorkIQHub — hire or start freelancing" },
       {
         name: "description",
         content:
-          "Choose how you want to use Loom: hire trusted freelancers for your project, or start freelancing and grow your career.",
+          "Choose how you want to use WorkIQHub: hire trusted freelancers for your project, or start freelancing and grow your career.",
       },
-      { property: "og:title", content: "Get started on Loom" },
+      { property: "og:title", content: "Get started on WorkIQHub" },
       {
         property: "og:description",
         content: "Hire trusted talent, or showcase your skills and find better opportunities.",
