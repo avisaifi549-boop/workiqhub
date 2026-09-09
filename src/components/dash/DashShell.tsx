@@ -12,7 +12,9 @@ const FREELANCER_NAV: NavItem[] = [
   { to: "/services", label: "My services" },
   { to: "/portfolio", label: "Portfolio" },
   { to: "/reviews", label: "Reviews" },
+  { to: "/subscription", label: "Your plan" },
   { to: "/profile", label: "Profile" },
+
 ];
 
 const CLIENT_NAV: NavItem[] = [
