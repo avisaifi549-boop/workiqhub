@@ -13,13 +13,13 @@ import {
 export const Route = createFileRoute("/why-us")({
   head: () => ({
     meta: [
-      { title: "Why Loom — a marketplace built on verified work" },
+      { title: "Why WorkIQHub — a marketplace built on verified work" },
       {
         name: "description",
         content:
-          "Why Loom exists: verified reputation, milestone-protected payments, AI that works from your real profile, and a search experience that rewards evidence over marketing.",
+          "Why WorkIQHub exists: verified reputation, milestone-protected payments, AI that works from your real profile, and a search experience that rewards evidence over marketing.",
       },
-      { property: "og:title", content: "Why Loom — a marketplace built on verified work" },
+      { property: "og:title", content: "Why WorkIQHub — a marketplace built on verified work" },
       {
         property: "og:description",
         content:
@@ -57,7 +57,7 @@ const CLIENT_POINTS = [
 const TRUST = [
   ["Identity verification", "Reviewed by our team before an identity badge appears."],
   ["Skill verification", "Evidence-based review of claimed expertise."],
-  ["Verified projects", "Portfolio work completed through Loom is linked to a real contract."],
+  ["Verified projects", "Portfolio work completed through WorkIQHub is linked to a real contract."],
   ["Verified reviews", "A review cannot exist without a completed project between the two parties."],
   ["Secure communication", "Project conversation stays inside the workspace with the project record."],
   ["Fraud prevention", "Duplicate account and spam detection, plus reporting on every surface."],
@@ -77,9 +77,9 @@ function WhyUs() {
     <PageShell>
       <Breadcrumbs trail={[{ label: "Why us" }]} />
       <PageHero
-        kicker="Why Loom"
+        kicker="Why WorkIQHub"
         title="Work should be easier to find, hire and deliver."
-        lead="Loom is a marketplace for independent professionals and the businesses that hire them. Everything here is built around one idea: reputation should come from real, completed work — and nothing on the platform should let anyone fake it."
+        lead="WorkIQHub is a marketplace for independent professionals and the businesses that hire them. Everything here is built around one idea: reputation should come from real, completed work — and nothing on the platform should let anyone fake it."
         actions={
           <>
             <Link

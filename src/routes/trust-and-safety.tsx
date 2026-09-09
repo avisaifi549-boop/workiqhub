@@ -13,13 +13,13 @@ import {
 export const Route = createFileRoute("/trust-and-safety")({
   head: () => ({
     meta: [
-      { title: "Trust & Safety — how Loom protects work and payments" },
+      { title: "Trust & Safety — how WorkIQHub protects work and payments" },
       {
         name: "description",
         content:
-          "Account safety, identity and skill verification, secure communication, payment protection, fraud prevention, review integrity, reporting, blocking and dispute resolution on Loom.",
+          "Account safety, identity and skill verification, secure communication, payment protection, fraud prevention, review integrity, reporting, blocking and dispute resolution on WorkIQHub.",
       },
-      { property: "og:title", content: "Trust & Safety on Loom" },
+      { property: "og:title", content: "Trust & Safety on WorkIQHub" },
       {
         property: "og:description",
         content: "Verification, payment protection, review integrity, reporting and disputes.",
@@ -53,7 +53,7 @@ function TrustSafety() {
       <PageHero
         kicker="Trust & safety"
         title="Protection built into the workflow"
-        lead="Safety on a marketplace is a set of mechanisms, not a promise. These are the ones Loom actually operates — and the limits of each are stated plainly."
+        lead="Safety on a marketplace is a set of mechanisms, not a promise. These are the ones WorkIQHub actually operates — and the limits of each are stated plainly."
       />
 
       <Section title="How we protect both sides">
@@ -67,7 +67,7 @@ function TrustSafety() {
       <Section title="Why reviews are tied to real work">
         <Prose>
           <p>
-            A review on Loom can only exist where a contract between those two accounts reached a
+            A review on WorkIQHub can only exist where a contract between those two accounts reached a
             completed state. Each party can leave one review per project, and self-reviews are
             impossible. That is enforced by database rules, not by a policy page.
           </p>

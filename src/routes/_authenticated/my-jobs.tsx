@@ -12,7 +12,7 @@ import { formatInr } from "@/lib/plans";
 export const Route = createFileRoute("/_authenticated/my-jobs")({
   head: () => ({
     meta: [
-      { title: "My jobs & applicants — Loom" },
+      { title: "My jobs & applicants — WorkIQHub" },
       {
         name: "description",
         content: "Review applicants, shortlist and hire for your posted jobs.",

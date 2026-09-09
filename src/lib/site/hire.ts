@@ -18,18 +18,18 @@ export type HirePage = {
 };
 
 const projectWorkflow =
-  "Every hire on Loom runs through the same workflow: agree scope, fund a milestone, review the delivered work, then release payment. Reviews are only possible after a completed marketplace project.";
+  "Every hire on WorkIQHub runs through the same workflow: agree scope, fund a milestone, review the delivered work, then release payment. Reviews are only possible after a completed marketplace project.";
 
 export const HIRE_PAGES: HirePage[] = [
   {
     slug: "web-developers",
     role: "Web Developers",
     title: "Hire web developers",
-    metaTitle: "Hire Web Developers — verified freelance web developers | Loom",
+    metaTitle: "Hire Web Developers — verified freelance web developers | WorkIQHub",
     metaDescription:
       "Hire freelance web developers with real portfolios, transparent pricing and milestone-based payments. Compare verified profiles and post your project free.",
     intro:
-      "Web developers on Loom build and maintain sites and web applications — from marketing sites to logged-in product experiences. Compare real portfolios, then agree scope and milestones before any money moves.",
+      "Web developers on WorkIQHub build and maintain sites and web applications — from marketing sites to logged-in product experiences. Compare real portfolios, then agree scope and milestones before any money moves.",
     dbCategories: ["web-developers", "wordpress-developers", "shopify-developers"],
     group: "development",
     skills: ["HTML & CSS", "JavaScript", "React", "Node.js", "WordPress", "Shopify", "APIs"],
@@ -50,7 +50,7 @@ export const HIRE_PAGES: HirePage[] = [
     faqs: [
       {
         q: "What does a freelance web developer cost?",
-        a: "Rates on Loom are set by each freelancer and shown on their profile. Use the rate calculator under Tools to sanity-check a budget, then compare actual profiles rather than an average.",
+        a: "Rates on WorkIQHub are set by each freelancer and shown on their profile. Use the rate calculator under Tools to sanity-check a budget, then compare actual profiles rather than an average.",
       },
       {
         q: "How do I protect my payment?",
@@ -63,11 +63,11 @@ export const HIRE_PAGES: HirePage[] = [
     slug: "mobile-app-developers",
     role: "Mobile App Developers",
     title: "Hire mobile app developers",
-    metaTitle: "Hire Mobile App Developers — freelance iOS & Android | Loom",
+    metaTitle: "Hire Mobile App Developers — freelance iOS & Android | WorkIQHub",
     metaDescription:
       "Hire freelance mobile app developers for iOS and Android. Compare verified portfolios, agree milestones and pay only for approved work.",
     intro:
-      "Mobile developers on Loom ship apps for iOS and Android, whether native or cross-platform. Share your feature list and the platforms you need, and compare profiles that have shipped comparable work.",
+      "Mobile developers on WorkIQHub ship apps for iOS and Android, whether native or cross-platform. Share your feature list and the platforms you need, and compare profiles that have shipped comparable work.",
     dbCategories: ["app-developers"],
     group: "development",
     skills: ["React Native", "Flutter", "Swift", "Kotlin", "App Store release", "Push & APIs"],
@@ -98,11 +98,11 @@ export const HIRE_PAGES: HirePage[] = [
     slug: "react-developers",
     role: "React Developers",
     title: "Hire React developers",
-    metaTitle: "Hire React Developers — verified freelance React talent | Loom",
+    metaTitle: "Hire React Developers — verified freelance React talent | WorkIQHub",
     metaDescription:
       "Hire freelance React developers for web apps, dashboards and component libraries. Real portfolios, clear pricing and milestone payments.",
     intro:
-      "React developers on Loom build interfaces and front-end architecture: component systems, dashboards, and full product front-ends wired to your APIs.",
+      "React developers on WorkIQHub build interfaces and front-end architecture: component systems, dashboards, and full product front-ends wired to your APIs.",
     dbCategories: ["react-developers", "web-developers"],
     group: "development",
     skills: ["React", "TypeScript", "State management", "Design systems", "Testing", "Performance"],
@@ -133,11 +133,11 @@ export const HIRE_PAGES: HirePage[] = [
     slug: "python-developers",
     role: "Python Developers",
     title: "Hire Python developers",
-    metaTitle: "Hire Python Developers — freelance backend & automation | Loom",
+    metaTitle: "Hire Python Developers — freelance backend & automation | WorkIQHub",
     metaDescription:
       "Hire freelance Python developers for APIs, data work, scraping and automation. Compare verified profiles and pay by milestone.",
     intro:
-      "Python developers on Loom work on backends, data pipelines, scripting and automation. Describe the system and the data involved to get accurate proposals.",
+      "Python developers on WorkIQHub work on backends, data pipelines, scripting and automation. Describe the system and the data involved to get accurate proposals.",
     dbCategories: ["python-developers"],
     group: "development",
     skills: ["Python", "FastAPI & Django", "Data pipelines", "Automation", "APIs", "Testing"],
@@ -165,11 +165,11 @@ export const HIRE_PAGES: HirePage[] = [
     slug: "graphic-designers",
     role: "Graphic Designers",
     title: "Hire graphic designers",
-    metaTitle: "Hire Graphic Designers — freelance brand & visual design | Loom",
+    metaTitle: "Hire Graphic Designers — freelance brand & visual design | WorkIQHub",
     metaDescription:
       "Hire freelance graphic designers for brand identity, marketing assets and print. Compare portfolios and pay per approved milestone.",
     intro:
-      "Graphic designers on Loom cover identity, marketing and print work. Share your brand context and where the assets will be used so proposals include the right deliverables.",
+      "Graphic designers on WorkIQHub cover identity, marketing and print work. Share your brand context and where the assets will be used so proposals include the right deliverables.",
     dbCategories: ["graphic-designers"],
     group: "design",
     skills: ["Brand identity", "Logo design", "Marketing assets", "Print", "Illustration", "Packaging"],
@@ -194,11 +194,11 @@ export const HIRE_PAGES: HirePage[] = [
     slug: "ui-ux-designers",
     role: "UI/UX Designers",
     title: "Hire UI/UX designers",
-    metaTitle: "Hire UI/UX Designers — freelance product design | Loom",
+    metaTitle: "Hire UI/UX Designers — freelance product design | WorkIQHub",
     metaDescription:
       "Hire freelance UI/UX designers for product interfaces, design systems and usability work. Verified portfolios and milestone-based payment.",
     intro:
-      "UI/UX designers on Loom design product experiences: flows, screens and design systems that engineers can build from without guesswork.",
+      "UI/UX designers on WorkIQHub design product experiences: flows, screens and design systems that engineers can build from without guesswork.",
     dbCategories: ["ui-ux-designers"],
     group: "design",
     skills: ["User flows", "Wireframes", "UI design", "Design systems", "Prototyping", "Usability"],
@@ -220,11 +220,11 @@ export const HIRE_PAGES: HirePage[] = [
     slug: "seo-experts",
     role: "SEO Experts",
     title: "Hire SEO experts",
-    metaTitle: "Hire SEO Experts — freelance search specialists | Loom",
+    metaTitle: "Hire SEO Experts — freelance search specialists | WorkIQHub",
     metaDescription:
       "Hire freelance SEO experts for technical audits, content strategy and search visibility. Compare verified profiles and pay per milestone.",
     intro:
-      "SEO specialists on Loom work on technical health, content strategy and search visibility. Ask for a measurement plan alongside the work itself.",
+      "SEO specialists on WorkIQHub work on technical health, content strategy and search visibility. Ask for a measurement plan alongside the work itself.",
     dbCategories: ["seo-experts"],
     group: "marketing",
     skills: ["Technical SEO", "Keyword research", "Content strategy", "On-page", "Analytics", "Local SEO"],
@@ -246,11 +246,11 @@ export const HIRE_PAGES: HirePage[] = [
     slug: "digital-marketers",
     role: "Digital Marketers",
     title: "Hire digital marketers",
-    metaTitle: "Hire Digital Marketers — freelance growth & ads | Loom",
+    metaTitle: "Hire Digital Marketers — freelance growth & ads | WorkIQHub",
     metaDescription:
       "Hire freelance digital marketers for paid campaigns, lifecycle email and growth programmes. Verified profiles and milestone payments.",
     intro:
-      "Digital marketers on Loom run acquisition and lifecycle programmes. Share your current channels, budget range and the metric you want moved.",
+      "Digital marketers on WorkIQHub run acquisition and lifecycle programmes. Share your current channels, budget range and the metric you want moved.",
     dbCategories: ["seo-experts"],
     group: "marketing",
     skills: ["Paid ads", "Email marketing", "Social media", "Analytics", "Landing pages", "Funnels"],
@@ -261,8 +261,8 @@ export const HIRE_PAGES: HirePage[] = [
     ],
     faqs: [
       {
-        q: "Does ad spend go through Loom?",
-        a: "No. Loom handles the freelancer's fee. Media spend stays on your own ad accounts.",
+        q: "Does ad spend go through WorkIQHub?",
+        a: "No. WorkIQHub handles the freelancer's fee. Media spend stays on your own ad accounts.",
       },
       { q: "How is performance judged?", a: "Agree the metric and reporting format in the milestone before funding." },
     ],
@@ -272,11 +272,11 @@ export const HIRE_PAGES: HirePage[] = [
     slug: "content-writers",
     role: "Content Writers",
     title: "Hire content writers",
-    metaTitle: "Hire Content Writers — freelance copy & content | Loom",
+    metaTitle: "Hire Content Writers — freelance copy & content | WorkIQHub",
     metaDescription:
       "Hire freelance content writers for website copy, articles and documentation. Compare writing samples and pay per approved milestone.",
     intro:
-      "Writers on Loom handle website copy, long-form content, documentation and editing. Share your audience and tone references for the most accurate proposals.",
+      "Writers on WorkIQHub handle website copy, long-form content, documentation and editing. Share your audience and tone references for the most accurate proposals.",
     dbCategories: ["content-writers"],
     group: "writing",
     skills: ["Website copy", "SEO writing", "Long-form articles", "Technical writing", "Editing", "Scripts"],
@@ -298,11 +298,11 @@ export const HIRE_PAGES: HirePage[] = [
     slug: "video-editors",
     role: "Video Editors",
     title: "Hire video editors",
-    metaTitle: "Hire Video Editors — freelance video & motion | Loom",
+    metaTitle: "Hire Video Editors — freelance video & motion | WorkIQHub",
     metaDescription:
       "Hire freelance video editors for short-form, YouTube and motion graphics. Compare reels, agree milestones and pay for approved work.",
     intro:
-      "Video editors on Loom cut short-form social video, long-form YouTube and branded content, and produce motion graphics.",
+      "Video editors on WorkIQHub cut short-form social video, long-form YouTube and branded content, and produce motion graphics.",
     dbCategories: ["video-editors"],
     group: "video",
     skills: ["Short-form editing", "YouTube editing", "Motion graphics", "Colour", "Sound", "Subtitles"],
@@ -324,11 +324,11 @@ export const HIRE_PAGES: HirePage[] = [
     slug: "ai-developers",
     role: "AI Developers",
     title: "Hire AI developers",
-    metaTitle: "Hire AI Developers — freelance AI engineers | Loom",
+    metaTitle: "Hire AI Developers — freelance AI engineers | WorkIQHub",
     metaDescription:
       "Hire freelance AI developers to build assistants, retrieval systems and AI features into your product. Verified profiles, milestone payments.",
     intro:
-      "AI developers on Loom integrate models into real products: assistants, retrieval over your own documents, classification and evaluation pipelines.",
+      "AI developers on WorkIQHub integrate models into real products: assistants, retrieval over your own documents, classification and evaluation pipelines.",
     dbCategories: ["python-developers"],
     group: "ai-automation",
     skills: ["LLM integration", "RAG & search", "Python", "Evaluation", "APIs", "Prompt engineering"],
@@ -350,11 +350,11 @@ export const HIRE_PAGES: HirePage[] = [
     slug: "automation-experts",
     role: "Automation Experts",
     title: "Hire automation experts",
-    metaTitle: "Hire Automation Experts — freelance workflow automation | Loom",
+    metaTitle: "Hire Automation Experts — freelance workflow automation | WorkIQHub",
     metaDescription:
       "Hire freelance automation experts to connect your tools and remove manual work. Compare verified profiles and pay per milestone.",
     intro:
-      "Automation specialists on Loom connect the tools a business already uses and remove repetitive manual steps — from CRM sync to reporting and internal approvals.",
+      "Automation specialists on WorkIQHub connect the tools a business already uses and remove repetitive manual steps — from CRM sync to reporting and internal approvals.",
     dbCategories: ["python-developers"],
     group: "ai-automation",
     skills: ["Workflow automation", "Integrations", "APIs", "Scripting", "CRM automation", "Reporting"],

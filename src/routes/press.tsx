@@ -5,13 +5,13 @@ import { Breadcrumbs, PageHero, Section, Prose, CardGrid, InfoCard } from "@/com
 export const Route = createFileRoute("/press")({
   head: () => ({
     meta: [
-      { title: "Press — Loom" },
+      { title: "Press — WorkIQHub" },
       {
         name: "description",
         content:
-          "Media enquiries, what Loom is, and the facts we can confirm about how the marketplace works.",
+          "Media enquiries, what WorkIQHub is, and the facts we can confirm about how the marketplace works.",
       },
-      { property: "og:title", content: "Press — Loom" },
+      { property: "og:title", content: "Press — WorkIQHub" },
       { property: "og:description", content: "Media enquiries and platform facts." },
       { property: "og:type", content: "website" },
     ],
@@ -30,10 +30,10 @@ function Press() {
         lead="We answer questions about how the marketplace works and the decisions behind it. We do not publish user numbers, revenue or funding claims we cannot substantiate."
       />
 
-      <Section title="What Loom is">
+      <Section title="What WorkIQHub is">
         <Prose>
           <p>
-            Loom is a freelance marketplace covering discovery, proposals, contracts, milestone
+            WorkIQHub is a freelance marketplace covering discovery, proposals, contracts, milestone
             payments and two-sided reviews in a single system. Verification is reviewed by our team
             and cannot be purchased, and reviews are only possible after a completed project between
             the two parties.

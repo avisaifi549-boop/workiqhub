@@ -10,13 +10,13 @@ const ALL_ITEMS = FAQ_CATEGORIES.flatMap((c) => c.items);
 export const Route = createFileRoute("/faqs")({
   head: () => ({
     meta: [
-      { title: "FAQs — how Loom works for clients and freelancers" },
+      { title: "FAQs — how WorkIQHub works for clients and freelancers" },
       {
         name: "description",
         content:
-          "Answers about hiring, freelancing, proposals, milestones, payments, reviews, verification, account security and subscriptions on Loom.",
+          "Answers about hiring, freelancing, proposals, milestones, payments, reviews, verification, account security and subscriptions on WorkIQHub.",
       },
-      { property: "og:title", content: "FAQs — how Loom works" },
+      { property: "og:title", content: "FAQs — how WorkIQHub works" },
       {
         property: "og:description",
         content: "Hiring, freelancing, milestones, payments, reviews, verification and security.",

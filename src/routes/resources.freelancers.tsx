@@ -20,7 +20,7 @@ export const Route = createFileRoute("/resources/freelancers")({
         content:
           "Practical resources for freelancers: build a profile that gets found, price your work properly, write proposals that get replies and deliver projects that lead to repeat clients.",
       },
-      { property: "og:title", content: "Freelancer resources — Loom" },
+      { property: "og:title", content: "Freelancer resources — WorkIQHub" },
       {
         property: "og:description",
         content: "Profiles, pricing, proposals, delivery and repeat clients.",

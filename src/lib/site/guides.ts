@@ -34,7 +34,7 @@ export const GUIDES: Guide[] = [
       {
         heading: "Shortlist on evidence",
         paragraphs: [
-          "Compare portfolios for work that resembles your problem, not just work that looks attractive. Read verified reviews — on Loom these only exist after a completed marketplace project.",
+          "Compare portfolios for work that resembles your problem, not just work that looks attractive. Read verified reviews — on WorkIQHub these only exist after a completed marketplace project.",
         ],
         bullets: [
           "Does the portfolio show comparable scope?",
@@ -108,13 +108,13 @@ export const GUIDES: Guide[] = [
     title: "How to build a strong profile",
     audience: "freelancers",
     summary:
-      "What Loom's profile strength score measures, and how to move each part of it honestly.",
+      "What WorkIQHub's profile strength score measures, and how to move each part of it honestly.",
     readMinutes: 6,
     sections: [
       {
         heading: "Profile strength is completeness, not flattery",
         paragraphs: [
-          "Loom scores your profile on real completeness: headline, bio depth, skills, portfolio, pricing, availability and verification. It never rewards paying for a plan.",
+          "WorkIQHub scores your profile on real completeness: headline, bio depth, skills, portfolio, pricing, availability and verification. It never rewards paying for a plan.",
           "Only profiles that clear the quality bar get a public, indexable page. That protects the value of every page on the marketplace.",
         ],
       },
@@ -127,7 +127,7 @@ export const GUIDES: Guide[] = [
       {
         heading: "Portfolio pieces need context",
         paragraphs: [
-          "For each piece, describe the problem, your role, what you built and what happened afterwards. Projects completed through Loom can carry a verified marker; self-reported work is shown as self-reported.",
+          "For each piece, describe the problem, your role, what you built and what happened afterwards. Projects completed through WorkIQHub can carry a verified marker; self-reported work is shown as self-reported.",
         ],
       },
       {
@@ -231,7 +231,7 @@ export const GUIDES: Guide[] = [
       {
         heading: "Using AI honestly",
         paragraphs: [
-          "Loom's proposal assistance drafts from your real profile, skills and portfolio. It will not invent experience, clients or results — and neither should you. Fabricated claims are grounds for removal.",
+          "WorkIQHub's proposal assistance drafts from your real profile, skills and portfolio. It will not invent experience, clients or results — and neither should you. Fabricated claims are grounds for removal.",
         ],
       },
     ],
@@ -301,7 +301,7 @@ export const GUIDES: Guide[] = [
       {
         heading: "Verified versus self-reported",
         paragraphs: [
-          "Projects completed through Loom can be linked to a real contract and shown as verified. Outside work is welcome, and is labelled as self-reported.",
+          "Projects completed through WorkIQHub can be linked to a real contract and shown as verified. Outside work is welcome, and is labelled as self-reported.",
         ],
       },
     ],
@@ -334,7 +334,7 @@ export const GUIDES: Guide[] = [
       {
         heading: "Close the project properly",
         paragraphs: [
-          "Approve, release payment, hand over files and leave a review. Both sides review each other — reputation on Loom is two-sided.",
+          "Approve, release payment, hand over files and leave a review. Both sides review each other — reputation on WorkIQHub is two-sided.",
         ],
       },
     ],

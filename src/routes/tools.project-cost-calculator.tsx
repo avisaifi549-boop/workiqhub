@@ -6,13 +6,13 @@ import { formatInr } from "@/lib/plans";
 export const Route = createFileRoute("/tools/project-cost-calculator")({
   head: () => ({
     meta: [
-      { title: "Project cost calculator — budget a freelance project | Loom" },
+      { title: "Project cost calculator — budget a freelance project | WorkIQHub" },
       {
         name: "description",
         content:
           "Free project cost calculator for clients. Estimate a freelance project budget range from scope, complexity, revision rounds and contingency.",
       },
-      { property: "og:title", content: "Project cost calculator — Loom" },
+      { property: "og:title", content: "Project cost calculator — WorkIQHub" },
       {
         property: "og:description",
         content: "Estimate a realistic budget range before you post a project.",
@@ -142,7 +142,7 @@ function CostCalculator() {
           a: "Reduce scope before reducing rate. A smaller, well-defined first milestone usually delivers more than a stretched full project.",
         },
         {
-          q: "Does Loom set prices?",
+          q: "Does WorkIQHub set prices?",
           a: "No. Freelancers set their own rates, shown on their profiles.",
         },
       ]}

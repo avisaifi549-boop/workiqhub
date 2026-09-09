@@ -5,16 +5,16 @@ import { Breadcrumbs, PageHero, Prose } from "@/components/site/Sections";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy — Loom" },
+      { title: "Privacy Policy — WorkIQHub" },
       {
         name: "description",
         content:
-          "How Loom collects, uses, shares and retains personal information, and the choices available to account holders.",
+          "How WorkIQHub collects, uses, shares and retains personal information, and the choices available to account holders.",
       },
-      { property: "og:title", content: "Privacy Policy — Loom" },
+      { property: "og:title", content: "Privacy Policy — WorkIQHub" },
       {
         property: "og:description",
-        content: "How Loom handles personal information and the choices available to you.",
+        content: "How WorkIQHub handles personal information and the choices available to you.",
       },
       { property: "og:type", content: "website" },
     ],
@@ -27,7 +27,7 @@ const SECTIONS: { heading: string; body: string[] }[] = [
   {
     heading: "1. Who we are",
     body: [
-      "[COMPANY LEGAL NAME], [REGISTERED ADDRESS], operates the Loom marketplace. Where this policy refers to 'we' or 'us', it means that entity.",
+      "[COMPANY LEGAL NAME], [REGISTERED ADDRESS], operates the WorkIQHub marketplace. Where this policy refers to 'we' or 'us', it means that entity.",
       "Contact for privacy matters: [PRIVACY CONTACT EMAIL].",
     ],
   },
@@ -113,7 +113,7 @@ function Privacy() {
       <PageHero
         kicker="Legal"
         title="Privacy Policy"
-        lead="This page describes what information Loom collects, how it is used and the choices you have. Bracketed items are placeholders that must be completed and reviewed by a qualified legal professional before production use."
+        lead="This page describes what information WorkIQHub collects, how it is used and the choices you have. Bracketed items are placeholders that must be completed and reviewed by a qualified legal professional before production use."
       />
       <p className="rounded-lg border border-border glass px-5 py-4 font-mono text-xs text-muted-foreground">
         DRAFT — Effective date: [DATE]. Pending legal review.

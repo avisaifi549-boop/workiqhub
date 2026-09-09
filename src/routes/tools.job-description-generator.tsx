@@ -5,13 +5,13 @@ import { ToolShell, Field, inputClass, OutputCard, CopyButton } from "@/componen
 export const Route = createFileRoute("/tools/job-description-generator")({
   head: () => ({
     meta: [
-      { title: "Job description generator for freelance projects | Loom" },
+      { title: "Job description generator for freelance projects | WorkIQHub" },
       {
         name: "description",
         content:
           "Free job description generator for clients. Turn a rough need into a structured freelance brief with scope, deliverables, skills, budget and timeline.",
       },
-      { property: "og:title", content: "Job description generator — Loom" },
+      { property: "og:title", content: "Job description generator — WorkIQHub" },
       {
         property: "og:description",
         content: "Turn a rough need into a brief that attracts serious proposals.",

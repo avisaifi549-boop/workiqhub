@@ -20,7 +20,7 @@ export const Route = createFileRoute("/resources/")({
         content:
           "Practical guides on hiring and freelancing, free calculators and generators, plus help and FAQs — everything needed to run better freelance projects.",
       },
-      { property: "og:title", content: "Resources — Loom" },
+      { property: "og:title", content: "Resources — WorkIQHub" },
       {
         property: "og:description",
         content: "Guides, free tools and help for freelancers and clients.",

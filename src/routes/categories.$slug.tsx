@@ -41,7 +41,7 @@ export const Route = createFileRoute("/categories/$slug")({
     if (!group) {
       return { meta: [{ title: "Category unavailable" }, { name: "robots", content: "noindex" }] };
     }
-    const title = `${group.name} freelancers — hire verified specialists | Loom`;
+    const title = `${group.name} freelancers — hire verified specialists | WorkIQHub`;
     const description = group.description.slice(0, 155);
     return {
       meta: [

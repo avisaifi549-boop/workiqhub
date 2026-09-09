@@ -13,13 +13,13 @@ import {
 export const Route = createFileRoute("/about-us")({
   head: () => ({
     meta: [
-      { title: "About Loom — building a better way to work" },
+      { title: "About WorkIQHub — building a better way to work" },
       {
         name: "description",
         content:
-          "Loom connects skilled independent professionals with businesses that need great work. Our mission, the problems we set out to fix, our principles and how we think about AI.",
+          "WorkIQHub connects skilled independent professionals with businesses that need great work. Our mission, the problems we set out to fix, our principles and how we think about AI.",
       },
-      { property: "og:title", content: "About Loom — building a better way to work" },
+      { property: "og:title", content: "About WorkIQHub — building a better way to work" },
       {
         property: "og:description",
         content:
@@ -49,7 +49,7 @@ function About() {
       <PageHero
         kicker="About"
         title="Building a better way to work."
-        lead="Loom is a marketplace for independent professionals and the businesses that hire them — designed so that reputation, payment and discovery all rest on verifiable work."
+        lead="WorkIQHub is a marketplace for independent professionals and the businesses that hire them — designed so that reputation, payment and discovery all rest on verifiable work."
       />
 
       <Section title="Our mission">
@@ -100,7 +100,7 @@ function About() {
       <Section title="Our solution">
         <Prose>
           <p>
-            Loom keeps the whole engagement in one system. Profiles are structured so they can be
+            WorkIQHub keeps the whole engagement in one system. Profiles are structured so they can be
             compared, not just admired. Jobs, proposals, contracts and milestones share one record,
             so scope and approval are never ambiguous.
           </p>
@@ -158,7 +158,7 @@ function About() {
       <Section title="How we think about AI">
         <Prose>
           <p>
-            AI should amplify human talent, not misrepresent it. Every AI feature on Loom is
+            AI should amplify human talent, not misrepresent it. Every AI feature on WorkIQHub is
             grounded in data you actually provided — your profile, your skills, your portfolio, your
             pricing.
           </p>

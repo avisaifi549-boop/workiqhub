@@ -5,13 +5,13 @@ import { Breadcrumbs, PageHero, Section, Steps, Prose, FaqList } from "@/compone
 export const Route = createFileRoute("/help/disputes")({
   head: () => ({
     meta: [
-      { title: "Dispute Center — resolving project disagreements | Loom" },
+      { title: "Dispute Center — resolving project disagreements | WorkIQHub" },
       {
         name: "description",
         content:
-          "How disputes work on Loom: try a revision request first, then escalate. What our team reviews, what evidence matters and what outcomes are possible.",
+          "How disputes work on WorkIQHub: try a revision request first, then escalate. What our team reviews, what evidence matters and what outcomes are possible.",
       },
-      { property: "og:title", content: "Dispute Center — Loom" },
+      { property: "og:title", content: "Dispute Center — WorkIQHub" },
       {
         property: "og:description",
         content: "Revision requests, escalation, evidence and possible outcomes.",

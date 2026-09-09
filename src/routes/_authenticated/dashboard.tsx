@@ -14,8 +14,8 @@ import { formatInr } from "@/lib/plans";
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
     meta: [
-      { title: "Dashboard — Loom" },
-      { name: "description", content: "Your Loom marketplace dashboard." },
+      { title: "Dashboard — WorkIQHub" },
+      { name: "description", content: "Your WorkIQHub marketplace dashboard." },
       { name: "robots", content: "noindex" },
     ],
   }),

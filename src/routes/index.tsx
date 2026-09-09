@@ -27,13 +27,13 @@ export const Route = createFileRoute("/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(homeQuery),
   head: () => ({
     meta: [
-      { title: "Loom — Get discovered. Win more freelance work." },
+      { title: "WorkIQHub — Get discovered. Win more freelance work." },
       {
         name: "description",
         content:
           "An AI-powered freelance marketplace: verified talent, AI proposals, transparent pricing and secure milestone payments. Start free.",
       },
-      { property: "og:title", content: "Loom — Get discovered. Win more freelance work." },
+      { property: "og:title", content: "WorkIQHub — Get discovered. Win more freelance work." },
       {
         property: "og:description",
         content:
@@ -55,43 +55,58 @@ function Home() {
       <section className="relative grid gap-10 py-16 lg:grid-cols-12 lg:py-24">
         <div className="relative lg:col-span-7">
           <div className="pointer-events-none absolute -inset-6 -rotate-3 rounded-3xl glass-strong border border-border" />
-          <div className="relative animate-rise">
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">
+          <div className="relative">
+            <p
+              className="hero-enter font-mono text-xs uppercase tracking-[0.3em] text-primary"
+              style={{ animationDelay: "0ms" }}
+            >
               AI-native freelance marketplace
             </p>
-            <h1 className="mt-6 font-display text-6xl leading-[0.92] uppercase tracking-tight sm:text-7xl lg:text-8xl">
+            <h1
+              className="hero-enter headline-sweep mt-6 font-display text-6xl leading-[0.92] uppercase tracking-tight sm:text-7xl lg:text-8xl"
+              style={{ animationDelay: "80ms" }}
+            >
               Get discovered.
               <br />
               Win more work.
             </h1>
-            <p className="mt-6 max-w-[42ch] text-lg text-pretty text-muted-foreground">
+            <p
+              className="hero-enter mt-6 max-w-[42ch] text-lg text-pretty text-muted-foreground"
+              style={{ animationDelay: "160ms" }}
+            >
               Verified talent, AI proposals, and secure milestone payments in one engineered
               platform — built for freelancers and clients.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div
+              className="hero-enter mt-8 flex flex-col gap-3 sm:flex-row"
+              style={{ animationDelay: "240ms" }}
+            >
               <Link
                 to="/auth"
                 search={{ mode: "signup" }}
-                className="rounded-lg bg-primary px-6 py-3.5 text-center font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-primary/90"
+                className="rounded-lg bg-primary px-6 py-3.5 text-center font-semibold text-primary-foreground transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:brightness-110 hover:shadow-[0_10px_30px_-12px_var(--primary)]"
               >
                 Start Freelancing Free
               </Link>
               <Link
                 to="/freelancers"
-                className="rounded-lg glass px-6 py-3.5 text-center font-semibold ring-1 ring-border transition-all hover:-translate-y-0.5"
+                className="rounded-lg glass px-6 py-3.5 text-center font-semibold ring-1 ring-border transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/5 hover:ring-primary/50"
               >
                 Hire a Freelancer
               </Link>
             </div>
-            <p className="mt-5 font-mono text-xs text-muted-foreground">
+            <p
+              className="hero-enter mt-5 font-mono text-xs text-muted-foreground"
+              style={{ animationDelay: "300ms" }}
+            >
               No fake reviews · No invented stats · Secure escrow
             </p>
           </div>
         </div>
 
         <div className="lg:col-span-5">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="col-span-2 animate-rise-sm glass rounded-2xl border border-border p-5">
+          <div className="hero-enter grid grid-cols-2 gap-4" style={{ animationDelay: "320ms" }}>
+            <div className="float-a col-span-2 glass rounded-2xl border border-border p-5">
               <div className="flex items-center justify-between">
                 <span className="label-mono">Profile Strength</span>
                 <span className="font-mono text-sm">
@@ -99,7 +114,7 @@ function Home() {
                 </span>
               </div>
               <div className="mt-3 h-2 overflow-hidden rounded-full bg-accent/60">
-                <div className="h-full w-[62%] rounded-full bg-primary" />
+                <div className="bar-fill h-full w-[62%] rounded-full bg-primary" />
               </div>
               <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
@@ -116,12 +131,12 @@ function Home() {
                 </li>
               </ul>
             </div>
-            <div className="animate-rise-sm glass rounded-2xl border border-border p-4">
+            <div className="float-b glass rounded-2xl border border-border p-4">
               <p className="label-mono">Open jobs</p>
               <p className="mt-2 font-display text-4xl text-primary">{data.jobs.length}</p>
               <p className="mt-1 text-xs text-muted-foreground">Live on the marketplace</p>
             </div>
-            <div className="animate-rise-sm glass rounded-2xl border border-border p-4">
+            <div className="float-c glass rounded-2xl border border-border p-4">
               <p className="label-mono">Talent</p>
               <p className="mt-2 font-display text-4xl">{data.talent.length}</p>
               <p className="mt-1 text-xs text-muted-foreground">Published profiles</p>

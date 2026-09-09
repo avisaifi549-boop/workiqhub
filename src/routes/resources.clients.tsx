@@ -20,7 +20,7 @@ export const Route = createFileRoute("/resources/clients")({
         content:
           "Practical resources for hiring: write a brief that attracts good proposals, set a realistic budget, shortlist on evidence and run milestones that protect your spend.",
       },
-      { property: "og:title", content: "Client resources — Loom" },
+      { property: "og:title", content: "Client resources — WorkIQHub" },
       {
         property: "og:description",
         content: "Briefs, budgets, shortlisting and milestone management.",

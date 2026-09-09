@@ -6,13 +6,13 @@ import { CATEGORY_GROUPS } from "@/lib/site/categories";
 export const Route = createFileRoute("/categories/")({
   head: () => ({
     meta: [
-      { title: "Freelance categories — browse talent by discipline | Loom" },
+      { title: "Freelance categories — browse talent by discipline | WorkIQHub" },
       {
         name: "description",
         content:
-          "Browse Loom's freelance categories: AI and automation, development, design, marketing, writing, video, data, admin support and business. Find the specialists you need.",
+          "Browse WorkIQHub's freelance categories: AI and automation, development, design, marketing, writing, video, data, admin support and business. Find the specialists you need.",
       },
-      { property: "og:title", content: "Freelance categories — Loom" },
+      { property: "og:title", content: "Freelance categories — WorkIQHub" },
       {
         property: "og:description",
         content: "Browse freelance talent by discipline across nine marketplace categories.",

@@ -15,13 +15,13 @@ export const Route = createFileRoute("/search")({
   }),
   head: () => ({
     meta: [
-      { title: "Search freelancers, services and jobs | Loom" },
+      { title: "Search freelancers, services and jobs | WorkIQHub" },
       {
         name: "description",
         content:
-          "Search the Loom marketplace across published freelancer profiles, services and open client projects. Results come from real listings only.",
+          "Search the WorkIQHub marketplace across published freelancer profiles, services and open client projects. Results come from real listings only.",
       },
-      { property: "og:title", content: "Search the Loom marketplace" },
+      { property: "og:title", content: "Search the WorkIQHub marketplace" },
       {
         property: "og:description",
         content: "One search across freelancers, services and open projects.",

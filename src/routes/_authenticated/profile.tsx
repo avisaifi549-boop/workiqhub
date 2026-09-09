@@ -10,9 +10,9 @@ import { slugify, profileStrength } from "@/lib/profile-strength";
 export const Route = createFileRoute("/_authenticated/profile")({
   head: () => ({
     meta: [
-      { title: "Edit your freelancer profile — Loom" },
+      { title: "Edit your freelancer profile — WorkIQHub" },
       { name: "description", content: "Update your headline, skills, pricing and availability." },
-      { property: "og:title", content: "Edit your freelancer profile — Loom" },
+      { property: "og:title", content: "Edit your freelancer profile — WorkIQHub" },
       {
         property: "og:description",
         content: "Update your headline, skills, pricing and availability.",

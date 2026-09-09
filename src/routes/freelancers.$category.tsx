@@ -29,8 +29,8 @@ export const Route = createFileRoute("/freelancers/$category")({
       return { meta: [{ title: "Category unavailable" }, { name: "robots", content: "noindex" }] };
     }
     const name = loaderData.category!.name;
-    const title = `Hire ${name} in India — verified freelancers | Loom`;
-    const description = `Compare verified ${name.toLowerCase()} with real portfolios, transparent pricing and secure milestone payments on Loom.`;
+    const title = `Hire ${name} in India — verified freelancers | WorkIQHub`;
+    const description = `Compare verified ${name.toLowerCase()} with real portfolios, transparent pricing and secure milestone payments on WorkIQHub.`;
     return {
       meta: [
         { title },

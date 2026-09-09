@@ -28,7 +28,7 @@ export const Route = createFileRoute("/freelancer/$slug")({
       avatar_url: p.profiles?.avatar_url ?? null,
       portfolioCount: loaderData.portfolio.length,
     };
-    const title = `${name} — ${p.headline} | Loom`;
+    const title = `${name} — ${p.headline} | WorkIQHub`;
     const description = (p.bio ?? p.headline ?? "Freelancer profile").slice(0, 155);
     return {
       meta: [

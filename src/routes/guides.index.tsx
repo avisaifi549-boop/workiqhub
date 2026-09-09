@@ -19,7 +19,7 @@ export const Route = createFileRoute("/guides/")({
         content:
           "Free, practical guides for freelancers and clients: how to hire, how to start freelancing, what to charge, how to write proposals and how to run projects.",
       },
-      { property: "og:title", content: "Freelance guides — Loom" },
+      { property: "og:title", content: "Freelance guides — WorkIQHub" },
       {
         property: "og:description",
         content: "Hiring, pricing, portfolios, proposals and project management.",

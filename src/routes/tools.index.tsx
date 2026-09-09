@@ -18,7 +18,7 @@ export const Route = createFileRoute("/tools/")({
         content:
           "Free tools for freelancers and clients: hourly rate calculator, project cost calculator, invoice generator, proposal generator, job description generator and profile score.",
       },
-      { property: "og:title", content: "Free freelance tools — Loom" },
+      { property: "og:title", content: "Free freelance tools — WorkIQHub" },
       {
         property: "og:description",
         content: "Rate and cost calculators, invoice, proposal and job description generators.",

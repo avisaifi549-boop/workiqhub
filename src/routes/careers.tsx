@@ -5,13 +5,13 @@ import { Breadcrumbs, PageHero, Section, Prose, CardGrid, InfoCard } from "@/com
 export const Route = createFileRoute("/careers")({
   head: () => ({
     meta: [
-      { title: "Careers at Loom" },
+      { title: "Careers at WorkIQHub" },
       {
         name: "description",
         content:
           "How we work and how to reach us about working together. Open roles are listed here when they exist.",
       },
-      { property: "og:title", content: "Careers at Loom" },
+      { property: "og:title", content: "Careers at WorkIQHub" },
       { property: "og:description", content: "How we work, and how to reach us about roles." },
       { property: "og:type", content: "website" },
     ],

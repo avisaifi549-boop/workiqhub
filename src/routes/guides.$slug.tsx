@@ -16,9 +16,9 @@ export const Route = createFileRoute("/guides/$slug")({
     const g = loaderData.guide;
     return {
       meta: [
-        { title: `${g.title} — Loom guides` },
+        { title: `${g.title} — WorkIQHub guides` },
         { name: "description", content: g.summary },
-        { property: "og:title", content: `${g.title} — Loom guides` },
+        { property: "og:title", content: `${g.title} — WorkIQHub guides` },
         { property: "og:description", content: g.summary },
         { property: "og:type", content: "article" },
         { name: "twitter:card", content: "summary_large_image" },

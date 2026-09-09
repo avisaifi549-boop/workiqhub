@@ -9,7 +9,7 @@ export const Route = createFileRoute("/pricing")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Plans — Loom" },
+      { title: "Plans — WorkIQHub" },
       { name: "robots", content: "noindex,nofollow" },
     ],
   }),

@@ -237,8 +237,8 @@ export function PortfolioEditor({ userId }: { userId: string }) {
           </div>
           <div className="sm:col-span-2">
             <Field
-              label="Was this completed through Loom?"
-              hint="Linking a completed Loom project earns a verified badge. Everything else shows as a portfolio project."
+              label="Was this completed through WorkIQHub?"
+              hint="Linking a completed WorkIQHub project earns a verified badge. Everything else shows as a portfolio project."
             >
               <Select
                 value={form.contract_id}
@@ -276,7 +276,7 @@ export function PortfolioEditor({ userId }: { userId: string }) {
       ) : (items ?? []).length === 0 ? (
         <EmptyState
           title="You haven't added any portfolio projects yet"
-          description="Showcase work you've already delivered. Projects completed through Loom get a verified badge automatically."
+          description="Showcase work you've already delivered. Projects completed through WorkIQHub get a verified badge automatically."
           action={
             <PrimaryButton onClick={() => setForm(blank)}>Add your first project</PrimaryButton>
           }

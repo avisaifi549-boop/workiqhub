@@ -10,8 +10,8 @@ import { averageRating, ratingBreakdown } from "@/lib/marketplace";
 export const Route = createFileRoute("/_authenticated/reviews")({
   head: () => ({
     meta: [
-      { title: "Reviews — Loom" },
-      { name: "description", content: "Verified reviews from projects completed on Loom." },
+      { title: "Reviews — WorkIQHub" },
+      { name: "description", content: "Verified reviews from projects completed on WorkIQHub." },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -56,14 +56,14 @@ function ReviewsPage() {
     <DashShell
       role={account?.role ?? "freelancer"}
       title="Reviews"
-      subtitle="Only projects completed and paid through Loom can generate a review."
+      subtitle="Only projects completed and paid through WorkIQHub can generate a review."
     >
       {isLoading ? (
         <CardSkeleton count={2} />
       ) : received.length === 0 ? (
         <EmptyState
           title="No reviews yet"
-          description="Complete your first project on Loom to receive your first verified review."
+          description="Complete your first project on WorkIQHub to receive your first verified review."
         />
       ) : (
         <div className="space-y-6">
