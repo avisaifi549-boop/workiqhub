@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AboutUsRouteImport } from './routes/about-us'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqsRouteImport } from './routes/faqs'
@@ -38,6 +39,8 @@ import { Route as AuthenticatedServicesRouteImport } from './routes/_authenticat
 import { Route as FreelancerSlugRouteImport } from './routes/freelancer.$slug'
 import { Route as FreelancersIndexRouteImport } from './routes/freelancers.index'
 import { Route as FreelancersCategoryRouteImport } from './routes/freelancers.$category'
+import { Route as GuidesIndexRouteImport } from './routes/guides.index'
+import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as HelpIndexRouteImport } from './routes/help.index'
 import { Route as HelpDisputesRouteImport } from './routes/help.disputes'
 import { Route as JobsIndexRouteImport } from './routes/jobs.index'
@@ -45,6 +48,7 @@ import { Route as JobsSlugRouteImport } from './routes/jobs.$slug'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as ResourcesClientsRouteImport } from './routes/resources.clients'
 import { Route as ResourcesFreelancersRouteImport } from './routes/resources.freelancers'
+import { Route as ToolsIndexRouteImport } from './routes/tools.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -63,6 +67,11 @@ const AboutUsRoute = AboutUsRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CareersRoute = CareersRouteImport.update({
@@ -191,6 +200,16 @@ const FreelancersCategoryRoute = FreelancersCategoryRouteImport.update({
   path: '/freelancers/$category',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesIndexRoute = GuidesIndexRouteImport.update({
+  id: '/guides/',
+  path: '/guides/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesSlugRoute = GuidesSlugRouteImport.update({
+  id: '/guides/$slug',
+  path: '/guides/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HelpIndexRoute = HelpIndexRouteImport.update({
   id: '/help/',
   path: '/help/',
@@ -226,11 +245,17 @@ const ResourcesFreelancersRoute = ResourcesFreelancersRouteImport.update({
   path: '/resources/freelancers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsIndexRoute = ToolsIndexRouteImport.update({
+  id: '/tools/',
+  path: '/tools/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/auth': typeof AuthRoute
+  '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
@@ -255,19 +280,23 @@ export interface FileRoutesByFullPath {
   '/services': typeof AuthenticatedServicesRoute
   '/freelancer/$slug': typeof FreelancerSlugRoute
   '/freelancers/$category': typeof FreelancersCategoryRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/help/disputes': typeof HelpDisputesRoute
   '/jobs/$slug': typeof JobsSlugRoute
   '/resources/clients': typeof ResourcesClientsRoute
   '/resources/freelancers': typeof ResourcesFreelancersRoute
   '/freelancers/': typeof FreelancersIndexRoute
+  '/guides/': typeof GuidesIndexRoute
   '/help/': typeof HelpIndexRoute
   '/jobs/': typeof JobsIndexRoute
   '/resources/': typeof ResourcesIndexRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/auth': typeof AuthRoute
+  '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
@@ -292,14 +321,17 @@ export interface FileRoutesByTo {
   '/services': typeof AuthenticatedServicesRoute
   '/freelancer/$slug': typeof FreelancerSlugRoute
   '/freelancers/$category': typeof FreelancersCategoryRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/help/disputes': typeof HelpDisputesRoute
   '/jobs/$slug': typeof JobsSlugRoute
   '/resources/clients': typeof ResourcesClientsRoute
   '/resources/freelancers': typeof ResourcesFreelancersRoute
   '/freelancers': typeof FreelancersIndexRoute
+  '/guides': typeof GuidesIndexRoute
   '/help': typeof HelpIndexRoute
   '/jobs': typeof JobsIndexRoute
   '/resources': typeof ResourcesIndexRoute
+  '/tools': typeof ToolsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -307,6 +339,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about-us': typeof AboutUsRoute
   '/auth': typeof AuthRoute
+  '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
@@ -331,14 +364,17 @@ export interface FileRoutesById {
   '/_authenticated/services': typeof AuthenticatedServicesRoute
   '/freelancer/$slug': typeof FreelancerSlugRoute
   '/freelancers/$category': typeof FreelancersCategoryRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/help/disputes': typeof HelpDisputesRoute
   '/jobs/$slug': typeof JobsSlugRoute
   '/resources/clients': typeof ResourcesClientsRoute
   '/resources/freelancers': typeof ResourcesFreelancersRoute
   '/freelancers/': typeof FreelancersIndexRoute
+  '/guides/': typeof GuidesIndexRoute
   '/help/': typeof HelpIndexRoute
   '/jobs/': typeof JobsIndexRoute
   '/resources/': typeof ResourcesIndexRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -346,6 +382,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about-us'
     | '/auth'
+    | '/blog'
     | '/careers'
     | '/contact'
     | '/faqs'
@@ -370,19 +407,23 @@ export interface FileRouteTypes {
     | '/services'
     | '/freelancer/$slug'
     | '/freelancers/$category'
+    | '/guides/$slug'
     | '/help/disputes'
     | '/jobs/$slug'
     | '/resources/clients'
     | '/resources/freelancers'
     | '/freelancers/'
+    | '/guides/'
     | '/help/'
     | '/jobs/'
     | '/resources/'
+    | '/tools/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about-us'
     | '/auth'
+    | '/blog'
     | '/careers'
     | '/contact'
     | '/faqs'
@@ -407,20 +448,24 @@ export interface FileRouteTypes {
     | '/services'
     | '/freelancer/$slug'
     | '/freelancers/$category'
+    | '/guides/$slug'
     | '/help/disputes'
     | '/jobs/$slug'
     | '/resources/clients'
     | '/resources/freelancers'
     | '/freelancers'
+    | '/guides'
     | '/help'
     | '/jobs'
     | '/resources'
+    | '/tools'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/about-us'
     | '/auth'
+    | '/blog'
     | '/careers'
     | '/contact'
     | '/faqs'
@@ -445,14 +490,17 @@ export interface FileRouteTypes {
     | '/_authenticated/services'
     | '/freelancer/$slug'
     | '/freelancers/$category'
+    | '/guides/$slug'
     | '/help/disputes'
     | '/jobs/$slug'
     | '/resources/clients'
     | '/resources/freelancers'
     | '/freelancers/'
+    | '/guides/'
     | '/help/'
     | '/jobs/'
     | '/resources/'
+    | '/tools/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -460,6 +508,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutUsRoute: typeof AboutUsRoute
   AuthRoute: typeof AuthRoute
+  BlogRoute: typeof BlogRoute
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
   FaqsRoute: typeof FaqsRoute
@@ -474,14 +523,17 @@ export interface RootRouteChildren {
   WhyUsRoute: typeof WhyUsRoute
   FreelancerSlugRoute: typeof FreelancerSlugRoute
   FreelancersCategoryRoute: typeof FreelancersCategoryRoute
+  GuidesSlugRoute: typeof GuidesSlugRoute
   HelpDisputesRoute: typeof HelpDisputesRoute
   JobsSlugRoute: typeof JobsSlugRoute
   ResourcesClientsRoute: typeof ResourcesClientsRoute
   ResourcesFreelancersRoute: typeof ResourcesFreelancersRoute
   FreelancersIndexRoute: typeof FreelancersIndexRoute
+  GuidesIndexRoute: typeof GuidesIndexRoute
   HelpIndexRoute: typeof HelpIndexRoute
   JobsIndexRoute: typeof JobsIndexRoute
   ResourcesIndexRoute: typeof ResourcesIndexRoute
+  ToolsIndexRoute: typeof ToolsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -512,6 +564,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/careers': {
@@ -689,6 +748,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FreelancersCategoryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guides/': {
+      id: '/guides/'
+      path: '/guides'
+      fullPath: '/guides/'
+      preLoaderRoute: typeof GuidesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/$slug': {
+      id: '/guides/$slug'
+      path: '/guides/$slug'
+      fullPath: '/guides/$slug'
+      preLoaderRoute: typeof GuidesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/help/': {
       id: '/help/'
       path: '/help'
@@ -738,6 +811,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesFreelancersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/': {
+      id: '/tools/'
+      path: '/tools'
+      fullPath: '/tools/'
+      preLoaderRoute: typeof ToolsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -775,6 +855,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutUsRoute: AboutUsRoute,
   AuthRoute: AuthRoute,
+  BlogRoute: BlogRoute,
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
   FaqsRoute: FaqsRoute,
@@ -789,14 +870,17 @@ const rootRouteChildren: RootRouteChildren = {
   WhyUsRoute: WhyUsRoute,
   FreelancerSlugRoute: FreelancerSlugRoute,
   FreelancersCategoryRoute: FreelancersCategoryRoute,
+  GuidesSlugRoute: GuidesSlugRoute,
   HelpDisputesRoute: HelpDisputesRoute,
   JobsSlugRoute: JobsSlugRoute,
   ResourcesClientsRoute: ResourcesClientsRoute,
   ResourcesFreelancersRoute: ResourcesFreelancersRoute,
   FreelancersIndexRoute: FreelancersIndexRoute,
+  GuidesIndexRoute: GuidesIndexRoute,
   HelpIndexRoute: HelpIndexRoute,
   JobsIndexRoute: JobsIndexRoute,
   ResourcesIndexRoute: ResourcesIndexRoute,
+  ToolsIndexRoute: ToolsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
