@@ -49,7 +49,11 @@ import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as ResourcesClientsRouteImport } from './routes/resources.clients'
 import { Route as ResourcesFreelancersRouteImport } from './routes/resources.freelancers'
 import { Route as ToolsIndexRouteImport } from './routes/tools.index'
+import { Route as ToolsInvoiceGeneratorRouteImport } from './routes/tools.invoice-generator'
+import { Route as ToolsJobDescriptionGeneratorRouteImport } from './routes/tools.job-description-generator'
+import { Route as ToolsProfileScoreRouteImport } from './routes/tools.profile-score'
 import { Route as ToolsProjectCostCalculatorRouteImport } from './routes/tools.project-cost-calculator'
+import { Route as ToolsProposalGeneratorRouteImport } from './routes/tools.proposal-generator'
 import { Route as ToolsRateCalculatorRouteImport } from './routes/tools.rate-calculator'
 
 const IndexRoute = IndexRouteImport.update({
@@ -252,12 +256,33 @@ const ToolsIndexRoute = ToolsIndexRouteImport.update({
   path: '/tools/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsInvoiceGeneratorRoute = ToolsInvoiceGeneratorRouteImport.update({
+  id: '/tools/invoice-generator',
+  path: '/tools/invoice-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsJobDescriptionGeneratorRoute =
+  ToolsJobDescriptionGeneratorRouteImport.update({
+    id: '/tools/job-description-generator',
+    path: '/tools/job-description-generator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsProfileScoreRoute = ToolsProfileScoreRouteImport.update({
+  id: '/tools/profile-score',
+  path: '/tools/profile-score',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ToolsProjectCostCalculatorRoute =
   ToolsProjectCostCalculatorRouteImport.update({
     id: '/tools/project-cost-calculator',
     path: '/tools/project-cost-calculator',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ToolsProposalGeneratorRoute = ToolsProposalGeneratorRouteImport.update({
+  id: '/tools/proposal-generator',
+  path: '/tools/proposal-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ToolsRateCalculatorRoute = ToolsRateCalculatorRouteImport.update({
   id: '/tools/rate-calculator',
   path: '/tools/rate-calculator',
@@ -298,7 +323,11 @@ export interface FileRoutesByFullPath {
   '/jobs/$slug': typeof JobsSlugRoute
   '/resources/clients': typeof ResourcesClientsRoute
   '/resources/freelancers': typeof ResourcesFreelancersRoute
+  '/tools/invoice-generator': typeof ToolsInvoiceGeneratorRoute
+  '/tools/job-description-generator': typeof ToolsJobDescriptionGeneratorRoute
+  '/tools/profile-score': typeof ToolsProfileScoreRoute
   '/tools/project-cost-calculator': typeof ToolsProjectCostCalculatorRoute
+  '/tools/proposal-generator': typeof ToolsProposalGeneratorRoute
   '/tools/rate-calculator': typeof ToolsRateCalculatorRoute
   '/freelancers/': typeof FreelancersIndexRoute
   '/guides/': typeof GuidesIndexRoute
@@ -341,7 +370,11 @@ export interface FileRoutesByTo {
   '/jobs/$slug': typeof JobsSlugRoute
   '/resources/clients': typeof ResourcesClientsRoute
   '/resources/freelancers': typeof ResourcesFreelancersRoute
+  '/tools/invoice-generator': typeof ToolsInvoiceGeneratorRoute
+  '/tools/job-description-generator': typeof ToolsJobDescriptionGeneratorRoute
+  '/tools/profile-score': typeof ToolsProfileScoreRoute
   '/tools/project-cost-calculator': typeof ToolsProjectCostCalculatorRoute
+  '/tools/proposal-generator': typeof ToolsProposalGeneratorRoute
   '/tools/rate-calculator': typeof ToolsRateCalculatorRoute
   '/freelancers': typeof FreelancersIndexRoute
   '/guides': typeof GuidesIndexRoute
@@ -386,7 +419,11 @@ export interface FileRoutesById {
   '/jobs/$slug': typeof JobsSlugRoute
   '/resources/clients': typeof ResourcesClientsRoute
   '/resources/freelancers': typeof ResourcesFreelancersRoute
+  '/tools/invoice-generator': typeof ToolsInvoiceGeneratorRoute
+  '/tools/job-description-generator': typeof ToolsJobDescriptionGeneratorRoute
+  '/tools/profile-score': typeof ToolsProfileScoreRoute
   '/tools/project-cost-calculator': typeof ToolsProjectCostCalculatorRoute
+  '/tools/proposal-generator': typeof ToolsProposalGeneratorRoute
   '/tools/rate-calculator': typeof ToolsRateCalculatorRoute
   '/freelancers/': typeof FreelancersIndexRoute
   '/guides/': typeof GuidesIndexRoute
@@ -431,7 +468,11 @@ export interface FileRouteTypes {
     | '/jobs/$slug'
     | '/resources/clients'
     | '/resources/freelancers'
+    | '/tools/invoice-generator'
+    | '/tools/job-description-generator'
+    | '/tools/profile-score'
     | '/tools/project-cost-calculator'
+    | '/tools/proposal-generator'
     | '/tools/rate-calculator'
     | '/freelancers/'
     | '/guides/'
@@ -474,7 +515,11 @@ export interface FileRouteTypes {
     | '/jobs/$slug'
     | '/resources/clients'
     | '/resources/freelancers'
+    | '/tools/invoice-generator'
+    | '/tools/job-description-generator'
+    | '/tools/profile-score'
     | '/tools/project-cost-calculator'
+    | '/tools/proposal-generator'
     | '/tools/rate-calculator'
     | '/freelancers'
     | '/guides'
@@ -518,7 +563,11 @@ export interface FileRouteTypes {
     | '/jobs/$slug'
     | '/resources/clients'
     | '/resources/freelancers'
+    | '/tools/invoice-generator'
+    | '/tools/job-description-generator'
+    | '/tools/profile-score'
     | '/tools/project-cost-calculator'
+    | '/tools/proposal-generator'
     | '/tools/rate-calculator'
     | '/freelancers/'
     | '/guides/'
@@ -553,7 +602,11 @@ export interface RootRouteChildren {
   JobsSlugRoute: typeof JobsSlugRoute
   ResourcesClientsRoute: typeof ResourcesClientsRoute
   ResourcesFreelancersRoute: typeof ResourcesFreelancersRoute
+  ToolsInvoiceGeneratorRoute: typeof ToolsInvoiceGeneratorRoute
+  ToolsJobDescriptionGeneratorRoute: typeof ToolsJobDescriptionGeneratorRoute
+  ToolsProfileScoreRoute: typeof ToolsProfileScoreRoute
   ToolsProjectCostCalculatorRoute: typeof ToolsProjectCostCalculatorRoute
+  ToolsProposalGeneratorRoute: typeof ToolsProposalGeneratorRoute
   ToolsRateCalculatorRoute: typeof ToolsRateCalculatorRoute
   FreelancersIndexRoute: typeof FreelancersIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
@@ -845,11 +898,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/invoice-generator': {
+      id: '/tools/invoice-generator'
+      path: '/tools/invoice-generator'
+      fullPath: '/tools/invoice-generator'
+      preLoaderRoute: typeof ToolsInvoiceGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/job-description-generator': {
+      id: '/tools/job-description-generator'
+      path: '/tools/job-description-generator'
+      fullPath: '/tools/job-description-generator'
+      preLoaderRoute: typeof ToolsJobDescriptionGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/profile-score': {
+      id: '/tools/profile-score'
+      path: '/tools/profile-score'
+      fullPath: '/tools/profile-score'
+      preLoaderRoute: typeof ToolsProfileScoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tools/project-cost-calculator': {
       id: '/tools/project-cost-calculator'
       path: '/tools/project-cost-calculator'
       fullPath: '/tools/project-cost-calculator'
       preLoaderRoute: typeof ToolsProjectCostCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/proposal-generator': {
+      id: '/tools/proposal-generator'
+      path: '/tools/proposal-generator'
+      fullPath: '/tools/proposal-generator'
+      preLoaderRoute: typeof ToolsProposalGeneratorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/rate-calculator': {
@@ -916,7 +997,11 @@ const rootRouteChildren: RootRouteChildren = {
   JobsSlugRoute: JobsSlugRoute,
   ResourcesClientsRoute: ResourcesClientsRoute,
   ResourcesFreelancersRoute: ResourcesFreelancersRoute,
+  ToolsInvoiceGeneratorRoute: ToolsInvoiceGeneratorRoute,
+  ToolsJobDescriptionGeneratorRoute: ToolsJobDescriptionGeneratorRoute,
+  ToolsProfileScoreRoute: ToolsProfileScoreRoute,
   ToolsProjectCostCalculatorRoute: ToolsProjectCostCalculatorRoute,
+  ToolsProposalGeneratorRoute: ToolsProposalGeneratorRoute,
   ToolsRateCalculatorRoute: ToolsRateCalculatorRoute,
   FreelancersIndexRoute: FreelancersIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
