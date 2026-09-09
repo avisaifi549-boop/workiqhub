@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useAuth } from "@/hooks/useAuth";
 import { track } from "@/lib/site/track";
@@ -17,9 +17,15 @@ import {
 
 type MenuId = "hire" | "work" | "resources";
 
+const OPEN_DELAY = 120;
+const CLOSE_DELAY = 200;
+
+const menuLinkClass =
+  "block rounded-md px-2 py-1.5 text-sm text-foreground/80 transition-all duration-150 hover:translate-x-0.5 hover:bg-primary/10 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+
 function LinkList({ items, onNavigate }: { items: NavLink[]; onNavigate: () => void }) {
   return (
-    <ul className="mt-4 space-y-2">
+    <ul className="mt-4 space-y-1">
       {items.map((item) => (
         <li key={`${item.label}-${item.to}`}>
           <Link
@@ -28,7 +34,7 @@ function LinkList({ items, onNavigate }: { items: NavLink[]; onNavigate: () => v
               track("nav_click", { label: item.label, to: item.to });
               onNavigate();
             }}
-            className="block rounded-md px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent/40 hover:text-foreground"
+            className={menuLinkClass}
           >
             {item.label}
           </Link>
@@ -39,25 +45,45 @@ function LinkList({ items, onNavigate }: { items: NavLink[]; onNavigate: () => v
 }
 
 function ColumnTitle({ children }: { children: React.ReactNode }) {
-  return <h2 className="label-mono">{children}</h2>;
+  return (
+    <h2 className="font-mono text-[11px] uppercase leading-4 tracking-[0.2em] text-primary">
+      {children}
+    </h2>
+  );
 }
 
-function MegaPanel({ id, close }: { id: MenuId; close: () => void }) {
+function MegaPanel({
+  id,
+  closing,
+  close,
+  onPointerEnter,
+  onPointerLeave,
+}: {
+  id: MenuId;
+  closing: boolean;
+  close: () => void;
+  onPointerEnter: () => void;
+  onPointerLeave: () => void;
+}) {
   return (
     <div
       id={`megamenu-${id}`}
-      className="absolute inset-x-0 top-full z-40 hidden border-b border-border glass-strong md:block"
+      onPointerEnter={onPointerEnter}
+      onPointerLeave={onPointerLeave}
+      className={`absolute inset-x-0 top-full isolate hidden overflow-hidden border-b border-border nav-surface md:block ${
+        closing ? "animate-menu-out" : "animate-menu-in"
+      }`}
     >
-      <div className="mx-auto max-w-7xl px-6 py-8">
+      <div className="mx-auto w-full max-w-7xl px-6 py-9">
         {id === "hire" && (
-          <div className="grid gap-8 lg:grid-cols-4">
+          <div className="grid gap-x-10 gap-y-8 lg:grid-cols-4">
             <div>
               <ColumnTitle>Hire by category</ColumnTitle>
               <LinkList items={HIRE_BY_CATEGORY} onNavigate={close} />
             </div>
             <div className="lg:col-span-2">
               <ColumnTitle>Popular talent</ColumnTitle>
-              <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2">
+              <ul className="mt-4 grid grid-cols-2 gap-x-8 gap-y-1">
                 {POPULAR_TALENT.map((item) => (
                   <li key={item.to + item.label}>
                     <Link
@@ -66,7 +92,7 @@ function MegaPanel({ id, close }: { id: MenuId; close: () => void }) {
                         track("nav_click", { label: item.label, to: item.to });
                         close();
                       }}
-                      className="block rounded-md px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent/40 hover:text-foreground"
+                      className={menuLinkClass}
                     >
                       {item.label}
                     </Link>
@@ -82,7 +108,7 @@ function MegaPanel({ id, close }: { id: MenuId; close: () => void }) {
         )}
 
         {id === "work" && (
-          <div className="grid gap-8 lg:grid-cols-3">
+          <div className="grid gap-x-10 gap-y-8 lg:grid-cols-3">
             <div>
               <ColumnTitle>Find freelance work</ColumnTitle>
               <LinkList items={WORK_BY_CATEGORY} onNavigate={close} />
@@ -99,7 +125,7 @@ function MegaPanel({ id, close }: { id: MenuId; close: () => void }) {
         )}
 
         {id === "resources" && (
-          <div className="grid gap-8 lg:grid-cols-3">
+          <div className="grid gap-x-10 gap-y-8 lg:grid-cols-3">
             <div>
               <ColumnTitle>Resources</ColumnTitle>
               <LinkList items={RESOURCE_LINKS} onNavigate={close} />
@@ -115,20 +141,20 @@ function MegaPanel({ id, close }: { id: MenuId; close: () => void }) {
           </div>
         )}
 
-        <div className="mt-8 flex flex-wrap gap-3 border-t border-border pt-6">
+        <div className="mt-8 flex flex-wrap items-center gap-3 border-t border-border pt-6">
           {id === "hire" && (
             <>
               <Link
                 to="/freelancers"
                 onClick={close}
-                className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
+                className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
               >
                 Find the right freelancer
               </Link>
               <Link
                 to="/post-a-job"
                 onClick={close}
-                className="rounded-lg glass px-5 py-2.5 text-sm font-semibold ring-1 ring-border"
+                className="rounded-lg px-5 py-2.5 text-sm font-semibold ring-1 ring-border transition-colors hover:bg-primary/10"
               >
                 Post a project
               </Link>
@@ -139,14 +165,14 @@ function MegaPanel({ id, close }: { id: MenuId; close: () => void }) {
               <Link
                 to="/jobs"
                 onClick={close}
-                className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
+                className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
               >
                 Browse all jobs
               </Link>
               <Link
                 to="/get-started"
                 onClick={close}
-                className="rounded-lg glass px-5 py-2.5 text-sm font-semibold ring-1 ring-border"
+                className="rounded-lg px-5 py-2.5 text-sm font-semibold ring-1 ring-border transition-colors hover:bg-primary/10"
               >
                 Start freelancing
               </Link>
@@ -156,7 +182,7 @@ function MegaPanel({ id, close }: { id: MenuId; close: () => void }) {
             <Link
               to="/resources"
               onClick={close}
-              className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
+              className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
             >
               Explore resources
             </Link>
@@ -200,7 +226,7 @@ function MobileAccordion({
                   track("nav_click", { label: item.label, to: item.to, surface: "mobile" });
                   onNavigate();
                 }}
-                className="block py-2 text-sm text-muted-foreground"
+                className="block py-2 text-sm text-foreground/80"
               >
                 {item.label}
               </Link>
@@ -215,24 +241,85 @@ function MobileAccordion({
 export function SiteHeader() {
   const { user, loading } = useAuth();
   const [openMenu, setOpenMenu] = useState<MenuId | null>(null);
+  const [closingMenu, setClosingMenu] = useState<MenuId | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  const openTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const exitTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  const clearTimers = useCallback(() => {
+    if (openTimer.current) clearTimeout(openTimer.current);
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    openTimer.current = null;
+    closeTimer.current = null;
+  }, []);
+
+  const openNow = useCallback(
+    (id: MenuId) => {
+      clearTimers();
+      if (exitTimer.current) clearTimeout(exitTimer.current);
+      setClosingMenu(null);
+      setOpenMenu((cur) => {
+        if (cur !== id) track("megamenu_open", { menu: id });
+        return id;
+      });
+    },
+    [clearTimers],
+  );
+
+  /** Play the exit animation, then unmount. */
+  const closeNow = useCallback(() => {
+    clearTimers();
+    setOpenMenu((cur) => {
+      if (!cur) return null;
+      setClosingMenu(cur);
+      if (exitTimer.current) clearTimeout(exitTimer.current);
+      exitTimer.current = setTimeout(() => setClosingMenu(null), 150);
+      return null;
+    });
+  }, [clearTimers]);
+
+  /** Hover intent: delay opening so a cursor crossing the header doesn't trigger menus. */
+  const hoverOpen = useCallback(
+    (id: MenuId) => {
+      clearTimers();
+      // Already showing a menu — switch instantly for a smooth transition.
+      if (openMenu) {
+        openNow(id);
+        return;
+      }
+      openTimer.current = setTimeout(() => openNow(id), OPEN_DELAY);
+    },
+    [clearTimers, openMenu, openNow],
+  );
+
+  const hoverClose = useCallback(() => {
+    clearTimers();
+    closeTimer.current = setTimeout(closeNow, CLOSE_DELAY);
+  }, [clearTimers, closeNow]);
+
+  const cancelClose = useCallback(() => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = null;
+  }, []);
 
   useEffect(() => {
     setOpenMenu(null);
+    setClosingMenu(null);
     setMobileOpen(false);
   }, [pathname]);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") {
-        setOpenMenu(null);
+        closeNow();
         setMobileOpen(false);
       }
     }
     function onClick(e: MouseEvent) {
-      if (!headerRef.current?.contains(e.target as Node)) setOpenMenu(null);
+      if (!headerRef.current?.contains(e.target as Node)) closeNow();
     }
     document.addEventListener("keydown", onKey);
     document.addEventListener("mousedown", onClick);
@@ -240,38 +327,51 @@ export function SiteHeader() {
       document.removeEventListener("keydown", onKey);
       document.removeEventListener("mousedown", onClick);
     };
-  }, []);
+  }, [closeNow]);
 
-  function toggle(id: MenuId) {
-    setOpenMenu((cur) => {
-      const next = cur === id ? null : id;
-      if (next) track("megamenu_open", { menu: id });
-      return next;
-    });
-  }
+  useEffect(
+    () => () => {
+      if (openTimer.current) clearTimeout(openTimer.current);
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+      if (exitTimer.current) clearTimeout(exitTimer.current);
+    },
+    [],
+  );
 
   const trigger = (id: MenuId, label: string) => (
     <button
       type="button"
-      onClick={() => toggle(id)}
+      // Click stays as the keyboard/touch fallback; hover is the desktop path.
+      onClick={() => (openMenu === id ? closeNow() : openNow(id))}
+      onPointerEnter={(e) => {
+        if (e.pointerType === "mouse") hoverOpen(id);
+      }}
+      onPointerLeave={(e) => {
+        if (e.pointerType === "mouse") hoverClose();
+      }}
+      onFocus={() => openNow(id)}
       aria-expanded={openMenu === id}
       aria-controls={`megamenu-${id}`}
-      className={
+      aria-haspopup="true"
+      className={`relative rounded-md px-3 py-2 text-sm font-medium transition-colors after:absolute after:inset-x-3 after:-bottom-px after:h-0.5 after:rounded-full after:transition-all ${
         openMenu === id
-          ? "rounded-md px-3 py-2 text-sm font-medium text-foreground"
-          : "rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-      }
+          ? "text-foreground after:bg-primary"
+          : "text-muted-foreground hover:text-foreground after:bg-transparent"
+      }`}
     >
       {label}
     </button>
   );
 
+  const pageLinkClass =
+    "rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground";
+
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-40 border-b border-border glass-strong"
+      className="sticky top-0 z-50 isolate border-b border-border header-surface"
       onKeyDown={(e) => {
-        if (e.key === "Escape") setOpenMenu(null);
+        if (e.key === "Escape") closeNow();
       }}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-6">
@@ -279,33 +379,62 @@ export function SiteHeader() {
           <Link to="/" className="font-display text-xl tracking-wide">
             LOOM<span className="text-primary">.</span>
           </Link>
-          <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
+          <nav
+            aria-label="Main"
+            className="hidden items-center gap-1 md:flex"
+            onPointerLeave={(e) => {
+              if (e.pointerType === "mouse") hoverClose();
+            }}
+          >
             {trigger("hire", "Hire Talent")}
             {trigger("work", "Find Work")}
             {trigger("resources", "Resources")}
             <Link
               to="/why-us"
+              onPointerEnter={(e) => {
+                // Why Us is a direct page link — hovering it dismisses any open menu.
+                if (e.pointerType === "mouse") hoverClose();
+              }}
               activeProps={{ className: "text-foreground" }}
-              className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className={pageLinkClass}
             >
               Why Us
             </Link>
             <Link
               to="/about-us"
+              onPointerEnter={(e) => {
+                if (e.pointerType === "mouse") hoverClose();
+              }}
               activeProps={{ className: "text-foreground" }}
-              className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className={pageLinkClass}
             >
               About Us
             </Link>
           </nav>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div
+          className="flex items-center gap-2"
+          onPointerEnter={(e) => {
+            if (e.pointerType === "mouse") hoverClose();
+          }}
+        >
           <Link
             to="/search"
             aria-label="Search the marketplace"
-            className="hidden rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground sm:block"
+            className="hidden items-center gap-2 rounded-lg px-3 py-2 text-sm text-muted-foreground ring-1 ring-transparent transition-all hover:bg-primary/10 hover:text-foreground hover:ring-border sm:flex"
           >
+            <svg
+              aria-hidden
+              viewBox="0 0 20 20"
+              className="size-4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+            >
+              <circle cx="9" cy="9" r="6" />
+              <path d="m13.5 13.5 3.5 3.5" strokeLinecap="round" />
+            </svg>
             Search
           </Link>
           {loading ? null : user ? (
@@ -346,7 +475,15 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {openMenu && <MegaPanel id={openMenu} close={() => setOpenMenu(null)} />}
+      {(openMenu ?? closingMenu) && (
+        <MegaPanel
+          id={(openMenu ?? closingMenu)!}
+          closing={!openMenu}
+          close={closeNow}
+          onPointerEnter={cancelClose}
+          onPointerLeave={hoverClose}
+        />
+      )}
 
       {mobileOpen && (
         <div id="mobile-nav" className="border-t border-border bg-background md:hidden">
