@@ -5,7 +5,7 @@ import { TalentCard, type TalentRow } from "@/components/site/TalentCard";
 import { JobCard, type JobRow } from "@/components/site/JobCard";
 import { EmptyState } from "@/components/site/EmptyState";
 import { listFreelancers, listJobs } from "@/lib/public.functions";
-import { PLANS, formatInr } from "@/lib/plans";
+
 
 type HomeData = {
   talent: Awaited<ReturnType<typeof listFreelancers>>;
