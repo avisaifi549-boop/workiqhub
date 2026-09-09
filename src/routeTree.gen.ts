@@ -49,6 +49,8 @@ import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as ResourcesClientsRouteImport } from './routes/resources.clients'
 import { Route as ResourcesFreelancersRouteImport } from './routes/resources.freelancers'
 import { Route as ToolsIndexRouteImport } from './routes/tools.index'
+import { Route as ToolsProjectCostCalculatorRouteImport } from './routes/tools.project-cost-calculator'
+import { Route as ToolsRateCalculatorRouteImport } from './routes/tools.rate-calculator'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -250,6 +252,17 @@ const ToolsIndexRoute = ToolsIndexRouteImport.update({
   path: '/tools/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsProjectCostCalculatorRoute =
+  ToolsProjectCostCalculatorRouteImport.update({
+    id: '/tools/project-cost-calculator',
+    path: '/tools/project-cost-calculator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsRateCalculatorRoute = ToolsRateCalculatorRouteImport.update({
+  id: '/tools/rate-calculator',
+  path: '/tools/rate-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -285,6 +298,8 @@ export interface FileRoutesByFullPath {
   '/jobs/$slug': typeof JobsSlugRoute
   '/resources/clients': typeof ResourcesClientsRoute
   '/resources/freelancers': typeof ResourcesFreelancersRoute
+  '/tools/project-cost-calculator': typeof ToolsProjectCostCalculatorRoute
+  '/tools/rate-calculator': typeof ToolsRateCalculatorRoute
   '/freelancers/': typeof FreelancersIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/help/': typeof HelpIndexRoute
@@ -326,6 +341,8 @@ export interface FileRoutesByTo {
   '/jobs/$slug': typeof JobsSlugRoute
   '/resources/clients': typeof ResourcesClientsRoute
   '/resources/freelancers': typeof ResourcesFreelancersRoute
+  '/tools/project-cost-calculator': typeof ToolsProjectCostCalculatorRoute
+  '/tools/rate-calculator': typeof ToolsRateCalculatorRoute
   '/freelancers': typeof FreelancersIndexRoute
   '/guides': typeof GuidesIndexRoute
   '/help': typeof HelpIndexRoute
@@ -369,6 +386,8 @@ export interface FileRoutesById {
   '/jobs/$slug': typeof JobsSlugRoute
   '/resources/clients': typeof ResourcesClientsRoute
   '/resources/freelancers': typeof ResourcesFreelancersRoute
+  '/tools/project-cost-calculator': typeof ToolsProjectCostCalculatorRoute
+  '/tools/rate-calculator': typeof ToolsRateCalculatorRoute
   '/freelancers/': typeof FreelancersIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/help/': typeof HelpIndexRoute
@@ -412,6 +431,8 @@ export interface FileRouteTypes {
     | '/jobs/$slug'
     | '/resources/clients'
     | '/resources/freelancers'
+    | '/tools/project-cost-calculator'
+    | '/tools/rate-calculator'
     | '/freelancers/'
     | '/guides/'
     | '/help/'
@@ -453,6 +474,8 @@ export interface FileRouteTypes {
     | '/jobs/$slug'
     | '/resources/clients'
     | '/resources/freelancers'
+    | '/tools/project-cost-calculator'
+    | '/tools/rate-calculator'
     | '/freelancers'
     | '/guides'
     | '/help'
@@ -495,6 +518,8 @@ export interface FileRouteTypes {
     | '/jobs/$slug'
     | '/resources/clients'
     | '/resources/freelancers'
+    | '/tools/project-cost-calculator'
+    | '/tools/rate-calculator'
     | '/freelancers/'
     | '/guides/'
     | '/help/'
@@ -528,6 +553,8 @@ export interface RootRouteChildren {
   JobsSlugRoute: typeof JobsSlugRoute
   ResourcesClientsRoute: typeof ResourcesClientsRoute
   ResourcesFreelancersRoute: typeof ResourcesFreelancersRoute
+  ToolsProjectCostCalculatorRoute: typeof ToolsProjectCostCalculatorRoute
+  ToolsRateCalculatorRoute: typeof ToolsRateCalculatorRoute
   FreelancersIndexRoute: typeof FreelancersIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   HelpIndexRoute: typeof HelpIndexRoute
@@ -818,6 +845,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/project-cost-calculator': {
+      id: '/tools/project-cost-calculator'
+      path: '/tools/project-cost-calculator'
+      fullPath: '/tools/project-cost-calculator'
+      preLoaderRoute: typeof ToolsProjectCostCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/rate-calculator': {
+      id: '/tools/rate-calculator'
+      path: '/tools/rate-calculator'
+      fullPath: '/tools/rate-calculator'
+      preLoaderRoute: typeof ToolsRateCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -875,6 +916,8 @@ const rootRouteChildren: RootRouteChildren = {
   JobsSlugRoute: JobsSlugRoute,
   ResourcesClientsRoute: ResourcesClientsRoute,
   ResourcesFreelancersRoute: ResourcesFreelancersRoute,
+  ToolsProjectCostCalculatorRoute: ToolsProjectCostCalculatorRoute,
+  ToolsRateCalculatorRoute: ToolsRateCalculatorRoute,
   FreelancersIndexRoute: FreelancersIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   HelpIndexRoute: HelpIndexRoute,
