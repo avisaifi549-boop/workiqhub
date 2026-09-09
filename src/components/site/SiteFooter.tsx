@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { FOOTER_COLUMNS } from "@/lib/site/nav";
 import { CATEGORY_GROUPS } from "@/lib/site/categories";
+import { WorkIQHubLogo } from "@/components/brand/WorkIQHubLogo";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -10,8 +11,8 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-6 py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
           <div className="lg:col-span-1">
-            <Link to="/" className="font-display text-xl tracking-wide">
-              LOOM<span className="text-primary">.</span>
+            <Link to="/" aria-label="WorkIQHub home" className="brand-link rounded-md">
+              <WorkIQHubLogo />
             </Link>
             <p className="mt-3 max-w-[26ch] text-sm text-muted-foreground">
               A marketplace for independent professionals and the businesses that hire them.

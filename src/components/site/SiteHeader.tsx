@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useAuth } from "@/hooks/useAuth";
+import { WorkIQHubLogo } from "@/components/brand/WorkIQHubLogo";
 import { track } from "@/lib/site/track";
 import {
   HIRE_BY_CATEGORY,
@@ -376,8 +377,8 @@ export function SiteHeader() {
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-6">
         <div className="flex items-center gap-6">
-          <Link to="/" className="font-display text-xl tracking-wide">
-            LOOM<span className="text-primary">.</span>
+          <Link to="/" aria-label="WorkIQHub home" className="brand-link rounded-md">
+            <WorkIQHubLogo />
           </Link>
           <nav
             aria-label="Main"
