@@ -105,8 +105,8 @@ function Home() {
         </div>
 
         <div className="lg:col-span-5">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="col-span-2 animate-rise-sm glass rounded-2xl border border-border p-5">
+          <div className="hero-enter grid grid-cols-2 gap-4" style={{ animationDelay: "320ms" }}>
+            <div className="float-a col-span-2 glass rounded-2xl border border-border p-5">
               <div className="flex items-center justify-between">
                 <span className="label-mono">Profile Strength</span>
                 <span className="font-mono text-sm">
@@ -114,7 +114,7 @@ function Home() {
                 </span>
               </div>
               <div className="mt-3 h-2 overflow-hidden rounded-full bg-accent/60">
-                <div className="h-full w-[62%] rounded-full bg-primary" />
+                <div className="bar-fill h-full w-[62%] rounded-full bg-primary" />
               </div>
               <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
@@ -131,12 +131,12 @@ function Home() {
                 </li>
               </ul>
             </div>
-            <div className="animate-rise-sm glass rounded-2xl border border-border p-4">
+            <div className="float-b glass rounded-2xl border border-border p-4">
               <p className="label-mono">Open jobs</p>
               <p className="mt-2 font-display text-4xl text-primary">{data.jobs.length}</p>
               <p className="mt-1 text-xs text-muted-foreground">Live on the marketplace</p>
             </div>
-            <div className="animate-rise-sm glass rounded-2xl border border-border p-4">
+            <div className="float-c glass rounded-2xl border border-border p-4">
               <p className="label-mono">Talent</p>
               <p className="mt-2 font-display text-4xl">{data.talent.length}</p>
               <p className="mt-1 text-xs text-muted-foreground">Published profiles</p>
