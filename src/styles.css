@@ -56,6 +56,30 @@
   --ease-kinetic: cubic-bezier(0.32, 0.72, 0, 1);
   --animate-rise: rise 0.7s cubic-bezier(0.32, 0.72, 0, 1) both;
   --animate-rise-sm: rise-sm 0.7s cubic-bezier(0.32, 0.72, 0, 1) both;
+  --animate-menu-in: menu-in 0.18s cubic-bezier(0.32, 0.72, 0, 1) both;
+  --animate-menu-out: menu-out 0.14s cubic-bezier(0.4, 0, 1, 1) both;
+
+  @keyframes menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes menu-out {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+  }
+
 
   @keyframes rise {
     from {
