@@ -4,5 +4,15 @@ Disallow: /auth
 Disallow: /dashboard
 Disallow: /profile
 Disallow: /post-a-job
+Disallow: /onboarding
+Disallow: /applications
+Disallow: /my-jobs
+Disallow: /projects
+Disallow: /services
+Disallow: /portfolio
+Disallow: /reviews
+Disallow: /subscription
+Disallow: /pricing
+Disallow: /search
 
 Sitemap: /sitemap.xml
