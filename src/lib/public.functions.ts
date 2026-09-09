@@ -138,3 +138,80 @@ export const marketplaceCounts = createServerFn({ method: "GET" }).handler(async
   ]);
   return { freelancers: freelancers.count ?? 0, jobs: jobs.count ?? 0 };
 });
+
+export const listFreelancersIn = createServerFn({ method: "GET" })
+  .inputValidator((d: { categories: string[]; limit?: number }) => d)
+  .handler(async ({ data }) => {
+    if (data.categories.length === 0) return [];
+    const sb = publicClient();
+    const { data: cats } = await sb.from("categories").select("id").in("slug", data.categories);
+    const ids = (cats ?? []).map((c) => c.id);
+    if (ids.length === 0) return [];
+    const { data: rows, error } = await sb
+      .from("freelancer_profiles")
+      .select(
+        "user_id, slug, headline, bio, skills, languages, hourly_rate_inr, starting_price_inr, availability, response_time_hours, years_experience, verification, plan, category_id, categories(name, slug), profiles(full_name, avatar_url, location)",
+      )
+      .eq("is_published", true)
+      .in("category_id", ids)
+      .limit(data.limit ?? 12);
+    if (error) throw new Error(error.message);
+    return rows ?? [];
+  });
+
+export const listJobsIn = createServerFn({ method: "GET" })
+  .inputValidator((d: { categories: string[]; limit?: number }) => d)
+  .handler(async ({ data }) => {
+    if (data.categories.length === 0) return [];
+    const sb = publicClient();
+    const { data: cats } = await sb.from("categories").select("id").in("slug", data.categories);
+    const ids = (cats ?? []).map((c) => c.id);
+    if (ids.length === 0) return [];
+    const { data: rows, error } = await sb
+      .from("jobs")
+      .select(
+        "id, title, slug, description, skills, budget_min_inr, budget_max_inr, timeline_weeks, project_type, experience_level, status, created_at, category_id, categories(name, slug)",
+      )
+      .in("status", ["published", "shortlisting", "interview"])
+      .in("category_id", ids)
+      .order("created_at", { ascending: false })
+      .limit(data.limit ?? 12);
+    if (error) throw new Error(error.message);
+    return rows ?? [];
+  });
+
+export const searchMarketplace = createServerFn({ method: "GET" })
+  .inputValidator((d: { q: string }) => d)
+  .handler(async ({ data }) => {
+    const q = data.q.trim();
+    if (!q) return { freelancers: [], jobs: [], services: [] };
+    const sb = publicClient();
+    const like = `%${q}%`;
+    const [freelancers, jobs, services] = await Promise.all([
+      sb
+        .from("freelancer_profiles")
+        .select("user_id, slug, headline, skills, starting_price_inr, profiles(full_name)")
+        .eq("is_published", true)
+        .or(`headline.ilike.${like},bio.ilike.${like}`)
+        .limit(12),
+      sb
+        .from("jobs")
+        .select("id, slug, title, description, budget_min_inr, budget_max_inr, created_at")
+        .in("status", ["published", "shortlisting", "interview"])
+        .or(`title.ilike.${like},description.ilike.${like}`)
+        .limit(12),
+      sb
+        .from("services")
+        .select(
+          "id, slug, title, description, starting_price_inr, delivery_days, freelancer_profiles(slug)",
+        )
+        .eq("is_published", true)
+        .or(`title.ilike.${like},description.ilike.${like}`)
+        .limit(12),
+    ]);
+    return {
+      freelancers: freelancers.data ?? [],
+      jobs: jobs.data ?? [],
+      services: services.data ?? [],
+    };
+  });
