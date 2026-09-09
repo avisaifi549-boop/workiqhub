@@ -21,6 +21,7 @@ import { Route as PressRouteImport } from './routes/press'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SuccessStoriesRouteImport } from './routes/success-stories'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TrustAndSafetyRouteImport } from './routes/trust-and-safety'
 import { Route as WhyUsRouteImport } from './routes/why-us'
@@ -41,6 +42,9 @@ import { Route as HelpIndexRouteImport } from './routes/help.index'
 import { Route as HelpDisputesRouteImport } from './routes/help.disputes'
 import { Route as JobsIndexRouteImport } from './routes/jobs.index'
 import { Route as JobsSlugRouteImport } from './routes/jobs.$slug'
+import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
+import { Route as ResourcesClientsRouteImport } from './routes/resources.clients'
+import { Route as ResourcesFreelancersRouteImport } from './routes/resources.freelancers'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -99,6 +103,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuccessStoriesRoute = SuccessStoriesRouteImport.update({
+  id: '/success-stories',
+  path: '/success-stories',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -202,6 +211,21 @@ const JobsSlugRoute = JobsSlugRouteImport.update({
   path: '/jobs/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
+  id: '/resources/',
+  path: '/resources/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesClientsRoute = ResourcesClientsRouteImport.update({
+  id: '/resources/clients',
+  path: '/resources/clients',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesFreelancersRoute = ResourcesFreelancersRouteImport.update({
+  id: '/resources/freelancers',
+  path: '/resources/freelancers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -215,6 +239,7 @@ export interface FileRoutesByFullPath {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/success-stories': typeof SuccessStoriesRoute
   '/terms': typeof TermsRoute
   '/trust-and-safety': typeof TrustAndSafetyRoute
   '/why-us': typeof WhyUsRoute
@@ -232,9 +257,12 @@ export interface FileRoutesByFullPath {
   '/freelancers/$category': typeof FreelancersCategoryRoute
   '/help/disputes': typeof HelpDisputesRoute
   '/jobs/$slug': typeof JobsSlugRoute
+  '/resources/clients': typeof ResourcesClientsRoute
+  '/resources/freelancers': typeof ResourcesFreelancersRoute
   '/freelancers/': typeof FreelancersIndexRoute
   '/help/': typeof HelpIndexRoute
   '/jobs/': typeof JobsIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -248,6 +276,7 @@ export interface FileRoutesByTo {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/success-stories': typeof SuccessStoriesRoute
   '/terms': typeof TermsRoute
   '/trust-and-safety': typeof TrustAndSafetyRoute
   '/why-us': typeof WhyUsRoute
@@ -265,9 +294,12 @@ export interface FileRoutesByTo {
   '/freelancers/$category': typeof FreelancersCategoryRoute
   '/help/disputes': typeof HelpDisputesRoute
   '/jobs/$slug': typeof JobsSlugRoute
+  '/resources/clients': typeof ResourcesClientsRoute
+  '/resources/freelancers': typeof ResourcesFreelancersRoute
   '/freelancers': typeof FreelancersIndexRoute
   '/help': typeof HelpIndexRoute
   '/jobs': typeof JobsIndexRoute
+  '/resources': typeof ResourcesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -283,6 +315,7 @@ export interface FileRoutesById {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/success-stories': typeof SuccessStoriesRoute
   '/terms': typeof TermsRoute
   '/trust-and-safety': typeof TrustAndSafetyRoute
   '/why-us': typeof WhyUsRoute
@@ -300,9 +333,12 @@ export interface FileRoutesById {
   '/freelancers/$category': typeof FreelancersCategoryRoute
   '/help/disputes': typeof HelpDisputesRoute
   '/jobs/$slug': typeof JobsSlugRoute
+  '/resources/clients': typeof ResourcesClientsRoute
+  '/resources/freelancers': typeof ResourcesFreelancersRoute
   '/freelancers/': typeof FreelancersIndexRoute
   '/help/': typeof HelpIndexRoute
   '/jobs/': typeof JobsIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -318,6 +354,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/sitemap.xml'
+    | '/success-stories'
     | '/terms'
     | '/trust-and-safety'
     | '/why-us'
@@ -335,9 +372,12 @@ export interface FileRouteTypes {
     | '/freelancers/$category'
     | '/help/disputes'
     | '/jobs/$slug'
+    | '/resources/clients'
+    | '/resources/freelancers'
     | '/freelancers/'
     | '/help/'
     | '/jobs/'
+    | '/resources/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -351,6 +391,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/sitemap.xml'
+    | '/success-stories'
     | '/terms'
     | '/trust-and-safety'
     | '/why-us'
@@ -368,9 +409,12 @@ export interface FileRouteTypes {
     | '/freelancers/$category'
     | '/help/disputes'
     | '/jobs/$slug'
+    | '/resources/clients'
+    | '/resources/freelancers'
     | '/freelancers'
     | '/help'
     | '/jobs'
+    | '/resources'
   id:
     | '__root__'
     | '/'
@@ -385,6 +429,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/sitemap.xml'
+    | '/success-stories'
     | '/terms'
     | '/trust-and-safety'
     | '/why-us'
@@ -402,9 +447,12 @@ export interface FileRouteTypes {
     | '/freelancers/$category'
     | '/help/disputes'
     | '/jobs/$slug'
+    | '/resources/clients'
+    | '/resources/freelancers'
     | '/freelancers/'
     | '/help/'
     | '/jobs/'
+    | '/resources/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -420,6 +468,7 @@ export interface RootRouteChildren {
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SuccessStoriesRoute: typeof SuccessStoriesRoute
   TermsRoute: typeof TermsRoute
   TrustAndSafetyRoute: typeof TrustAndSafetyRoute
   WhyUsRoute: typeof WhyUsRoute
@@ -427,9 +476,12 @@ export interface RootRouteChildren {
   FreelancersCategoryRoute: typeof FreelancersCategoryRoute
   HelpDisputesRoute: typeof HelpDisputesRoute
   JobsSlugRoute: typeof JobsSlugRoute
+  ResourcesClientsRoute: typeof ResourcesClientsRoute
+  ResourcesFreelancersRoute: typeof ResourcesFreelancersRoute
   FreelancersIndexRoute: typeof FreelancersIndexRoute
   HelpIndexRoute: typeof HelpIndexRoute
   JobsIndexRoute: typeof JobsIndexRoute
+  ResourcesIndexRoute: typeof ResourcesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -516,6 +568,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/success-stories': {
+      id: '/success-stories'
+      path: '/success-stories'
+      fullPath: '/success-stories'
+      preLoaderRoute: typeof SuccessStoriesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -658,6 +717,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof JobsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources/': {
+      id: '/resources/'
+      path: '/resources'
+      fullPath: '/resources/'
+      preLoaderRoute: typeof ResourcesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/clients': {
+      id: '/resources/clients'
+      path: '/resources/clients'
+      fullPath: '/resources/clients'
+      preLoaderRoute: typeof ResourcesClientsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/freelancers': {
+      id: '/resources/freelancers'
+      path: '/resources/freelancers'
+      fullPath: '/resources/freelancers'
+      preLoaderRoute: typeof ResourcesFreelancersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -703,6 +783,7 @@ const rootRouteChildren: RootRouteChildren = {
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SuccessStoriesRoute: SuccessStoriesRoute,
   TermsRoute: TermsRoute,
   TrustAndSafetyRoute: TrustAndSafetyRoute,
   WhyUsRoute: WhyUsRoute,
@@ -710,9 +791,12 @@ const rootRouteChildren: RootRouteChildren = {
   FreelancersCategoryRoute: FreelancersCategoryRoute,
   HelpDisputesRoute: HelpDisputesRoute,
   JobsSlugRoute: JobsSlugRoute,
+  ResourcesClientsRoute: ResourcesClientsRoute,
+  ResourcesFreelancersRoute: ResourcesFreelancersRoute,
   FreelancersIndexRoute: FreelancersIndexRoute,
   HelpIndexRoute: HelpIndexRoute,
   JobsIndexRoute: JobsIndexRoute,
+  ResourcesIndexRoute: ResourcesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
