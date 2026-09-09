@@ -177,7 +177,8 @@ function ProfileScore() {
             Create your profile
           </Link>
           <Link
-            to="/guides/how-to-build-a-strong-profile"
+            to="/guides/$slug"
+            params={{ slug: "how-to-build-a-strong-profile" }}
             className="rounded-lg glass px-5 py-3 font-semibold ring-1 ring-border"
           >
             Read the profile guide

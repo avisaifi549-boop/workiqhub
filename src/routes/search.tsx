@@ -7,7 +7,7 @@ import { EmptyState } from "@/components/site/EmptyState";
 import { searchMarketplace } from "@/lib/public.functions";
 import { formatInr } from "@/lib/plans";
 
-type Search = { q?: string };
+type Search = { q?: string | undefined };
 
 export const Route = createFileRoute("/search")({
   validateSearch: (search: Record<string, unknown>): Search => ({

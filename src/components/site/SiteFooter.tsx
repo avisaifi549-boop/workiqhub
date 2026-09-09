@@ -43,7 +43,8 @@ export function SiteFooter() {
             {CATEGORY_GROUPS.map((c) => (
               <li key={c.slug}>
                 <Link
-                  to={`/categories/${c.slug}`}
+                  to="/categories/$slug"
+                  params={{ slug: c.slug }}
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {c.name}
